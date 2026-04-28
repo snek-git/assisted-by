@@ -192,16 +192,17 @@
     display: grid;
     gap: 2px;
     user-select: none;
+    position: relative;
+    transition: opacity .22s, filter .22s;
   }
+  .unit-grid.transitioning { opacity: 0; filter: blur(2px); }
   .unit-grid .cell {
     aspect-ratio: 1 / 1;
     background: #1c1c1c;
     border-radius: 1px;
     position: relative;
-    transition: transform .12s, box-shadow .12s;
+    transition: background .25s;
   }
-  .unit-grid.clickable .cell.active { cursor: zoom-in; }
-  .unit-grid.clickable .cell.active:hover { transform: scale(1.4); box-shadow: 0 0 0 1px var(--accent); z-index: 2; }
   .unit-grid .cell.window { background: #2a2a2a; }
   .unit-grid .cell.ai { background: var(--accent); }
   .unit-grid .cell.partial-ai::before {
@@ -210,6 +211,28 @@
     inset: 0;
     background: var(--accent);
     width: var(--ai-width, 0%);
+    border-radius: 1px;
+  }
+
+  /* zone-overlay: outline around the area that zooms in */
+  .zone-overlay {
+    position: absolute;
+    pointer-events: auto;
+    cursor: zoom-in;
+    border: 1.5px solid transparent;
+    border-radius: 3px;
+    transition: border-color .18s, box-shadow .18s, transform .18s;
+    z-index: 5;
+    animation: zoneIn .35s both cubic-bezier(.22,.9,.27,1);
+  }
+  .zone-overlay:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 18px rgba(200,255,0,.4), inset 0 0 0 9999px rgba(200,255,0,.06);
+    transform: scale(1.02);
+  }
+  @keyframes zoneIn {
+    from { opacity: 0; transform: scale(.92); }
+    to   { opacity: 1; transform: scale(1); }
   }
   .grid-caption {
     margin-top: 18px;
@@ -952,15 +975,58 @@
       }
     }
 
-    grid.addEventListener("click", (e) => {
-      const cell = e.target.closest(".cell.active");
-      if (!cell) return;
-      zoom = parseInt(cell.dataset.zoom, 10);
-      render();
-    });
+    function transitionTo(next) {
+      grid.classList.add("transitioning");
+      setTimeout(() => {
+        zoom = next;
+        render();
+        // RAF so the new grid is in the DOM before we fade in
+        requestAnimationFrame(() => grid.classList.remove("transitioning"));
+      }, 220);
+    }
+
+    function placeZoneOverlay(targetZoom) {
+      // Wait one frame so cell animations have laid out
+      requestAnimationFrame(() => {
+        const existing = grid.querySelector(".zone-overlay");
+        if (existing) existing.remove();
+        const cells = [...grid.querySelectorAll(".cell.active")];
+        if (cells.length === 0) return;
+        const gridRect = grid.getBoundingClientRect();
+        const rects = cells.map(c => c.getBoundingClientRect());
+        const minX = Math.min(...rects.map(r => r.left)) - gridRect.left;
+        const minY = Math.min(...rects.map(r => r.top))  - gridRect.top;
+        const maxX = Math.max(...rects.map(r => r.right)) - gridRect.left;
+        const maxY = Math.max(...rects.map(r => r.bottom)) - gridRect.top;
+        const ov = document.createElement("div");
+        ov.className = "zone-overlay";
+        const pad = 3;
+        ov.style.left   = (minX - pad) + "px";
+        ov.style.top    = (minY - pad) + "px";
+        ov.style.width  = (maxX - minX + pad*2) + "px";
+        ov.style.height = (maxY - minY + pad*2) + "px";
+        ov.title = "click to zoom in";
+        ov.addEventListener("click", () => transitionTo(targetZoom));
+        grid.appendChild(ov);
+      });
+    }
+
+    // Hook render() so the zone overlay is placed after each render
+    const originalRender = render;
+    render = function () {
+      originalRender();
+      // The zoom level the active cells point to is encoded in their data-zoom
+      const someActive = grid.querySelector(".cell.active");
+      if (someActive) placeZoneOverlay(parseInt(someActive.dataset.zoom, 10));
+    };
+
     back.addEventListener("click", () => {
-      if (zoom > 0) zoom--;
-      render();
+      if (zoom > 0) transitionTo(zoom - 1);
+    });
+    // Recompute the overlay if the viewport resizes
+    window.addEventListener("resize", () => {
+      const someActive = grid.querySelector(".cell.active");
+      if (someActive) placeZoneOverlay(parseInt(someActive.dataset.zoom, 10));
     });
     render();
   } else {
