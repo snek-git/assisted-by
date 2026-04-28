@@ -3,5 +3,6 @@
   "commits": 23835,
   "insertions": 1130805,
   "deletions": 590143,
-  "boundary_artifacts_skipped": 245
+  "boundary_artifacts_skipped": 245,
+  "total_loc_at_head": 42586636
 }

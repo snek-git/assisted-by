@@ -68,6 +68,7 @@ web = {
     "total_deletions": merged.get("total_deletions", 0),
     "kernel_total_insertions": kernel_stats.get("insertions"),
     "kernel_total_deletions": kernel_stats.get("deletions"),
+    "kernel_total_loc": kernel_stats.get("total_loc_at_head"),
     "top_authors": merged["top_authors"],
     "top_committers": merged["top_committers"],
     "by_date": merged["by_date"],

@@ -39,12 +39,28 @@ for line in raw.splitlines():
         ins_total += int(m.group(2) or 0)
         del_total += int(m.group(3) or 0)
 
+# Total raw line count of the current kernel source tree at HEAD.
+total_loc = 0
+try:
+    proc = subprocess.run(
+        ["git", "--git-dir", REPO, "archive", "HEAD"],
+        check=True, capture_output=True,
+    )
+    # Stream tar to wc -l via a second process
+    import subprocess as sp
+    tar = sp.Popen(["tar", "-x", "-O"], stdin=sp.PIPE, stdout=sp.PIPE, stderr=sp.DEVNULL)
+    out_bytes, _ = tar.communicate(proc.stdout)
+    total_loc = out_bytes.count(b"\n")
+except Exception as e:
+    print(f"warn: total_loc not computed: {e}", file=sys.stderr)
+
 out = {
     "since": SINCE,
     "commits": commits,
     "insertions": ins_total,
     "deletions": del_total,
     "boundary_artifacts_skipped": boundary_artifacts,
+    "total_loc_at_head": total_loc,
 }
 Path(OUT).write_text(json.dumps(out, indent=2))
 print(json.dumps(out, indent=2))
