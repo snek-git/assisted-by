@@ -152,7 +152,7 @@ def normalize(tag: str) -> dict:
 
 
 def main():
-    repo = sys.argv[1] if len(sys.argv) > 1 else "linux-shallow.git"
+    repo = sys.argv[1] if len(sys.argv) > 1 else "linux-full.git"
     out_path = sys.argv[2] if len(sys.argv) > 2 else "data.json"
     SEP = "<<<COMMIT>>>"
     FMT = f"{SEP}%H%n%an%n%ae%n%cn%n%ce%n%aI%n%cI%n%s%n%b"

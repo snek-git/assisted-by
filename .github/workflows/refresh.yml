@@ -15,7 +15,7 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 75
     steps:
       - uses: actions/checkout@v4
         with:
@@ -35,20 +35,13 @@ jobs:
           restore-keys: |
             lei-state-
 
-      - name: restore linux-shallow.git
+      - name: restore linux-full.git
         uses: actions/cache@v4
         with:
-          path: linux-shallow.git
-          key: linux-shallow-${{ github.run_id }}
+          path: linux-full.git
+          key: linux-full-${{ github.run_id }}
           restore-keys: |
-            linux-shallow-
-
-      - name: ensure shallow clone exists
-        run: |
-          if [ ! -d linux-shallow.git ]; then
-            git clone --bare --filter=blob:none --shallow-since="2026-01-01" \
-              https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git linux-shallow.git
-          fi
+            linux-full-
 
       - name: register lei external
         run: |
@@ -61,10 +54,10 @@ jobs:
         run: |
           git config user.name "assisted-by-bot"
           git config user.email "actions@github.com"
-          if git diff --quiet -- index.html web_data.min.json data.json lore_data.json; then
+          if git diff --quiet -- index.html web_data.min.json data.json lore_data.json kernel_stats.json; then
             echo "no data changes"
             exit 0
           fi
-          git add index.html web_data.min.json data.json lore_data.json
+          git add index.html web_data.min.json data.json lore_data.json kernel_stats.json
           git commit -m "data: scheduled refresh ($(date -u +%Y-%m-%dT%H:%MZ))"
           git push

@@ -1,4 +1,5 @@
 linux-shallow.git/
+linux-full.git/
 __pycache__/
 *.pyc
 *.pyo

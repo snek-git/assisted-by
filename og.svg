@@ -7,14 +7,14 @@
   <text x="80" y="220" font-family="JetBrains Mono, monospace" font-size="36" font-weight="500" fill="#e8e8e8" letter-spacing="-1">How much of the Linux kernel</text>
   <text x="80" y="262" font-family="JetBrains Mono, monospace" font-size="36" font-weight="500" fill="#e8e8e8" letter-spacing="-1">is written by AI?</text>
 
-  <text x="80" y="410" font-family="JetBrains Mono, monospace" font-size="140" font-weight="600" fill="#c8ff00" letter-spacing="-4">0.64%</text>
-  <text x="600" y="380" font-family="JetBrains Mono, monospace" font-size="22" fill="#888">of mainline activity</text>
-  <text x="600" y="408" font-family="JetBrains Mono, monospace" font-size="22" fill="#888">since 2026-01-01.</text>
+  <text x="80" y="410" font-family="JetBrains Mono, monospace" font-size="140" font-weight="600" fill="#c8ff00" letter-spacing="-4">0.29%</text>
+  <text x="600" y="380" font-family="JetBrains Mono, monospace" font-size="22" fill="#888">of all lines added</text>
+  <text x="600" y="408" font-family="JetBrains Mono, monospace" font-size="22" fill="#888">to mainline this year.</text>
 
   <rect x="80" y="465" width="1040" height="1" fill="#232323"/>
 
-  <text x="80" y="510" font-family="JetBrains Mono, monospace" font-size="18" fill="#888">166 of 26,044 commits</text>
-  <text x="80" y="538" font-family="JetBrains Mono, monospace" font-size="18" fill="#888">+3,304 / &#8722;602 lines</text>
+  <text x="80" y="510" font-family="JetBrains Mono, monospace" font-size="18" fill="#888">3,304 of 1,130,805 lines</text>
+  <text x="80" y="538" font-family="JetBrains Mono, monospace" font-size="18" fill="#888">166 of 26,044 commits (0.64%)</text>
 
   <text x="600" y="510" font-family="JetBrains Mono, monospace" font-size="18" fill="#888">10 distinct models disclosed</text>
   <text x="600" y="538" font-family="JetBrains Mono, monospace" font-size="18" fill="#888">1,370 patches submitted to lists</text>

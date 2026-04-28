@@ -67,7 +67,7 @@ web_data.min.json  the JSON inlined into index.html
 
 Does, in order:
 
-1. `git fetch --shallow-since=2026-01-01` on `linux-shallow.git`.
+1. `git fetch --shallow-since=2026-01-01` on `linux-full.git`.
 2. `lei q ... 'b:"Assisted-by:" AND d:20260101..'` to a fresh mbox.
 3. Run `parse_commits.py` and `parse_lei.py`.
 4. `build_data.py` writes `web_data.min.json`.
@@ -76,8 +76,8 @@ Does, in order:
 Bootstrapping a fresh clone of this repo:
 
 ```
-git clone --bare --filter=blob:none --shallow-since="2026-01-01" \
-  https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git linux-shallow.git
+git clone --bare --shallow-since="2026-01-01" --no-tags --single-branch \
+  https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git linux-full.git
 lei add-external https://lore.kernel.org/all/
 ./refresh.sh
 ```

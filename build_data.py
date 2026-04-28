@@ -5,6 +5,11 @@ import subprocess
 
 merged = json.load(open("data.json"))
 lore = json.load(open("lore_data.json"))
+kernel_stats = {}
+try:
+    kernel_stats = json.load(open("kernel_stats.json"))
+except FileNotFoundError:
+    pass
 
 total_commits = int(subprocess.check_output(
     ["git", "--git-dir", "linux-shallow.git", "log",
@@ -61,6 +66,8 @@ web = {
     "total_tags": merged["total_tags"],
     "total_insertions": merged.get("total_insertions", 0),
     "total_deletions": merged.get("total_deletions", 0),
+    "kernel_total_insertions": kernel_stats.get("insertions"),
+    "kernel_total_deletions": kernel_stats.get("deletions"),
     "top_authors": merged["top_authors"],
     "top_committers": merged["top_committers"],
     "by_date": merged["by_date"],
