@@ -4,7 +4,7 @@ Tracks the `Assisted-by:` tag in Linux mainline since 2026-01-01: which AI model
 have shown up in disclosed kernel commits, what they have actually merged, and how that
 compares to what is being submitted on lkml.
 
-Live page: https://assistedby.dev
+Live page: https://assisted-by.dev
 
 ## Why this exists
 

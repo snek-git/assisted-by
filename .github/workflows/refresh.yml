@@ -1,0 +1,70 @@
+name: refresh
+
+on:
+  schedule:
+    - cron: '17 4 * * *'   # 04:17 UTC daily; 17 to avoid the on-the-hour stampede
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: install lei (public-inbox)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends public-inbox jq
+
+      - name: restore lei state
+        uses: actions/cache@v4
+        with:
+          path: ~/.local/share/lei
+          key: lei-state-${{ github.run_id }}
+          restore-keys: |
+            lei-state-
+
+      - name: restore linux-shallow.git
+        uses: actions/cache@v4
+        with:
+          path: linux-shallow.git
+          key: linux-shallow-${{ github.run_id }}
+          restore-keys: |
+            linux-shallow-
+
+      - name: ensure shallow clone exists
+        run: |
+          if [ ! -d linux-shallow.git ]; then
+            git clone --bare --filter=blob:none --shallow-since="2026-01-01" \
+              https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git linux-shallow.git
+          fi
+
+      - name: register lei external
+        run: |
+          lei add-external https://lore.kernel.org/all/ || true
+
+      - name: run refresh.sh
+        run: ./refresh.sh
+
+      - name: commit and push if changed
+        run: |
+          git config user.name "assisted-by-bot"
+          git config user.email "actions@github.com"
+          if git diff --quiet -- index.html web_data.min.json data.json lore_data.json; then
+            echo "no data changes"
+            exit 0
+          fi
+          git add index.html web_data.min.json data.json lore_data.json
+          git commit -m "data: scheduled refresh ($(date -u +%Y-%m-%dT%H:%MZ))"
+          git push
