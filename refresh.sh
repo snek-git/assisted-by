@@ -22,19 +22,7 @@ python3 parse_lei.py /tmp/lei.mbox lore_data.json
 # 4. compute kernel-wide line totals (slow; cached in kernel_stats.json)
 python3 kernel_stats.py "$REPO" kernel_stats.json
 
-# 5. assemble the web payload
+# 5. assemble the web payload and inline it into index.html
 python3 build_data.py
 
-# 6. inline the JSON into index.html
-python3 - <<'PY'
-import re
-data = open("web_data.min.json").read()
-html = open("index.html").read()
-new = re.sub(
-    r'(<script id="data" type="application/json">)(.*?)(</script>)',
-    lambda m: m.group(1) + data + m.group(3),
-    html, count=1, flags=re.S,
-)
-open("index.html", "w").write(new)
-PY
 echo "refresh complete: $(date -u +%FT%TZ)"

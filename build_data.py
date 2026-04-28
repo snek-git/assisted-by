@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Combine merged + submitted parser output into the inline JSON the page consumes."""
+"""Combine merged + submitted parser output and inline it directly into index.html."""
 import json
+import re
 import subprocess
 
 merged = json.load(open("data.json"))
@@ -12,7 +13,7 @@ except FileNotFoundError:
     pass
 
 total_commits = int(subprocess.check_output(
-    ["git", "--git-dir", "linux-shallow.git", "log",
+    ["git", "--git-dir", "linux-full.git", "log",
      "--since=2026-01-01", "--oneline"], text=True
 ).count("\n"))
 
@@ -88,8 +89,17 @@ web = {
     "vendor_models_merged": merged["vendor_models"],
     "model_lines": model_lines,
 }
-with open("web_data.min.json", "w") as f:
-    json.dump(web, f, separators=(",", ":"))
+data_str = json.dumps(web, separators=(",", ":"))
+html = open("index.html").read()
+new_html = re.sub(
+    r'(<script id="data" type="application/json">)(.*?)(</script>)',
+    lambda m: m.group(1) + data_str + m.group(3),
+    html,
+    count=1,
+    flags=re.S,
+)
+open("index.html", "w").write(new_html)
 print(f"merged: {merged['total_commits']} commits, {merged['total_tags']} tags")
 print(f"submitted: {lore['unique_patches_with_tag']} unique patches")
 print(f"share of mainline: {merged['total_commits']/total_commits*100:.2f}%")
+print(f"inlined into index.html ({len(data_str)} bytes of data)")

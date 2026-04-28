@@ -52,11 +52,12 @@ og.png / .svg      Open Graph card (1200x630)
 favicon.*          icons
 parse_commits.py   merged-side parser (git log)
 parse_lei.py       submitted-side parser (lei mboxrd)
-build_data.py      assembles web_data.min.json from data.json + lore_data.json
-refresh.sh         end-to-end refresh: fetch, parse, build, inline
+kernel_stats.py    kernel-wide insertion / deletion / loc totals
+build_data.py      combines all three intermediates and inlines the JSON into index.html
+refresh.sh         end-to-end refresh: fetch, parse, build
 data.json          merged parser output
 lore_data.json     submitted parser output
-web_data.min.json  the JSON inlined into index.html
+kernel_stats.json  kernel-wide totals
 ```
 
 ## Refreshing the data
