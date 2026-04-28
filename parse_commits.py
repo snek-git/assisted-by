@@ -76,7 +76,7 @@ def normalize(tag: str) -> dict:
     t = tag.strip()
     low = t.lower()
     if "clanker" in low or low.startswith("gkh_") or low.startswith("gregkh_"):
-        return {"vendor": "Greg KH (protest)", "model": t, "tool": "Greg KH protest"}
+        return {"vendor": "Greg KH (local LLM fuzzer)", "model": t, "tool": "Local LLM fuzzer"}
     if low.startswith("claude code"):
         m = re.search(r":\s*(.+)", t)
         return {"vendor": "Anthropic", "model": claude_model(m.group(1) if m else ""), "tool": "Claude Code"}

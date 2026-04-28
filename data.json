@@ -1,15 +1,15 @@
 {
-  "total_commits": 166,
-  "total_tags": 173,
-  "total_insertions": 3304,
-  "total_deletions": 602,
+  "total_commits": 169,
+  "total_tags": 177,
+  "total_insertions": 3320,
+  "total_deletions": 605,
   "vendor_counts": [
     [
       "Anthropic",
-      83
+      86
     ],
     [
-      "Greg KH (protest)",
+      "Greg KH (local LLM fuzzer)",
       37
     ],
     [
@@ -18,7 +18,7 @@
     ],
     [
       "OpenAI",
-      13
+      14
     ],
     [
       "Google",
@@ -35,18 +35,18 @@
       "AGENT_NAME:MODEL_VERSION [TOOL1] [TOOL2]": 1
     },
     "Anthropic": {
-      "Opus 4.6": 57,
+      "Opus 4.6": 58,
       "Sonnet 4.6": 12,
       "Sonnet 4.5": 7,
-      "Opus 4.7": 4,
+      "Opus 4.7": 6,
       "Opus 4.5": 2,
       "unspecified": 1
     },
     "OpenAI": {
-      "GPT-5.4": 10,
+      "GPT-5.4": 11,
       "GPT-5": 3
     },
-    "Greg KH (protest)": {
+    "Greg KH (local LLM fuzzer)": {
       "gregkh_clanker_t1000": 20,
       "gkh_clanker_2000": 15,
       "gkh_clanker_t1000": 2
@@ -66,14 +66,14 @@
       "del": 2
     },
     "Anthropic": {
-      "ins": 2916,
-      "del": 445
+      "ins": 2932,
+      "del": 448
     },
     "OpenAI": {
-      "ins": 170,
-      "del": 54
+      "ins": 176,
+      "del": 56
     },
-    "Greg KH (protest)": {
+    "Greg KH (local LLM fuzzer)": {
       "ins": 225,
       "del": 45
     },
@@ -89,18 +89,18 @@
   "model_counts": [
     [
       "Anthropic \u2014 Opus 4.6",
-      57
+      58
     ],
     [
       "DeepSeek \u2014 DeepSeek V3.2",
       28
     ],
     [
-      "Greg KH (protest) \u2014 gregkh_clanker_t1000",
+      "Greg KH (local LLM fuzzer) \u2014 gregkh_clanker_t1000",
       20
     ],
     [
-      "Greg KH (protest) \u2014 gkh_clanker_2000",
+      "Greg KH (local LLM fuzzer) \u2014 gkh_clanker_2000",
       15
     ],
     [
@@ -109,19 +109,19 @@
     ],
     [
       "OpenAI \u2014 GPT-5.4",
-      10
+      11
     ],
     [
       "Anthropic \u2014 Sonnet 4.5",
       7
     ],
     [
-      "Google \u2014 Gemini 3.1 Pro",
-      5
+      "Anthropic \u2014 Opus 4.7",
+      6
     ],
     [
-      "Anthropic \u2014 Opus 4.7",
-      4
+      "Google \u2014 Gemini 3.1 Pro",
+      5
     ],
     [
       "OpenAI \u2014 GPT-5",
@@ -136,7 +136,7 @@
       2
     ],
     [
-      "Greg KH (protest) \u2014 gkh_clanker_t1000",
+      "Greg KH (local LLM fuzzer) \u2014 gkh_clanker_t1000",
       2
     ],
     [
@@ -162,26 +162,26 @@
       "del": 1
     },
     "Anthropic \u2014 Opus 4.7": {
-      "ins": 55,
-      "del": 26
+      "ins": 65,
+      "del": 27
     },
     "Anthropic \u2014 Opus 4.6": {
-      "ins": 1718,
-      "del": 217
+      "ins": 1724,
+      "del": 219
     },
     "OpenAI \u2014 GPT-5.4": {
-      "ins": 152,
-      "del": 45
+      "ins": 158,
+      "del": 47
     },
     "Anthropic \u2014 Sonnet 4.6": {
       "ins": 462,
       "del": 148
     },
-    "Greg KH (protest) \u2014 gkh_clanker_2000": {
+    "Greg KH (local LLM fuzzer) \u2014 gkh_clanker_2000": {
       "ins": 93,
       "del": 25
     },
-    "Greg KH (protest) \u2014 gkh_clanker_t1000": {
+    "Greg KH (local LLM fuzzer) \u2014 gkh_clanker_t1000": {
       "ins": 46,
       "del": 2
     },
@@ -189,7 +189,7 @@
       "ins": 76,
       "del": 81
     },
-    "Greg KH (protest) \u2014 gregkh_clanker_t1000": {
+    "Greg KH (local LLM fuzzer) \u2014 gregkh_clanker_t1000": {
       "ins": 86,
       "del": 18
     },
@@ -229,15 +229,15 @@
   "tool_counts": [
     [
       "Direct / API",
-      104
+      107
     ],
     [
-      "Greg KH protest",
+      "Local LLM fuzzer",
       37
     ],
     [
       "Codex",
-      13
+      14
     ],
     [
       "Claude Code",
@@ -262,14 +262,14 @@
       "del": 1
     },
     "Direct / API": {
-      "ins": 2384,
-      "del": 427
+      "ins": 2400,
+      "del": 430
     },
     "Codex": {
-      "ins": 170,
-      "del": 54
+      "ins": 176,
+      "del": 56
     },
-    "Greg KH protest": {
+    "Local LLM fuzzer": {
       "ins": 225,
       "del": 45
     },
@@ -291,30 +291,30 @@
       "Bynario AI": 2
     },
     "Anthropic \u2014 Opus 4.7": {
-      "Direct / API": 4
+      "Direct / API": 6
     },
     "Anthropic \u2014 Opus 4.6": {
-      "Direct / API": 45,
+      "Direct / API": 46,
       "Claude Code": 12
     },
     "OpenAI \u2014 GPT-5.4": {
-      "Codex": 10
+      "Codex": 11
     },
     "Anthropic \u2014 Sonnet 4.6": {
       "Direct / API": 8,
       "GitHub Copilot": 4
     },
-    "Greg KH (protest) \u2014 gkh_clanker_2000": {
-      "Greg KH protest": 15
+    "Greg KH (local LLM fuzzer) \u2014 gkh_clanker_2000": {
+      "Local LLM fuzzer": 15
     },
-    "Greg KH (protest) \u2014 gkh_clanker_t1000": {
-      "Greg KH protest": 2
+    "Greg KH (local LLM fuzzer) \u2014 gkh_clanker_t1000": {
+      "Local LLM fuzzer": 2
     },
     "DeepSeek \u2014 DeepSeek V3.2": {
       "Direct / API": 28
     },
-    "Greg KH (protest) \u2014 gregkh_clanker_t1000": {
-      "Greg KH protest": 20
+    "Greg KH (local LLM fuzzer) \u2014 gregkh_clanker_t1000": {
+      "Local LLM fuzzer": 20
     },
     "Google \u2014 Gemini 3.1 Pro": {
       "Direct / API": 5
@@ -351,12 +351,12 @@
       28
     ],
     [
-      "Arnaldo Carvalho de Melo",
-      12
+      "Michael Bommarito",
+      14
     ],
     [
-      "Michael Bommarito",
-      11
+      "Arnaldo Carvalho de Melo",
+      12
     ],
     [
       "Alex Williamson",
@@ -505,9 +505,9 @@
     "2026-04-16": 3,
     "2026-04-17": 1,
     "2026-04-18": 6,
-    "2026-04-20": 2,
+    "2026-04-20": 4,
     "2026-04-21": 8,
-    "2026-04-22": 8,
+    "2026-04-22": 9,
     "2026-04-24": 1
   },
   "by_date_lines": {
@@ -668,16 +668,16 @@
       "del": 21
     },
     "2026-04-20": {
-      "ins": 37,
-      "del": 3
+      "ins": 47,
+      "del": 4
     },
     "2026-04-21": {
       "ins": 150,
       "del": 106
     },
     "2026-04-22": {
-      "ins": 117,
-      "del": 50
+      "ins": 123,
+      "del": 52
     },
     "2026-04-24": {
       "ins": 4,
@@ -714,6 +714,22 @@
       ],
       "insertions": 14,
       "deletions": 0
+    },
+    {
+      "sha": "55d41b0a20128e86b9e960dd2e3f0a2d69a18df7",
+      "author": "Michael Bommarito",
+      "author_email": "michael.bommarito@gmail.com",
+      "committer": "Jan Kara",
+      "committer_email": "jack@suse.cz",
+      "author_date": "2026-04-13T17:12:40-04:00",
+      "commit_date": "2026-04-22T17:14:48+02:00",
+      "subject": "udf: reject descriptors with oversized CRC length",
+      "tags": [
+        "Claude:claude-opus-4-6",
+        "Codex:gpt-5-4"
+      ],
+      "insertions": 6,
+      "deletions": 2
     },
     {
       "sha": "a55a60886e612bedb0e9a402ba0dca544c4c6a51",
@@ -971,6 +987,36 @@
       ],
       "insertions": 36,
       "deletions": 2
+    },
+    {
+      "sha": "24376458138387fb251e782e624c7776e9826796",
+      "author": "Michael Bommarito",
+      "author_email": "michael.bommarito@gmail.com",
+      "committer": "Jan Kara",
+      "committer_email": "jack@suse.cz",
+      "author_date": "2026-04-19T17:21:55-04:00",
+      "commit_date": "2026-04-20T16:54:25+02:00",
+      "subject": "isofs: validate block number from NFS file handle in isofs_export_iget",
+      "tags": [
+        "Claude:claude-opus-4-7"
+      ],
+      "insertions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "a36d990f591320e9dd379ab30063ebfe91d47e1f",
+      "author": "Michael Bommarito",
+      "author_email": "michael.bommarito@gmail.com",
+      "committer": "Jan Kara",
+      "committer_email": "jack@suse.cz",
+      "author_date": "2026-04-19T17:21:54-04:00",
+      "commit_date": "2026-04-20T16:53:17+02:00",
+      "subject": "isofs: validate Rock Ridge CE continuation extent against volume size",
+      "tags": [
+        "Claude:claude-opus-4-7"
+      ],
+      "insertions": 9,
+      "deletions": 0
     },
     {
       "sha": "0cf004ffb61cd32d140531c3a84afe975f9fc7ea",
