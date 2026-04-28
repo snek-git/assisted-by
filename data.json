@@ -1,0 +1,3186 @@
+{
+  "total_commits": 166,
+  "total_tags": 173,
+  "total_insertions": 3304,
+  "total_deletions": 602,
+  "vendor_counts": [
+    [
+      "Anthropic",
+      83
+    ],
+    [
+      "Greg KH (protest)",
+      37
+    ],
+    [
+      "DeepSeek",
+      28
+    ],
+    [
+      "OpenAI",
+      13
+    ],
+    [
+      "Google",
+      9
+    ],
+    [
+      "Unknown",
+      3
+    ]
+  ],
+  "vendor_models": {
+    "Unknown": {
+      "Bynario AI": 2,
+      "AGENT_NAME:MODEL_VERSION [TOOL1] [TOOL2]": 1
+    },
+    "Anthropic": {
+      "Opus 4.6": 57,
+      "Sonnet 4.6": 12,
+      "Sonnet 4.5": 7,
+      "Opus 4.7": 4,
+      "Opus 4.5": 2,
+      "unspecified": 1
+    },
+    "OpenAI": {
+      "GPT-5.4": 10,
+      "GPT-5": 3
+    },
+    "Greg KH (protest)": {
+      "gregkh_clanker_t1000": 20,
+      "gkh_clanker_2000": 15,
+      "gkh_clanker_t1000": 2
+    },
+    "DeepSeek": {
+      "DeepSeek V3.2": 28
+    },
+    "Google": {
+      "Gemini 3.1 Pro": 5,
+      "Google Gemini 3": 3,
+      "Gemini 3.1": 1
+    }
+  },
+  "vendor_lines": {
+    "Unknown": {
+      "ins": 25,
+      "del": 2
+    },
+    "Anthropic": {
+      "ins": 2916,
+      "del": 445
+    },
+    "OpenAI": {
+      "ins": 170,
+      "del": 54
+    },
+    "Greg KH (protest)": {
+      "ins": 225,
+      "del": 45
+    },
+    "DeepSeek": {
+      "ins": 76,
+      "del": 81
+    },
+    "Google": {
+      "ins": 29,
+      "del": 21
+    }
+  },
+  "model_counts": [
+    [
+      "Anthropic \u2014 Opus 4.6",
+      57
+    ],
+    [
+      "DeepSeek \u2014 DeepSeek V3.2",
+      28
+    ],
+    [
+      "Greg KH (protest) \u2014 gregkh_clanker_t1000",
+      20
+    ],
+    [
+      "Greg KH (protest) \u2014 gkh_clanker_2000",
+      15
+    ],
+    [
+      "Anthropic \u2014 Sonnet 4.6",
+      12
+    ],
+    [
+      "OpenAI \u2014 GPT-5.4",
+      10
+    ],
+    [
+      "Anthropic \u2014 Sonnet 4.5",
+      7
+    ],
+    [
+      "Google \u2014 Gemini 3.1 Pro",
+      5
+    ],
+    [
+      "Anthropic \u2014 Opus 4.7",
+      4
+    ],
+    [
+      "OpenAI \u2014 GPT-5",
+      3
+    ],
+    [
+      "Google \u2014 Google Gemini 3",
+      3
+    ],
+    [
+      "Unknown \u2014 Bynario AI",
+      2
+    ],
+    [
+      "Greg KH (protest) \u2014 gkh_clanker_t1000",
+      2
+    ],
+    [
+      "Anthropic \u2014 Opus 4.5",
+      2
+    ],
+    [
+      "Google \u2014 Gemini 3.1",
+      1
+    ],
+    [
+      "Unknown \u2014 AGENT_NAME:MODEL_VERSION [TOOL1] [TOOL2]",
+      1
+    ],
+    [
+      "Anthropic \u2014 unspecified",
+      1
+    ]
+  ],
+  "model_lines": {
+    "Unknown \u2014 Bynario AI": {
+      "ins": 14,
+      "del": 1
+    },
+    "Anthropic \u2014 Opus 4.7": {
+      "ins": 55,
+      "del": 26
+    },
+    "Anthropic \u2014 Opus 4.6": {
+      "ins": 1718,
+      "del": 217
+    },
+    "OpenAI \u2014 GPT-5.4": {
+      "ins": 152,
+      "del": 45
+    },
+    "Anthropic \u2014 Sonnet 4.6": {
+      "ins": 462,
+      "del": 148
+    },
+    "Greg KH (protest) \u2014 gkh_clanker_2000": {
+      "ins": 93,
+      "del": 25
+    },
+    "Greg KH (protest) \u2014 gkh_clanker_t1000": {
+      "ins": 46,
+      "del": 2
+    },
+    "DeepSeek \u2014 DeepSeek V3.2": {
+      "ins": 76,
+      "del": 81
+    },
+    "Greg KH (protest) \u2014 gregkh_clanker_t1000": {
+      "ins": 86,
+      "del": 18
+    },
+    "Google \u2014 Gemini 3.1 Pro": {
+      "ins": 10,
+      "del": 9
+    },
+    "Anthropic \u2014 Sonnet 4.5": {
+      "ins": 171,
+      "del": 35
+    },
+    "Google \u2014 Gemini 3.1": {
+      "ins": 6,
+      "del": 2
+    },
+    "OpenAI \u2014 GPT-5": {
+      "ins": 18,
+      "del": 9
+    },
+    "Unknown \u2014 AGENT_NAME:MODEL_VERSION [TOOL1] [TOOL2]": {
+      "ins": 11,
+      "del": 1
+    },
+    "Anthropic \u2014 unspecified": {
+      "ins": 1,
+      "del": 1
+    },
+    "Google \u2014 Google Gemini 3": {
+      "ins": 13,
+      "del": 10
+    },
+    "Anthropic \u2014 Opus 4.5": {
+      "ins": 509,
+      "del": 18
+    }
+  },
+  "tool_counts": [
+    [
+      "Direct / API",
+      104
+    ],
+    [
+      "Greg KH protest",
+      37
+    ],
+    [
+      "Codex",
+      13
+    ],
+    [
+      "Claude Code",
+      12
+    ],
+    [
+      "GitHub Copilot",
+      4
+    ],
+    [
+      "Bynario AI",
+      2
+    ],
+    [
+      "Unknown",
+      1
+    ]
+  ],
+  "tool_lines": {
+    "Bynario AI": {
+      "ins": 14,
+      "del": 1
+    },
+    "Direct / API": {
+      "ins": 2384,
+      "del": 427
+    },
+    "Codex": {
+      "ins": 170,
+      "del": 54
+    },
+    "Greg KH protest": {
+      "ins": 225,
+      "del": 45
+    },
+    "Claude Code": {
+      "ins": 209,
+      "del": 4
+    },
+    "Unknown": {
+      "ins": 11,
+      "del": 1
+    },
+    "GitHub Copilot": {
+      "ins": 428,
+      "del": 116
+    }
+  },
+  "model_tools": {
+    "Unknown \u2014 Bynario AI": {
+      "Bynario AI": 2
+    },
+    "Anthropic \u2014 Opus 4.7": {
+      "Direct / API": 4
+    },
+    "Anthropic \u2014 Opus 4.6": {
+      "Direct / API": 45,
+      "Claude Code": 12
+    },
+    "OpenAI \u2014 GPT-5.4": {
+      "Codex": 10
+    },
+    "Anthropic \u2014 Sonnet 4.6": {
+      "Direct / API": 8,
+      "GitHub Copilot": 4
+    },
+    "Greg KH (protest) \u2014 gkh_clanker_2000": {
+      "Greg KH protest": 15
+    },
+    "Greg KH (protest) \u2014 gkh_clanker_t1000": {
+      "Greg KH protest": 2
+    },
+    "DeepSeek \u2014 DeepSeek V3.2": {
+      "Direct / API": 28
+    },
+    "Greg KH (protest) \u2014 gregkh_clanker_t1000": {
+      "Greg KH protest": 20
+    },
+    "Google \u2014 Gemini 3.1 Pro": {
+      "Direct / API": 5
+    },
+    "Anthropic \u2014 Sonnet 4.5": {
+      "Direct / API": 7
+    },
+    "Google \u2014 Gemini 3.1": {
+      "Direct / API": 1
+    },
+    "OpenAI \u2014 GPT-5": {
+      "Codex": 3
+    },
+    "Unknown \u2014 AGENT_NAME:MODEL_VERSION [TOOL1] [TOOL2]": {
+      "Unknown": 1
+    },
+    "Anthropic \u2014 unspecified": {
+      "Direct / API": 1
+    },
+    "Google \u2014 Google Gemini 3": {
+      "Direct / API": 3
+    },
+    "Anthropic \u2014 Opus 4.5": {
+      "Direct / API": 2
+    }
+  },
+  "top_authors": [
+    [
+      "Greg Kroah-Hartman",
+      37
+    ],
+    [
+      "Kexin Sun",
+      28
+    ],
+    [
+      "Arnaldo Carvalho de Melo",
+      12
+    ],
+    [
+      "Michael Bommarito",
+      11
+    ],
+    [
+      "Alex Williamson",
+      6
+    ],
+    [
+      "Harry Wentland",
+      6
+    ],
+    [
+      "Vineeth Pillai (Google)",
+      6
+    ],
+    [
+      "Kit Dallege",
+      5
+    ],
+    [
+      "G\u00fcnther Noack",
+      4
+    ],
+    [
+      "Rito Rhymes",
+      4
+    ],
+    [
+      "Josef Bacik",
+      4
+    ],
+    [
+      "Guenter Roeck",
+      4
+    ],
+    [
+      "Thomas Hellstr\u00f6m",
+      4
+    ],
+    [
+      "Ihor Solodrai",
+      3
+    ],
+    [
+      "Samuel Page",
+      2
+    ]
+  ],
+  "top_committers": [
+    [
+      "Steve French",
+      13
+    ],
+    [
+      "Namhyung Kim",
+      13
+    ],
+    [
+      "Jakub Kicinski",
+      10
+    ],
+    [
+      "Alex Deucher",
+      9
+    ],
+    [
+      "Greg Kroah-Hartman",
+      8
+    ],
+    [
+      "Marc Kleine-Budde",
+      7
+    ],
+    [
+      "Steven Rostedt (Google)",
+      7
+    ],
+    [
+      "Alex Williamson",
+      6
+    ],
+    [
+      "Jonathan Corbet",
+      6
+    ],
+    [
+      "Helge Deller",
+      5
+    ],
+    [
+      "Johannes Berg",
+      4
+    ],
+    [
+      "Andrew Morton",
+      4
+    ],
+    [
+      "Martin K. Petersen",
+      4
+    ],
+    [
+      "Mark Brown",
+      4
+    ],
+    [
+      "Thomas Hellstr\u00f6m",
+      4
+    ]
+  ],
+  "by_date": {
+    "2026-01-13": 1,
+    "2026-02-03": 1,
+    "2026-02-13": 1,
+    "2026-02-19": 4,
+    "2026-02-23": 1,
+    "2026-03-02": 7,
+    "2026-03-04": 1,
+    "2026-03-05": 4,
+    "2026-03-06": 2,
+    "2026-03-10": 1,
+    "2026-03-11": 8,
+    "2026-03-12": 2,
+    "2026-03-14": 1,
+    "2026-03-17": 1,
+    "2026-03-18": 1,
+    "2026-03-19": 2,
+    "2026-03-20": 1,
+    "2026-03-21": 5,
+    "2026-03-22": 1,
+    "2026-03-23": 6,
+    "2026-03-24": 8,
+    "2026-03-25": 6,
+    "2026-03-26": 5,
+    "2026-03-27": 4,
+    "2026-03-28": 2,
+    "2026-03-30": 9,
+    "2026-04-02": 4,
+    "2026-04-05": 4,
+    "2026-04-06": 1,
+    "2026-04-07": 10,
+    "2026-04-08": 1,
+    "2026-04-09": 2,
+    "2026-04-10": 9,
+    "2026-04-12": 5,
+    "2026-04-13": 15,
+    "2026-04-14": 1,
+    "2026-04-16": 3,
+    "2026-04-17": 1,
+    "2026-04-18": 6,
+    "2026-04-20": 2,
+    "2026-04-21": 8,
+    "2026-04-22": 8,
+    "2026-04-24": 1
+  },
+  "by_date_lines": {
+    "2026-01-13": {
+      "ins": 14,
+      "del": 10
+    },
+    "2026-02-03": {
+      "ins": 495,
+      "del": 8
+    },
+    "2026-02-13": {
+      "ins": 49,
+      "del": 0
+    },
+    "2026-02-19": {
+      "ins": 16,
+      "del": 13
+    },
+    "2026-02-23": {
+      "ins": 10,
+      "del": 5
+    },
+    "2026-03-02": {
+      "ins": 55,
+      "del": 12
+    },
+    "2026-03-04": {
+      "ins": 112,
+      "del": 0
+    },
+    "2026-03-05": {
+      "ins": 260,
+      "del": 30
+    },
+    "2026-03-06": {
+      "ins": 4,
+      "del": 1
+    },
+    "2026-03-10": {
+      "ins": 0,
+      "del": 4
+    },
+    "2026-03-11": {
+      "ins": 446,
+      "del": 122
+    },
+    "2026-03-12": {
+      "ins": 3,
+      "del": 3
+    },
+    "2026-03-14": {
+      "ins": 1,
+      "del": 3
+    },
+    "2026-03-17": {
+      "ins": 1,
+      "del": 1
+    },
+    "2026-03-18": {
+      "ins": 1,
+      "del": 1
+    },
+    "2026-03-19": {
+      "ins": 47,
+      "del": 7
+    },
+    "2026-03-20": {
+      "ins": 1,
+      "del": 1
+    },
+    "2026-03-21": {
+      "ins": 91,
+      "del": 13
+    },
+    "2026-03-22": {
+      "ins": 270,
+      "del": 0
+    },
+    "2026-03-23": {
+      "ins": 36,
+      "del": 15
+    },
+    "2026-03-24": {
+      "ins": 18,
+      "del": 20
+    },
+    "2026-03-25": {
+      "ins": 33,
+      "del": 2
+    },
+    "2026-03-26": {
+      "ins": 21,
+      "del": 10
+    },
+    "2026-03-27": {
+      "ins": 9,
+      "del": 8
+    },
+    "2026-03-28": {
+      "ins": 11,
+      "del": 8
+    },
+    "2026-03-30": {
+      "ins": 149,
+      "del": 53
+    },
+    "2026-04-02": {
+      "ins": 4,
+      "del": 3
+    },
+    "2026-04-05": {
+      "ins": 14,
+      "del": 14
+    },
+    "2026-04-06": {
+      "ins": 7,
+      "del": 0
+    },
+    "2026-04-07": {
+      "ins": 42,
+      "del": 18
+    },
+    "2026-04-08": {
+      "ins": 7,
+      "del": 1
+    },
+    "2026-04-09": {
+      "ins": 13,
+      "del": 1
+    },
+    "2026-04-10": {
+      "ins": 398,
+      "del": 13
+    },
+    "2026-04-12": {
+      "ins": 26,
+      "del": 2
+    },
+    "2026-04-13": {
+      "ins": 217,
+      "del": 8
+    },
+    "2026-04-14": {
+      "ins": 6,
+      "del": 1
+    },
+    "2026-04-16": {
+      "ins": 49,
+      "del": 7
+    },
+    "2026-04-17": {
+      "ins": 4,
+      "del": 4
+    },
+    "2026-04-18": {
+      "ins": 56,
+      "del": 21
+    },
+    "2026-04-20": {
+      "ins": 37,
+      "del": 3
+    },
+    "2026-04-21": {
+      "ins": 150,
+      "del": 106
+    },
+    "2026-04-22": {
+      "ins": 117,
+      "del": 50
+    },
+    "2026-04-24": {
+      "ins": 4,
+      "del": 0
+    }
+  },
+  "commits": [
+    {
+      "sha": "51a8de6c50bf947c8f534cd73da4c8f0a13e7bed",
+      "author": "Samuel Page",
+      "author_email": "sam@bynar.io",
+      "committer": "Christian Brauner",
+      "committer_email": "brauner@kernel.org",
+      "author_date": "2026-04-20T11:01:37+02:00",
+      "commit_date": "2026-04-24T00:34:58+02:00",
+      "subject": "fuse: reject oversized dirents in page cache",
+      "tags": [
+        "Bynario AI"
+      ],
+      "insertions": 4,
+      "deletions": 0
+    },
+    {
+      "sha": "c88eb7e8d8397a8c1db59c425332c5a30b2a1682",
+      "author": "Michael Bommarito",
+      "author_email": "michael.bommarito@gmail.com",
+      "committer": "Jakub Kicinski",
+      "committer_email": "kuba@kernel.org",
+      "author_date": "2026-04-18T10:10:47-04:00",
+      "commit_date": "2026-04-22T21:05:16-07:00",
+      "subject": "net/rds: zero per-item info buffer before handing it to visitors",
+      "tags": [
+        "Claude:claude-opus-4-7"
+      ],
+      "insertions": 14,
+      "deletions": 0
+    },
+    {
+      "sha": "a55a60886e612bedb0e9a402ba0dca544c4c6a51",
+      "author": "Michael Bommarito",
+      "author_email": "michael.bommarito@gmail.com",
+      "committer": "Steve French",
+      "committer_email": "stfrench@microsoft.com",
+      "author_date": "2026-04-21T19:40:22-04:00",
+      "commit_date": "2026-04-22T09:54:26-05:00",
+      "subject": "smb: client: scope end_of_dacl to CIFS_DEBUG2 use in parse_dacl",
+      "tags": [
+        "Claude:claude-opus-4-7"
+      ],
+      "insertions": 3,
+      "deletions": 3
+    },
+    {
+      "sha": "2757ad3e4b6f9e0fed4c7739594e702abc5cab21",
+      "author": "Michael Bommarito",
+      "author_email": "michael.bommarito@gmail.com",
+      "committer": "Steve French",
+      "committer_email": "stfrench@microsoft.com",
+      "author_date": "2026-04-20T09:50:58-04:00",
+      "commit_date": "2026-04-22T09:54:15-05:00",
+      "subject": "smb: client: require a full NFS mode SID before reading mode bits",
+      "tags": [
+        "Claude:claude-opus-4-6"
+      ],
+      "insertions": 1,
+      "deletions": 0
+    },
+    {
+      "sha": "0a8cf165566ba55a39fd0f4de172119dd646d39a",
+      "author": "Michael Bommarito",
+      "author_email": "michael.bommarito@gmail.com",
+      "committer": "Steve French",
+      "committer_email": "stfrench@microsoft.com",
+      "author_date": "2026-04-19T20:11:31-04:00",
+      "commit_date": "2026-04-22T09:54:07-05:00",
+      "subject": "smb: client: validate the whole DACL before rewriting it in cifsacl",
+      "tags": [
+        "Claude:claude-opus-4-6",
+        "Codex:gpt-5-4"
+      ],
+      "insertions": 85,
+      "deletions": 31
+    },
+    {
+      "sha": "a58c5af19ff0d6f44f6e9fe31e33a2c92223f77e",
+      "author": "Michael Bommarito",
+      "author_email": "michael.bommarito@gmail.com",
+      "committer": "Steve French",
+      "committer_email": "stfrench@microsoft.com",
+      "author_date": "2026-04-19T19:35:19-04:00",
+      "commit_date": "2026-04-22T09:54:02-05:00",
+      "subject": "smb: client: fix OOB read in smb2_ioctl_query_info QUERY_INFO path",
+      "tags": [
+        "Claude:claude-opus-4-6",
+        "Codex:gpt-5-4"
+      ],
+      "insertions": 6,
+      "deletions": 0
+    },
+    {
+      "sha": "a40c0e815962b1f691d7ea12f7ddd42063c49f08",
+      "author": "Amit Barzilai",
+      "author_email": "amit.barzilai22@gmail.com",
+      "committer": "Helge Deller",
+      "committer_email": "deller@gmx.de",
+      "author_date": "2026-04-20T16:44:23+03:00",
+      "commit_date": "2026-04-22T16:46:40+02:00",
+      "subject": "fbdev: clps711x-fb: Request memory region for MMIO",
+      "tags": [
+        "Claude:claude-sonnet-4-6"
+      ],
+      "insertions": 3,
+      "deletions": 6
+    },
+    {
+      "sha": "d2386d9e3eb4c12f55f6131ab69cc65f13b5af80",
+      "author": "Amit Barzilai",
+      "author_email": "amit.barzilai22@gmail.com",
+      "committer": "Helge Deller",
+      "committer_email": "deller@gmx.de",
+      "author_date": "2026-04-20T16:44:22+03:00",
+      "commit_date": "2026-04-22T16:46:40+02:00",
+      "subject": "fbdev: cobalt_lcdfb: Request memory region",
+      "tags": [
+        "Claude:claude-sonnet-4-6"
+      ],
+      "insertions": 3,
+      "deletions": 9
+    },
+    {
+      "sha": "0c965d2784fbbd7f8e3b96d875c9cfdf7c00da3d",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Huacai Chen",
+      "committer_email": "chenhuacai@loongson.cn",
+      "author_date": "2026-04-22T15:45:12+08:00",
+      "commit_date": "2026-04-22T15:45:12+08:00",
+      "subject": "LoongArch: Add spectre boundry for syscall dispatch table",
+      "tags": [
+        "gkh_clanker_2000"
+      ],
+      "insertions": 2,
+      "deletions": 1
+    },
+    {
+      "sha": "d0be8884f56b0b800cd8966e37ce23417cd5044e",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Jens Axboe",
+      "committer_email": "axboe@kernel.dk",
+      "author_date": "2026-04-21T15:46:16+02:00",
+      "commit_date": "2026-04-21T20:14:39-06:00",
+      "subject": "io_uring: take page references for NOMMU pbuf_ring mmaps",
+      "tags": [
+        "gkh_clanker_t1000"
+      ],
+      "insertions": 45,
+      "deletions": 1
+    },
+    {
+      "sha": "30471982cd667972ba93ce894765d4b8544958e6",
+      "author": "Alex Williamson",
+      "author_email": "alex.williamson@nvidia.com",
+      "committer": "Alex Williamson",
+      "committer_email": "alex@shazbot.org",
+      "author_date": "2026-04-17T14:27:58-06:00",
+      "commit_date": "2026-04-21T12:01:22-06:00",
+      "subject": "vfio/cdx: Consolidate MSI configured state onto cdx_irqs",
+      "tags": [
+        "Claude:claude-opus-4-7"
+      ],
+      "insertions": 14,
+      "deletions": 16
+    },
+    {
+      "sha": "670e8864b1a218d72f08db40d0103adf38fa1d9b",
+      "author": "Alex Williamson",
+      "author_email": "alex.williamson@nvidia.com",
+      "committer": "Alex Williamson",
+      "committer_email": "alex@shazbot.org",
+      "author_date": "2026-04-17T14:27:57-06:00",
+      "commit_date": "2026-04-21T12:01:22-06:00",
+      "subject": "vfio/cdx: Serialize VFIO_DEVICE_SET_IRQS with a per-device mutex",
+      "tags": [
+        "Claude:claude-opus-4-7"
+      ],
+      "insertions": 24,
+      "deletions": 7
+    },
+    {
+      "sha": "b0eab97305ae97190a605117095d84f12ecef187",
+      "author": "Alex Williamson",
+      "author_email": "alex.williamson@nvidia.com",
+      "committer": "Alex Williamson",
+      "committer_email": "alex@shazbot.org",
+      "author_date": "2026-04-14T14:06:22-06:00",
+      "commit_date": "2026-04-21T12:01:21-06:00",
+      "subject": "vfio/virtio: Use guard() for bar_mutex in legacy I/O",
+      "tags": [
+        "Claude:claude-opus-4-6"
+      ],
+      "insertions": 8,
+      "deletions": 9
+    },
+    {
+      "sha": "b5b268cb7868b598e53eeebd36174c8b27d4cd86",
+      "author": "Alex Williamson",
+      "author_email": "alex.williamson@nvidia.com",
+      "committer": "Alex Williamson",
+      "committer_email": "alex@shazbot.org",
+      "author_date": "2026-04-14T14:06:21-06:00",
+      "commit_date": "2026-04-21T12:01:21-06:00",
+      "subject": "vfio/virtio: Use guard() for migf->lock where applicable",
+      "tags": [
+        "Claude:claude-opus-4-6"
+      ],
+      "insertions": 14,
+      "deletions": 26
+    },
+    {
+      "sha": "61fcb51fc9d576ec367e8aea9c03dc6a746e395e",
+      "author": "Alex Williamson",
+      "author_email": "alex.williamson@nvidia.com",
+      "committer": "Alex Williamson",
+      "committer_email": "alex@shazbot.org",
+      "author_date": "2026-04-14T14:06:20-06:00",
+      "commit_date": "2026-04-21T12:01:20-06:00",
+      "subject": "vfio/virtio: Use guard() for list_lock where applicable",
+      "tags": [
+        "Claude:claude-opus-4-6"
+      ],
+      "insertions": 16,
+      "deletions": 21
+    },
+    {
+      "sha": "903570835f12b7436ca0edb0a9ed351c0349121e",
+      "author": "Alex Williamson",
+      "author_email": "alex.williamson@nvidia.com",
+      "committer": "Alex Williamson",
+      "committer_email": "alex@shazbot.org",
+      "author_date": "2026-04-14T14:06:19-06:00",
+      "commit_date": "2026-04-21T12:01:20-06:00",
+      "subject": "vfio/virtio: Convert list_lock from spinlock to mutex",
+      "tags": [
+        "Claude:claude-opus-4-6"
+      ],
+      "insertions": 18,
+      "deletions": 17
+    },
+    {
+      "sha": "256e5254efff48d6de97e314dc17d55504c55164",
+      "author": "Kexin Sun",
+      "author_email": "kexinsun@smail.nju.edu.cn",
+      "committer": "Daniel Thompson",
+      "committer_email": "daniel@riscstar.com",
+      "author_date": "2026-03-24T11:23:44+08:00",
+      "commit_date": "2026-04-21T16:41:54+01:00",
+      "subject": "kgdb: update outdated references to kgdb_wait()",
+      "tags": [
+        "unnamed:deepseek-v3.2 coccinelle"
+      ],
+      "insertions": 11,
+      "deletions": 9
+    },
+    {
+      "sha": "2fc87d37be1b730a149b035f9375fdb8cc5333a5",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Danilo Krummrich",
+      "committer_email": "dakr@kernel.org",
+      "author_date": "2026-04-20T21:16:09+02:00",
+      "commit_date": "2026-04-20T21:23:14+02:00",
+      "subject": "drm/nouveau: fix u32 overflow in pushbuf reloc bounds check",
+      "tags": [
+        "gkh_clanker_t1000"
+      ],
+      "insertions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "2091c6aa0df6aba47deb5c8ab232b1cb60af3519",
+      "author": "Weiming Shi",
+      "author_email": "bestswngs@gmail.com",
+      "committer": "Jakub Kicinski",
+      "committer_email": "kuba@kernel.org",
+      "author_date": "2026-04-15T19:46:54-07:00",
+      "commit_date": "2026-04-20T11:43:04-07:00",
+      "subject": "openvswitch: cap upcall PID array size and pre-size vport replies",
+      "tags": [
+        "Claude:claude-opus-4-6"
+      ],
+      "insertions": 36,
+      "deletions": 2
+    },
+    {
+      "sha": "0cf004ffb61cd32d140531c3a84afe975f9fc7ea",
+      "author": "Michael Bommarito",
+      "author_email": "michael.bommarito@gmail.com",
+      "committer": "Jakub Kicinski",
+      "committer_email": "kuba@kernel.org",
+      "author_date": "2026-04-15T23:19:03-04:00",
+      "commit_date": "2026-04-18T12:16:14-07:00",
+      "subject": "sctp: fix OOB write to userspace in sctp_getsockopt_peer_auth_chunks",
+      "tags": [
+        "Claude:claude-opus-4-6"
+      ],
+      "insertions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "1a303baa715e6b78d6a406aaf335f87ff35acfcd",
+      "author": "Michal Schmidt",
+      "author_email": "mschmidt@redhat.com",
+      "committer": "Jakub Kicinski",
+      "committer_email": "kuba@kernel.org",
+      "author_date": "2026-04-16T17:53:28-07:00",
+      "commit_date": "2026-04-18T12:01:33-07:00",
+      "subject": "ice: fix double-free of tx_buf skb",
+      "tags": [
+        "Claude:claude-4.6-opus-high Cursor"
+      ],
+      "insertions": 4,
+      "deletions": 2
+    },
+    {
+      "sha": "3e4e2ea2a781018ed5d75f969e3e5606beb66e48",
+      "author": "Michael Bommarito",
+      "author_email": "michael.bommarito@gmail.com",
+      "committer": "Steve French",
+      "committer_email": "stfrench@microsoft.com",
+      "author_date": "2026-04-17T14:45:57-04:00",
+      "commit_date": "2026-04-18T12:19:59-05:00",
+      "subject": "ksmbd: validate num_aces and harden ACE walk in smb_inherit_dacl()",
+      "tags": [
+        "Claude:claude-opus-4-6"
+      ],
+      "insertions": 23,
+      "deletions": 5
+    },
+    {
+      "sha": "d07b26f39246a82399661936dd0c853983cfade7",
+      "author": "Michael Bommarito",
+      "author_email": "michael.bommarito@gmail.com",
+      "committer": "Steve French",
+      "committer_email": "stfrench@microsoft.com",
+      "author_date": "2026-04-14T15:15:33-04:00",
+      "commit_date": "2026-04-18T12:19:59-05:00",
+      "subject": "ksmbd: require minimum ACE size in smb_check_perm_dacl()",
+      "tags": [
+        "Claude:claude-opus-4-6",
+        "Codex:gpt-5-4"
+      ],
+      "insertions": 13,
+      "deletions": 4
+    },
+    {
+      "sha": "d6a6aa81eac2c9bff66dc6e191179cb69a14426b",
+      "author": "Michael Bommarito",
+      "author_email": "michael.bommarito@gmail.com",
+      "committer": "Steve French",
+      "committer_email": "stfrench@microsoft.com",
+      "author_date": "2026-04-15T07:25:00-04:00",
+      "commit_date": "2026-04-18T12:19:59-05:00",
+      "subject": "ksmbd: validate response sizes in ipc_validate_msg()",
+      "tags": [
+        "Claude:claude-opus-4-6",
+        "Codex:gpt-5-4"
+      ],
+      "insertions": 13,
+      "deletions": 9
+    },
+    {
+      "sha": "6551300dc452ac16a855a83dbd1e74899542d3b3",
+      "author": "Michael Bommarito",
+      "author_email": "michael.bommarito@gmail.com",
+      "committer": "Steve French",
+      "committer_email": "stfrench@microsoft.com",
+      "author_date": "2026-04-14T18:54:38-04:00",
+      "commit_date": "2026-04-18T12:19:59-05:00",
+      "subject": "smb: server: fix active_num_conn leak on transport allocation failure",
+      "tags": [
+        "Claude:claude-opus-4-6",
+        "Codex:gpt-5-4"
+      ],
+      "insertions": 2,
+      "deletions": 0
+    },
+    {
+      "sha": "0b6c8e21157fb6dfa35163fdfe5c10387bcc6c41",
+      "author": "Kexin Sun",
+      "author_email": "kexinsun@smail.nju.edu.cn",
+      "committer": "Helge Deller",
+      "committer_email": "deller@gmx.de",
+      "author_date": "2026-03-21T18:58:31+08:00",
+      "commit_date": "2026-04-17T11:32:46+02:00",
+      "subject": "parisc: update outdated comments for renamed ccio_alloc_consistent()",
+      "tags": [
+        "unnamed:deepseek-v3.2 coccinelle"
+      ],
+      "insertions": 4,
+      "deletions": 4
+    },
+    {
+      "sha": "0ca0485e4b2e837ebb6cbd4f2451aba665a03e4b",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Konstantin Komarov",
+      "committer_email": "almaz.alexandrovich@paragon-software.com",
+      "author_date": "2026-04-09T16:37:15+02:00",
+      "commit_date": "2026-04-16T10:28:16+02:00",
+      "subject": "fs/ntfs3: validate rec->used in journal-replay file record check",
+      "tags": [
+        "gregkh_clanker_t1000"
+      ],
+      "insertions": 11,
+      "deletions": 1
+    },
+    {
+      "sha": "890d56964c62dfbe228b30b157811088cf64f9f1",
+      "author": "Kit Dallege",
+      "author_email": "xaum.io@gmail.com",
+      "committer": "Dominique Martinet",
+      "committer_email": "asmadeus@codewreck.org",
+      "author_date": "2026-03-15T20:06:33+01:00",
+      "commit_date": "2026-04-16T02:57:01Z",
+      "subject": "9p: document missing enum values in kernel-doc comments",
+      "tags": [
+        "Claude:claude-opus-4-6"
+      ],
+      "insertions": 35,
+      "deletions": 3
+    },
+    {
+      "sha": "0fd76f1be20d19ac593138ceec502cb044c909bd",
+      "author": "Sasha Levin",
+      "author_email": "sashal@kernel.org",
+      "committer": "Dominique Martinet",
+      "committer_email": "asmadeus@codewreck.org",
+      "author_date": "2026-02-25T08:57:45-05:00",
+      "commit_date": "2026-04-16T01:53:42Z",
+      "subject": "9p: fix memory leak in v9fs_init_fs_context error path",
+      "tags": [
+        "Claude:claude-opus-4-6"
+      ],
+      "insertions": 3,
+      "deletions": 3
+    },
+    {
+      "sha": "600dc40554dc5ad1e6f3af51f700228033f43ea7",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Paolo Abeni",
+      "committer_email": "pabeni@redhat.com",
+      "author_date": "2026-04-11T13:01:35+02:00",
+      "commit_date": "2026-04-14T12:05:01+02:00",
+      "subject": "net: usb: cdc-phonet: fix skb frags[] overflow in rx_complete()",
+      "tags": [
+        "gregkh_clanker_t1000"
+      ],
+      "insertions": 6,
+      "deletions": 1
+    },
+    {
+      "sha": "c7fe4e5665b7c31a24d362229182f6ee27e07233",
+      "author": "Ian Rogers",
+      "author_email": "irogers@google.com",
+      "committer": "Namhyung Kim",
+      "committer_email": "namhyung@kernel.org",
+      "author_date": "2026-04-11T12:37:05-07:00",
+      "commit_date": "2026-04-13T23:28:14-07:00",
+      "subject": "perf test: Fix inet_pton probe failure and unroll call graph",
+      "tags": [
+        "Gemini:gemini-3.1-pro-preview"
+      ],
+      "insertions": 4,
+      "deletions": 4
+    },
+    {
+      "sha": "dff56bdafae8e65d9acb88cc98e1f5129c352201",
+      "author": "Arnaldo Carvalho de Melo",
+      "author_email": "acme@redhat.com",
+      "committer": "Namhyung Kim",
+      "committer_email": "namhyung@kernel.org",
+      "author_date": "2026-04-10T19:09:05-03:00",
+      "commit_date": "2026-04-13T23:21:53-07:00",
+      "subject": "perf header: Add sanity checks to HEADER_BPF_BTF processing",
+      "tags": [
+        "Claude Code:claude-opus-4-6"
+      ],
+      "insertions": 17,
+      "deletions": 0
+    },
+    {
+      "sha": "66af7e9b05c4e7ff435c0aef0d253a65d290f03c",
+      "author": "Arnaldo Carvalho de Melo",
+      "author_email": "acme@redhat.com",
+      "committer": "Namhyung Kim",
+      "committer_email": "namhyung@kernel.org",
+      "author_date": "2026-04-10T19:09:04-03:00",
+      "commit_date": "2026-04-13T23:21:53-07:00",
+      "subject": "perf header: Sanity check HEADER_BPF_PROG_INFO",
+      "tags": [
+        "Claude Code:claude-opus-4-6"
+      ],
+      "insertions": 20,
+      "deletions": 0
+    },
+    {
+      "sha": "f5722a6b6a443fd56ce0a71b4be4c75d7a857dbe",
+      "author": "Arnaldo Carvalho de Melo",
+      "author_email": "acme@redhat.com",
+      "committer": "Namhyung Kim",
+      "committer_email": "namhyung@kernel.org",
+      "author_date": "2026-04-10T19:09:03-03:00",
+      "commit_date": "2026-04-13T23:21:53-07:00",
+      "subject": "perf header: Sanity check HEADER_PMU_CAPS",
+      "tags": [
+        "Claude Code:claude-opus-4-6"
+      ],
+      "insertions": 19,
+      "deletions": 0
+    },
+    {
+      "sha": "47c68eb15ae90fa3953db9a67b4569089ff63cd0",
+      "author": "Arnaldo Carvalho de Melo",
+      "author_email": "acme@redhat.com",
+      "committer": "Namhyung Kim",
+      "committer_email": "namhyung@kernel.org",
+      "author_date": "2026-04-10T19:09:02-03:00",
+      "commit_date": "2026-04-13T23:21:53-07:00",
+      "subject": "perf header: Sanity check HEADER_HYBRID_TOPOLOGY",
+      "tags": [
+        "Claude Code:claude-opus-4-6"
+      ],
+      "insertions": 12,
+      "deletions": 0
+    },
+    {
+      "sha": "110a661708a6a90997442f02f261e2043624a1c8",
+      "author": "Arnaldo Carvalho de Melo",
+      "author_email": "acme@redhat.com",
+      "committer": "Namhyung Kim",
+      "committer_email": "namhyung@kernel.org",
+      "author_date": "2026-04-10T19:09:01-03:00",
+      "commit_date": "2026-04-13T23:21:53-07:00",
+      "subject": "perf header: Sanity check HEADER_CACHE",
+      "tags": [
+        "Claude Code:claude-opus-4-6"
+      ],
+      "insertions": 13,
+      "deletions": 0
+    },
+    {
+      "sha": "6830e20c92e7388ae4834a3574a0d3d90500c4c1",
+      "author": "Arnaldo Carvalho de Melo",
+      "author_email": "acme@redhat.com",
+      "committer": "Namhyung Kim",
+      "committer_email": "namhyung@kernel.org",
+      "author_date": "2026-04-10T19:09:00-03:00",
+      "commit_date": "2026-04-13T23:21:53-07:00",
+      "subject": "perf header: Sanity check HEADER_GROUP_DESC",
+      "tags": [
+        "Claude Code:claude-opus-4-6"
+      ],
+      "insertions": 15,
+      "deletions": 1
+    },
+    {
+      "sha": "f613a6d694aa499edb2a291ab2c2d906619585f2",
+      "author": "Arnaldo Carvalho de Melo",
+      "author_email": "acme@redhat.com",
+      "committer": "Namhyung Kim",
+      "committer_email": "namhyung@kernel.org",
+      "author_date": "2026-04-10T19:08:59-03:00",
+      "commit_date": "2026-04-13T23:21:53-07:00",
+      "subject": "perf header: Sanity check HEADER_PMU_MAPPINGS",
+      "tags": [
+        "Claude Code:claude-opus-4-6"
+      ],
+      "insertions": 13,
+      "deletions": 0
+    },
+    {
+      "sha": "a881fc56038a7baa5cb5074cdd52315d9ad9ee63",
+      "author": "Arnaldo Carvalho de Melo",
+      "author_email": "acme@redhat.com",
+      "committer": "Namhyung Kim",
+      "committer_email": "namhyung@kernel.org",
+      "author_date": "2026-04-10T19:08:58-03:00",
+      "commit_date": "2026-04-13T23:21:53-07:00",
+      "subject": "perf header: Sanity check HEADER_MEM_TOPOLOGY",
+      "tags": [
+        "Claude Code:claude-opus-4-6"
+      ],
+      "insertions": 12,
+      "deletions": 0
+    },
+    {
+      "sha": "4ba223016b0be7ec11aad63f480cd251cecad594",
+      "author": "Arnaldo Carvalho de Melo",
+      "author_email": "acme@redhat.com",
+      "committer": "Namhyung Kim",
+      "committer_email": "namhyung@kernel.org",
+      "author_date": "2026-04-10T19:08:57-03:00",
+      "commit_date": "2026-04-13T23:21:53-07:00",
+      "subject": "perf header: Sanity check HEADER_NUMA_TOPOLOGY",
+      "tags": [
+        "Claude Code:claude-opus-4-6"
+      ],
+      "insertions": 13,
+      "deletions": 0
+    },
+    {
+      "sha": "22a2e2b29217455cf337c765fc26ad2f55d7291a",
+      "author": "Arnaldo Carvalho de Melo",
+      "author_email": "acme@redhat.com",
+      "committer": "Namhyung Kim",
+      "committer_email": "namhyung@kernel.org",
+      "author_date": "2026-04-10T19:08:56-03:00",
+      "commit_date": "2026-04-13T23:21:53-07:00",
+      "subject": "perf header: Sanity check HEADER_CPU_TOPOLOGY",
+      "tags": [
+        "Claude Code:claude-opus-4-6"
+      ],
+      "insertions": 25,
+      "deletions": 2
+    },
+    {
+      "sha": "376ce5a9f706a75815c8281861b66060438798d1",
+      "author": "Arnaldo Carvalho de Melo",
+      "author_email": "acme@redhat.com",
+      "committer": "Namhyung Kim",
+      "committer_email": "namhyung@kernel.org",
+      "author_date": "2026-04-10T19:08:55-03:00",
+      "commit_date": "2026-04-13T23:21:52-07:00",
+      "subject": "perf header: Sanity check HEADER_NRCPUS and HEADER_CPU_DOMAIN_INFO",
+      "tags": [
+        "Claude Code:claude-opus-4-6"
+      ],
+      "insertions": 44,
+      "deletions": 1
+    },
+    {
+      "sha": "f823d7efb81cd2a799dc386da4f9292fdc2c1dbe",
+      "author": "Arnaldo Carvalho de Melo",
+      "author_email": "acme@redhat.com",
+      "committer": "Namhyung Kim",
+      "committer_email": "namhyung@kernel.org",
+      "author_date": "2026-04-10T19:08:53-03:00",
+      "commit_date": "2026-04-13T23:21:52-07:00",
+      "subject": "perf header: Validate nr_domains when reading HEADER_CPU_DOMAIN_INFO",
+      "tags": [
+        "Claude Code:claude-opus-4-6"
+      ],
+      "insertions": 6,
+      "deletions": 0
+    },
+    {
+      "sha": "8b0c25528cb64f71a73b5c0d49cbbcb68540a4ce",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Jakub Kicinski",
+      "committer_email": "kuba@kernel.org",
+      "author_date": "2026-04-11T12:45:25+02:00",
+      "commit_date": "2026-04-13T15:59:48-07:00",
+      "subject": "bnge: return after auxiliary_device_uninit() in error path",
+      "tags": [
+        "gregkh_clanker_t1000"
+      ],
+      "insertions": 1,
+      "deletions": 0
+    },
+    {
+      "sha": "69c02ffde6ed4d535fa4e693a9e572729cad3d0d",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Jiri Kosina",
+      "committer_email": "jkosina@suse.com",
+      "author_date": "2026-04-06T16:04:10+02:00",
+      "commit_date": "2026-04-13T11:39:31+02:00",
+      "subject": "HID: core: clamp report_size in s32ton() to avoid undefined shift",
+      "tags": [
+        "gregkh_clanker_t1000"
+      ],
+      "insertions": 3,
+      "deletions": 0
+    },
+    {
+      "sha": "ad0057fb91218914d6c98268718ceb9d59b388e1",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Steve French",
+      "committer_email": "stfrench@microsoft.com",
+      "author_date": "2026-04-06T15:46:48+02:00",
+      "commit_date": "2026-04-12T18:07:55-05:00",
+      "subject": "ksmbd: fix mechToken leak when SPNEGO decode fails after token alloc",
+      "tags": [
+        "gregkh_clanker_t1000"
+      ],
+      "insertions": 2,
+      "deletions": 1
+    },
+    {
+      "sha": "53370cf9090777774e07fd9a8ebce67c6cc333ab",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Steve French",
+      "committer_email": "stfrench@microsoft.com",
+      "author_date": "2026-04-06T15:46:47+02:00",
+      "commit_date": "2026-04-12T18:07:55-05:00",
+      "subject": "ksmbd: require 3 sub-authorities before reading sub_auth[2]",
+      "tags": [
+        "gregkh_clanker_t1000"
+      ],
+      "insertions": 2,
+      "deletions": 1
+    },
+    {
+      "sha": "66751841212c2cc196577453c37f7774ff363f02",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Steve French",
+      "committer_email": "stfrench@microsoft.com",
+      "author_date": "2026-04-06T15:46:46+02:00",
+      "commit_date": "2026-04-12T18:07:55-05:00",
+      "subject": "ksmbd: validate EaNameLength in smb2_get_ea()",
+      "tags": [
+        "gregkh_clanker_t1000"
+      ],
+      "insertions": 5,
+      "deletions": 0
+    },
+    {
+      "sha": "46ce8be2ced389bccd84bcc04a12cf2f4d0c22d1",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Jakub Kicinski",
+      "committer_email": "kuba@kernel.org",
+      "author_date": "2026-04-09T17:18:14+02:00",
+      "commit_date": "2026-04-12T11:40:45-07:00",
+      "subject": "NFC: digital: Bounds check NFC-A cascade depth in SDD response handler",
+      "tags": [
+        "gregkh_clanker_t1000"
+      ],
+      "insertions": 6,
+      "deletions": 0
+    },
+    {
+      "sha": "bd39fc81340aed5445c731eb391af9ac9a701658",
+      "author": "Matt Turner",
+      "author_email": "mattst88@gmail.com",
+      "committer": "Magnus Lindholm",
+      "committer_email": "linmag7@gmail.com",
+      "author_date": "2026-04-03T11:01:28-04:00",
+      "commit_date": "2026-04-12T19:14:37+02:00",
+      "subject": "alpha: Define pgprot_modify to silence tautological comparison warnings",
+      "tags": [
+        "Claude:claude-opus-4-6"
+      ],
+      "insertions": 11,
+      "deletions": 0
+    },
+    {
+      "sha": "20ae6d76e381eb520d0d1db526a41b22390816f6",
+      "author": "Andy Roulin",
+      "author_email": "aroulin@nvidia.com",
+      "committer": "Jakub Kicinski",
+      "committer_email": "kuba@kernel.org",
+      "author_date": "2026-04-05T13:52:24-07:00",
+      "commit_date": "2026-04-10T15:52:25-07:00",
+      "subject": "selftests: net: add bridge STP mode selection test",
+      "tags": [
+        "Claude:claude-opus-4-6"
+      ],
+      "insertions": 289,
+      "deletions": 0
+    },
+    {
+      "sha": "54fc83a1728535831df0f251e155d05574918115",
+      "author": "Andy Roulin",
+      "author_email": "aroulin@nvidia.com",
+      "committer": "Jakub Kicinski",
+      "committer_email": "kuba@kernel.org",
+      "author_date": "2026-04-05T13:52:22-07:00",
+      "commit_date": "2026-04-10T15:52:24-07:00",
+      "subject": "net: bridge: add stp_mode attribute for STP mode selection",
+      "tags": [
+        "Claude:claude-opus-4-6"
+      ],
+      "insertions": 89,
+      "deletions": 8
+    },
+    {
+      "sha": "48a428215782321b56956974f23593e40ce84b7a",
+      "author": "Thomas Huth",
+      "author_email": "thuth@redhat.com",
+      "committer": "Ard Biesheuvel",
+      "committer_email": "ardb@kernel.org",
+      "author_date": "2026-04-10T17:46:37+02:00",
+      "commit_date": "2026-04-10T18:14:21+02:00",
+      "subject": "efi/capsule-loader: fix incorrect sizeof in phys array reallocation",
+      "tags": [
+        "Claude:claude-sonnet-4-5"
+      ],
+      "insertions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "a31e4518bec70333a0a98f2946a12b53b45fe5b9",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Helge Deller",
+      "committer_email": "deller@gmx.de",
+      "author_date": "2026-04-09T15:23:46+02:00",
+      "commit_date": "2026-04-10T16:54:38+02:00",
+      "subject": "fbdev: udlfb: avoid divide-by-zero on FBIOPUT_VSCREENINFO",
+      "tags": [
+        "gregkh_clanker_t1000"
+      ],
+      "insertions": 3,
+      "deletions": 0
+    },
+    {
+      "sha": "8f98b81fe011e1879e6a7b1247e69e06a5e17af2",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Helge Deller",
+      "committer_email": "deller@gmx.de",
+      "author_date": "2026-04-09T15:23:14+02:00",
+      "commit_date": "2026-04-10T16:54:35+02:00",
+      "subject": "fbdev: tdfxfb: avoid divide-by-zero on FBIOPUT_VSCREENINFO",
+      "tags": [
+        "gregkh_clanker_t1000"
+      ],
+      "insertions": 3,
+      "deletions": 0
+    },
+    {
+      "sha": "07704bbf36f57e4379e4cadf96410dab14621e3b",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Takashi Iwai",
+      "committer_email": "tiwai@suse.de",
+      "author_date": "2026-04-09T16:05:54+02:00",
+      "commit_date": "2026-04-10T14:59:47+02:00",
+      "subject": "ALSA: fireworks: bound device-supplied status before string array lookup",
+      "tags": [
+        "gregkh_clanker_t1000"
+      ],
+      "insertions": 4,
+      "deletions": 1
+    },
+    {
+      "sha": "48bd344e1040b9f2eb512be73c13f5db83efc191",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Takashi Iwai",
+      "committer_email": "tiwai@suse.de",
+      "author_date": "2026-04-09T16:01:56+02:00",
+      "commit_date": "2026-04-10T14:58:03+02:00",
+      "subject": "ALSA: usx2y: us144mkii: fix NULL deref on missing interface 0",
+      "tags": [
+        "gregkh_clanker_t1000"
+      ],
+      "insertions": 5,
+      "deletions": 1
+    },
+    {
+      "sha": "fdfdd01e801f4e808cba27b3e78504cfeca610d9",
+      "author": "Kexin Sun",
+      "author_email": "kexinsun@smail.nju.edu.cn",
+      "committer": "Juergen Gross",
+      "committer_email": "jgross@suse.com",
+      "author_date": "2026-03-21T19:00:39+08:00",
+      "commit_date": "2026-04-10T11:05:06+02:00",
+      "subject": "xen/swiotlb: fix stale reference to swiotlb_unmap_page()",
+      "tags": [
+        "unnamed:deepseek-v3.2 coccinelle"
+      ],
+      "insertions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "6522fe5c1b007c376fc5f2de1016c99a18b0af8e",
+      "author": "Kees Cook",
+      "author_email": "kees@kernel.org",
+      "committer": "Johannes Berg",
+      "committer_email": "johannes.berg@intel.com",
+      "author_date": "2026-04-08T22:20:42-07:00",
+      "commit_date": "2026-04-10T09:28:59+02:00",
+      "subject": "um: Disable GCOV_PROFILE_ALL on 32-bit UML with Clang 20/21",
+      "tags": [
+        "Claude:claude-opus-4-6[1m]"
+      ],
+      "insertions": 3,
+      "deletions": 1
+    },
+    {
+      "sha": "a535a9217ca3f2fccedaafb2fddb4c48f27d36dc",
+      "author": "Samuel Page",
+      "author_email": "sam@bynar.io",
+      "committer": "Marc Kleine-Budde",
+      "committer_email": "mkl@pengutronix.de",
+      "author_date": "2026-04-08T15:30:13+01:00",
+      "commit_date": "2026-04-09T18:51:42+02:00",
+      "subject": "can: raw: fix ro->uniq use-after-free in raw_rcv()",
+      "tags": [
+        "Bynario AI"
+      ],
+      "insertions": 10,
+      "deletions": 1
+    },
+    {
+      "sha": "1badfc4319224820d5d890f8eab6aa52e4e83339",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Jiri Kosina",
+      "committer_email": "jkosina@suse.com",
+      "author_date": "2026-04-06T16:03:25+02:00",
+      "commit_date": "2026-04-09T17:37:39+02:00",
+      "subject": "HID: alps: fix NULL pointer dereference in alps_raw_event()",
+      "tags": [
+        "gregkh_clanker_t1000"
+      ],
+      "insertions": 3,
+      "deletions": 0
+    },
+    {
+      "sha": "91e901c65b4da02a6fd543e3f0049829ae9645b7",
+      "author": "Michael Bommarito",
+      "author_email": "michael.bommarito@gmail.com",
+      "committer": "Johannes Berg",
+      "committer_email": "johannes.berg@intel.com",
+      "author_date": "2026-04-08T03:01:02-04:00",
+      "commit_date": "2026-04-08T09:25:22+02:00",
+      "subject": "um: drivers: call kernel_strrchr() explicitly in cow_user.c",
+      "tags": [
+        "Claude:claude-opus-4-6",
+        "Codex:gpt-5-4"
+      ],
+      "insertions": 7,
+      "deletions": 1
+    },
+    {
+      "sha": "3df690bba28edec865cf7190be10708ad0ddd67e",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Steve French",
+      "committer_email": "stfrench@microsoft.com",
+      "author_date": "2026-04-06T15:49:38+02:00",
+      "commit_date": "2026-04-07T15:51:39-05:00",
+      "subject": "smb: client: fix OOB reads parsing symlink error response",
+      "tags": [
+        "gregkh_clanker_t1000"
+      ],
+      "insertions": 12,
+      "deletions": 8
+    },
+    {
+      "sha": "3d8b9d06bd3ac4c6846f5498800b0f5f8062e53b",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Steve French",
+      "committer_email": "stfrench@microsoft.com",
+      "author_date": "2026-04-06T15:49:37+02:00",
+      "commit_date": "2026-04-07T15:51:01-05:00",
+      "subject": "smb: client: fix off-by-8 bounds check in check_wsl_eas()",
+      "tags": [
+        "gregkh_clanker_t1000"
+      ],
+      "insertions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "3457a5ccacd34fdd5ebd3a4745e721b5a1239690",
+      "author": "G\u00fcnther Noack",
+      "author_email": "gnoack@google.com",
+      "committer": "Micka\u00ebl Sala\u00fcn",
+      "committer_email": "mic@digikod.net",
+      "author_date": "2026-04-01T17:09:10+02:00",
+      "commit_date": "2026-04-07T18:51:11+02:00",
+      "subject": "landlock: Document fallocate(2) as another truncation corner case",
+      "tags": [
+        "Gemini-CLI:gemini-3.1"
+      ],
+      "insertions": 6,
+      "deletions": 2
+    },
+    {
+      "sha": "82b915051d32a68ea3bbe261c93f5620699ff047",
+      "author": "Josh Snyder",
+      "author_email": "josh@code406.com",
+      "committer": "Thomas Gleixner",
+      "committer_email": "tglx@kernel.org",
+      "author_date": "2026-04-02T16:23:38-07:00",
+      "commit_date": "2026-04-07T15:30:21+02:00",
+      "subject": "tick/nohz: Fix inverted return value in check_tick_dependency() fast path",
+      "tags": [
+        "Claude:claude-opus-4-6"
+      ],
+      "insertions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "8f993d30b95dc9557a8a96ceca11abed674c8acb",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Greg Kroah-Hartman",
+      "committer_email": "gregkh@linuxfoundation.org",
+      "author_date": "2026-04-07T11:02:54+02:00",
+      "commit_date": "2026-04-07T13:50:49+02:00",
+      "subject": "usb: gadget: f_ncm: validate minimum block_len in ncm_unwrap_ntb()",
+      "tags": [
+        "gregkh_clanker_t1000"
+      ],
+      "insertions": 2,
+      "deletions": 2
+    },
+    {
+      "sha": "c088d5dd2fffb4de1fb8e7f57751c8b82942180a",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Greg Kroah-Hartman",
+      "committer_email": "gregkh@linuxfoundation.org",
+      "author_date": "2026-04-07T10:55:05+02:00",
+      "commit_date": "2026-04-07T13:50:34+02:00",
+      "subject": "usb: gadget: f_phonet: fix skb frags[] overflow in pn_rx_complete()",
+      "tags": [
+        "gregkh_clanker_t1000"
+      ],
+      "insertions": 9,
+      "deletions": 0
+    },
+    {
+      "sha": "f880aac8a57ebd92abfa685d45424b2998ac1059",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Greg Kroah-Hartman",
+      "committer_email": "gregkh@linuxfoundation.org",
+      "author_date": "2026-04-06T17:09:48+02:00",
+      "commit_date": "2026-04-07T13:48:30+02:00",
+      "subject": "usb: gadget: renesas_usb3: validate endpoint index in standard request handlers",
+      "tags": [
+        "gregkh_clanker_t1000"
+      ],
+      "insertions": 6,
+      "deletions": 1
+    },
+    {
+      "sha": "d10119968d0e1f2b669604baf2a8b5fdb72fa6b4",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Steffen Klassert",
+      "committer_email": "steffen.klassert@secunet.com",
+      "author_date": "2026-04-06T17:34:22+02:00",
+      "commit_date": "2026-04-07T10:36:38+02:00",
+      "subject": "xfrm_user: fix info leak in build_report()",
+      "tags": [
+        "gregkh_clanker_t1000"
+      ],
+      "insertions": 1,
+      "deletions": 0
+    },
+    {
+      "sha": "1beb76b2053b68c491b78370794b8ff63c8f8c02",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Steffen Klassert",
+      "committer_email": "steffen.klassert@secunet.com",
+      "author_date": "2026-04-06T17:33:03+02:00",
+      "commit_date": "2026-04-07T10:36:37+02:00",
+      "subject": "xfrm_user: fix info leak in build_mapping()",
+      "tags": [
+        "gregkh_clanker_t1000"
+      ],
+      "insertions": 1,
+      "deletions": 0
+    },
+    {
+      "sha": "c6e80201e057dfb7253385e60bf541121bf5dc33",
+      "author": "Joseph Salisbury",
+      "author_email": "joseph.salisbury@oracle.com",
+      "committer": "Peter Zijlstra",
+      "committer_email": "peterz@infradead.org",
+      "author_date": "2026-04-03T17:00:14-04:00",
+      "commit_date": "2026-04-07T09:23:52+02:00",
+      "subject": "sched: Use u64 for bandwidth ratio calculations",
+      "tags": [
+        "Codex:GPT-5"
+      ],
+      "insertions": 3,
+      "deletions": 3
+    },
+    {
+      "sha": "4821d563cd7f251ae728be1a6d04af82a294a5b9",
+      "author": "Michal Schmidt",
+      "author_email": "mschmidt@redhat.com",
+      "committer": "Tony Nguyen",
+      "committer_email": "anthony.l.nguyen@intel.com",
+      "author_date": "2026-03-13T09:22:29+01:00",
+      "commit_date": "2026-04-06T13:39:23-07:00",
+      "subject": "ixgbevf: add missing negotiate_features op to Hyper-V ops table",
+      "tags": [
+        "Claude:claude-4.6-opus-high Cursor"
+      ],
+      "insertions": 7,
+      "deletions": 0
+    },
+    {
+      "sha": "3f74e30d857bd546c32eba78739dc85dabc6aae1",
+      "author": "Kexin Sun",
+      "author_email": "kexinsun@smail.nju.edu.cn",
+      "committer": "Andrew Morton",
+      "committer_email": "akpm@linux-foundation.org",
+      "author_date": "2026-03-21T18:57:04+08:00",
+      "commit_date": "2026-04-05T13:53:36-07:00",
+      "subject": "drivers/base/memory: fix stale reference to memory_block_add_nid()",
+      "tags": [
+        "unnamed:deepseek-v3.2 coccinelle"
+      ],
+      "insertions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "f2a48f8fb56466488f7525e3349d4e2f45dc5d74",
+      "author": "Kexin Sun",
+      "author_email": "kexinsun@smail.nju.edu.cn",
+      "committer": "Andrew Morton",
+      "committer_email": "akpm@linux-foundation.org",
+      "author_date": "2026-03-21T18:58:14+08:00",
+      "commit_date": "2026-04-05T13:53:35-07:00",
+      "subject": "mm: update outdated comments for removed scan_swap_map_slots()",
+      "tags": [
+        "unnamed:deepseek-v3.2 coccinelle"
+      ],
+      "insertions": 3,
+      "deletions": 3
+    },
+    {
+      "sha": "3cb0dc0d0eab18d6ef738e10d5634e3a71121044",
+      "author": "Kexin Sun",
+      "author_email": "kexinsun@smail.nju.edu.cn",
+      "committer": "Andrew Morton",
+      "committer_email": "akpm@linux-foundation.org",
+      "author_date": "2026-03-21T18:58:20+08:00",
+      "commit_date": "2026-04-05T13:53:34-07:00",
+      "subject": "mm: vmalloc: update outdated comment for renamed vread()",
+      "tags": [
+        "unnamed:deepseek-v3.2 coccinelle"
+      ],
+      "insertions": 6,
+      "deletions": 6
+    },
+    {
+      "sha": "d4e981b280454f4368950db6269c6077d66453cf",
+      "author": "Kexin Sun",
+      "author_email": "kexinsun@smail.nju.edu.cn",
+      "committer": "Andrew Morton",
+      "committer_email": "akpm@linux-foundation.org",
+      "author_date": "2026-03-12T13:38:12+08:00",
+      "commit_date": "2026-04-05T13:53:28-07:00",
+      "subject": "kasan: update outdated comment",
+      "tags": [
+        "unnamed:deepseek-v3.2 coccinelle"
+      ],
+      "insertions": 4,
+      "deletions": 4
+    },
+    {
+      "sha": "fcc25a291fbdca2c06c2c6602532050873f0c9de",
+      "author": "Gautham R. Shenoy",
+      "author_email": "gautham.shenoy@amd.com",
+      "committer": "Mario Limonciello (AMD)",
+      "committer_email": "superm1@kernel.org",
+      "author_date": "2026-03-26T17:17:46+05:30",
+      "commit_date": "2026-04-02T11:28:12-05:00",
+      "subject": "amd-pstate: Update cppc_req_cached in fast_switch case",
+      "tags": [
+        "Claude:claude-opus-4.6 review-prompts/linux"
+      ],
+      "insertions": 0,
+      "deletions": 1
+    },
+    {
+      "sha": "beda3b363546a423e4e29a7395e04c0ac4ff677e",
+      "author": "Gautham R. Shenoy",
+      "author_email": "gautham.shenoy@amd.com",
+      "committer": "Mario Limonciello (AMD)",
+      "committer_email": "superm1@kernel.org",
+      "author_date": "2026-03-26T17:17:45+05:30",
+      "commit_date": "2026-04-02T11:28:05-05:00",
+      "subject": "amd-pstate: Fix memory leak in amd_pstate_epp_cpu_init()",
+      "tags": [
+        "Claude:claude-opus-4.6 review-prompts/linux"
+      ],
+      "insertions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "e4cabc973133c0623a63e6e3bc3d64e53a2e6d62",
+      "author": "Kexin Sun",
+      "author_email": "kexinsun@smail.nju.edu.cn",
+      "committer": "Greg Kroah-Hartman",
+      "committer_email": "gregkh@linuxfoundation.org",
+      "author_date": "2026-03-21T18:57:04+08:00",
+      "commit_date": "2026-04-02T17:09:41+02:00",
+      "subject": "drivers/base/memory: fix stale reference to memory_block_add_nid()",
+      "tags": [
+        "unnamed:deepseek-v3.2 coccinelle"
+      ],
+      "insertions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "f8995c2df519f382525ca4bc90553ad2ec611067",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Thomas Zimmermann",
+      "committer_email": "tzimmermann@suse.de",
+      "author_date": "2026-03-24T17:42:51+01:00",
+      "commit_date": "2026-04-02T08:24:55+02:00",
+      "subject": "drm/ioc32: stop speculation on the drm_compat_ioctl path",
+      "tags": [
+        "gkh_clanker_2000"
+      ],
+      "insertions": 2,
+      "deletions": 0
+    },
+    {
+      "sha": "4c3aeb11d504b68c63a1caeecf5517385e6e7bdb",
+      "author": "Harry Wentland",
+      "author_email": "harry.wentland@amd.com",
+      "committer": "Alex Deucher",
+      "committer_email": "alexander.deucher@amd.com",
+      "author_date": "2026-01-16T11:47:50-05:00",
+      "commit_date": "2026-03-30T14:52:56-04:00",
+      "subject": "drm/amd/display: Don't set 4to1MPC config dynamically",
+      "tags": [
+        "Claude:claude-sonnet-4.5"
+      ],
+      "insertions": 39,
+      "deletions": 29
+    },
+    {
+      "sha": "606f6b171326152ef08d0ef0ad49f52034edca07",
+      "author": "Harry Wentland",
+      "author_email": "harry.wentland@amd.com",
+      "committer": "Alex Deucher",
+      "committer_email": "alexander.deucher@amd.com",
+      "author_date": "2026-01-16T11:48:11-05:00",
+      "commit_date": "2026-03-30T14:44:24-04:00",
+      "subject": "drm/amd/display: Merge pipes for validate",
+      "tags": [
+        "Claude:claude-sonnet-4.5"
+      ],
+      "insertions": 2,
+      "deletions": 0
+    },
+    {
+      "sha": "adc09d7fbbb9d286057c98675994c445d81c27fa",
+      "author": "Kexin Sun",
+      "author_email": "kexinsun@smail.nju.edu.cn",
+      "committer": "Leon Romanovsky",
+      "committer_email": "leon@kernel.org",
+      "author_date": "2026-03-23T21:44:50+08:00",
+      "commit_date": "2026-03-30T13:47:44-04:00",
+      "subject": "RDMA: Remove outdated comments referencing hfi1_destroy_qp()",
+      "tags": [
+        "unnamed:deepseek-v3.2 coccinelle"
+      ],
+      "insertions": 0,
+      "deletions": 2
+    },
+    {
+      "sha": "b247ed6f60bdc61616b0243024e118b0659ce78f",
+      "author": "Kexin Sun",
+      "author_email": "kexinsun@smail.nju.edu.cn",
+      "committer": "Leon Romanovsky",
+      "committer_email": "leon@kernel.org",
+      "author_date": "2026-03-21T18:58:59+08:00",
+      "commit_date": "2026-03-30T13:47:44-04:00",
+      "subject": "RDMA/uverbs: Update outdated reference to remove_commit_idr_uobject()",
+      "tags": [
+        "unnamed:deepseek-v3.2 coccinelle"
+      ],
+      "insertions": 2,
+      "deletions": 2
+    },
+    {
+      "sha": "8545d9bc4bd0801e0bdfbfdfdc2532ff31236ddf",
+      "author": "Harry Wentland",
+      "author_email": "harry.wentland@amd.com",
+      "committer": "Jonathan Corbet",
+      "committer_email": "corbet@lwn.net",
+      "author_date": "2026-03-27T11:41:57-04:00",
+      "commit_date": "2026-03-30T10:00:40-06:00",
+      "subject": "scripts/checkpatch: add Assisted-by: tag validation",
+      "tags": [
+        "AGENT_NAME:MODEL_VERSION [TOOL1] [TOOL2]",
+        "Claude:claude-opus-4.6"
+      ],
+      "insertions": 11,
+      "deletions": 1
+    },
+    {
+      "sha": "fdb19f4ede3bf41c48721889114441389d1ad403",
+      "author": "Kexin Sun",
+      "author_email": "kexinsun@smail.nju.edu.cn",
+      "committer": "Greg Kroah-Hartman",
+      "committer_email": "gregkh@linuxfoundation.org",
+      "author_date": "2026-03-24T10:48:57+08:00",
+      "commit_date": "2026-03-30T17:36:45+02:00",
+      "subject": "tty: atmel_serial: update outdated reference to atmel_tasklet_func()",
+      "tags": [
+        "unnamed:deepseek-v3.2 coccinelle"
+      ],
+      "insertions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "091ef6f503f49cdb3b19542b23f3cfd3e80a5f11",
+      "author": "Kexin Sun",
+      "author_email": "kexinsun@smail.nju.edu.cn",
+      "committer": "Greg Kroah-Hartman",
+      "committer_email": "gregkh@linuxfoundation.org",
+      "author_date": "2026-03-21T19:00:06+08:00",
+      "commit_date": "2026-03-30T16:50:09+02:00",
+      "subject": "usb: gadget: udc: update outdated comment for renamed usb_gadget_udc_start()",
+      "tags": [
+        "unnamed:deepseek-v3.2 coccinelle"
+      ],
+      "insertions": 3,
+      "deletions": 2
+    },
+    {
+      "sha": "7a4790b1a2c9ff66bd7a95d8761d5e9fc9334ba9",
+      "author": "David Heidelberg",
+      "author_email": "david@ixit.cz",
+      "committer": "Bjorn Andersson",
+      "committer_email": "andersson@kernel.org",
+      "author_date": "2026-03-27T14:07:09+01:00",
+      "commit_date": "2026-03-30T08:37:01-05:00",
+      "subject": "arm64: dts: qcom: sdm845-oneplus: Describe Wi-Fi/BT properly",
+      "tags": [
+        "Claude:claude-opus-4.6"
+      ],
+      "insertions": 56,
+      "deletions": 9
+    },
+    {
+      "sha": "0a9c8715663998dc4d8eaa8f1a40440214906d96",
+      "author": "David Heidelberg",
+      "author_email": "david@ixit.cz",
+      "committer": "Bjorn Andersson",
+      "committer_email": "andersson@kernel.org",
+      "author_date": "2026-03-27T14:07:08+01:00",
+      "commit_date": "2026-03-30T08:37:01-05:00",
+      "subject": "arm64: dts: qcom: sdm845-google: Describe Wi-Fi/BT properly",
+      "tags": [
+        "Claude:claude-opus-4.6"
+      ],
+      "insertions": 35,
+      "deletions": 7
+    },
+    {
+      "sha": "ad8363ebf851599489e8821f5278f784df154398",
+      "author": "Vineeth Pillai (Google)",
+      "author_email": "vineeth@bitbyteword.org",
+      "committer": "Steven Rostedt (Google)",
+      "committer_email": "rostedt@goodmis.org",
+      "author_date": "2026-03-23T12:00:25-04:00",
+      "commit_date": "2026-03-28T13:37:06-04:00",
+      "subject": "cpufreq: Use trace_call__##name() at guarded tracepoint call sites",
+      "tags": [
+        "Claude:claude-sonnet-4-6"
+      ],
+      "insertions": 7,
+      "deletions": 7
+    },
+    {
+      "sha": "48b8814e25d073dd84daf990a879a820bad2bcbd",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Vasily Gorbik",
+      "committer_email": "gor@linux.ibm.com",
+      "author_date": "2026-03-24T17:34:05+01:00",
+      "commit_date": "2026-03-28T00:43:39+01:00",
+      "subject": "s390/syscalls: Add spectre boundary for syscall dispatch table",
+      "tags": [
+        "gkh_clanker_2000"
+      ],
+      "insertions": 4,
+      "deletions": 1
+    },
+    {
+      "sha": "5b44c3757ca36e49959cf6819b77d7079de75705",
+      "author": "Kexin Sun",
+      "author_email": "kexinsun@smail.nju.edu.cn",
+      "committer": "Martin K. Petersen",
+      "committer_email": "martin.petersen@oracle.com",
+      "author_date": "2026-03-21T18:59:04+08:00",
+      "commit_date": "2026-03-27T16:51:15-04:00",
+      "subject": "scsi: iscsi_tcp: update outdated comment for renamed iscsi_conn_set_callbacks()",
+      "tags": [
+        "unnamed:deepseek-v3.2 coccinelle"
+      ],
+      "insertions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "3d1a36afa49da89c414e991e4d497e8dce2c1d02",
+      "author": "Kexin Sun",
+      "author_email": "kexinsun@smail.nju.edu.cn",
+      "committer": "Martin K. Petersen",
+      "committer_email": "martin.petersen@oracle.com",
+      "author_date": "2026-03-21T18:59:09+08:00",
+      "commit_date": "2026-03-27T16:49:04-04:00",
+      "subject": "scsi: lpfc: Update outdated comment for renamed lpfc_freenode()",
+      "tags": [
+        "unnamed:deepseek-v3.2 coccinelle"
+      ],
+      "insertions": 5,
+      "deletions": 6
+    },
+    {
+      "sha": "a8eebf9699d69987cc49cec4e4fdb4111ab32423",
+      "author": "Robert Beckett",
+      "author_email": "bob.beckett@collabora.com",
+      "committer": "Keith Busch",
+      "committer_email": "kbusch@kernel.org",
+      "author_date": "2026-03-20T19:22:09Z",
+      "commit_date": "2026-03-27T07:35:05-07:00",
+      "subject": "nvme-pci: add NVME_QUIRK_DISABLE_WRITE_ZEROES for Kingston OM3SGP4",
+      "tags": [
+        "claude-opus-4-6-v1"
+      ],
+      "insertions": 2,
+      "deletions": 0
+    },
+    {
+      "sha": "40f0496b617b431f8d2dd94d7f785c1121f8a68a",
+      "author": "Robert Beckett",
+      "author_email": "bob.beckett@collabora.com",
+      "committer": "Keith Busch",
+      "committer_email": "kbusch@kernel.org",
+      "author_date": "2026-03-20T19:22:08Z",
+      "commit_date": "2026-03-27T07:35:05-07:00",
+      "subject": "nvme: respect NVME_QUIRK_DISABLE_WRITE_ZEROES when wzsl is set",
+      "tags": [
+        "claude-opus-4-6-v1"
+      ],
+      "insertions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "d7447f2dce46e1237e7908f49703803ffc0ef19f",
+      "author": "Vineeth Pillai (Google)",
+      "author_email": "vineeth@bitbyteword.org",
+      "committer": "Steven Rostedt (Google)",
+      "committer_email": "rostedt@goodmis.org",
+      "author_date": "2026-03-23T12:00:34-04:00",
+      "commit_date": "2026-03-26T10:24:40-04:00",
+      "subject": "btrfs: Use trace_call__##name() at guarded tracepoint call sites",
+      "tags": [
+        "Claude:claude-sonnet-4-6"
+      ],
+      "insertions": 4,
+      "deletions": 4
+    },
+    {
+      "sha": "47f570fcfd5a5a8c58913fee8fa2db2f99591ae9",
+      "author": "Vineeth Pillai (Google)",
+      "author_email": "vineeth@bitbyteword.org",
+      "committer": "Steven Rostedt (Google)",
+      "committer_email": "rostedt@goodmis.org",
+      "author_date": "2026-03-23T12:00:32-04:00",
+      "commit_date": "2026-03-26T10:24:39-04:00",
+      "subject": "spi: Use trace_call__##name() at guarded tracepoint call sites",
+      "tags": [
+        "Claude:claude-sonnet-4-6"
+      ],
+      "insertions": 2,
+      "deletions": 2
+    },
+    {
+      "sha": "fa9ac2fdb605bbf318bb2cbbc76b855341b7c115",
+      "author": "Vineeth Pillai (Google)",
+      "author_email": "vineeth@bitbyteword.org",
+      "committer": "Steven Rostedt (Google)",
+      "committer_email": "rostedt@goodmis.org",
+      "author_date": "2026-03-23T12:00:31-04:00",
+      "commit_date": "2026-03-26T10:24:39-04:00",
+      "subject": "i2c: Use trace_call__##name() at guarded tracepoint call sites",
+      "tags": [
+        "Claude:claude-sonnet-4-6"
+      ],
+      "insertions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "7b1c2d7547943ddb0d425138b3b42262ff92eea3",
+      "author": "Vineeth Pillai (Google)",
+      "author_email": "vineeth@bitbyteword.org",
+      "committer": "Steven Rostedt (Google)",
+      "committer_email": "rostedt@goodmis.org",
+      "author_date": "2026-03-23T12:00:21-04:00",
+      "commit_date": "2026-03-26T08:28:49-04:00",
+      "subject": "kernel: Use trace_call__##name() at guarded tracepoint call sites",
+      "tags": [
+        "Claude:claude-sonnet-4-6"
+      ],
+      "insertions": 3,
+      "deletions": 3
+    },
+    {
+      "sha": "677a3d82b6407522d922705209c311e043a17813",
+      "author": "Vineeth Pillai (Google)",
+      "author_email": "vineeth@bitbyteword.org",
+      "committer": "Steven Rostedt (Google)",
+      "committer_email": "rostedt@goodmis.org",
+      "author_date": "2026-03-23T12:00:20-04:00",
+      "commit_date": "2026-03-26T08:27:39-04:00",
+      "subject": "tracepoint: Add trace_call__##name() API",
+      "tags": [
+        "Claude:claude-sonnet-4-6"
+      ],
+      "insertions": 11,
+      "deletions": 0
+    },
+    {
+      "sha": "c464407ada06fdfc4d49bbb86085f02fd7f565c3",
+      "author": "Rito Rhymes",
+      "author_email": "rito@ritovision.com",
+      "committer": "Jonathan Corbet",
+      "committer_email": "corbet@lwn.net",
+      "author_date": "2026-03-23T11:24:27-04:00",
+      "commit_date": "2026-03-25T13:22:02-06:00",
+      "subject": "docs: allow long links to wrap per character to prevent page overflow",
+      "tags": [
+        "Codex:GPT-5.4"
+      ],
+      "insertions": 5,
+      "deletions": 0
+    },
+    {
+      "sha": "127bdd9f12ae4e77cb74f06aa60e996a2d4baafa",
+      "author": "Rito Rhymes",
+      "author_email": "rito@ritovision.com",
+      "committer": "Jonathan Corbet",
+      "committer_email": "corbet@lwn.net",
+      "author_date": "2026-03-23T11:24:28-04:00",
+      "commit_date": "2026-03-25T13:18:39-06:00",
+      "subject": "docs: allow long table reference links to wrap and prevent overflow",
+      "tags": [
+        "Codex:GPT-5.4"
+      ],
+      "insertions": 5,
+      "deletions": 0
+    },
+    {
+      "sha": "3aff388bc4e8d64583d144f3be9c0aff9a54f14d",
+      "author": "Rito Rhymes",
+      "author_email": "rito@ritovision.com",
+      "committer": "Jonathan Corbet",
+      "committer_email": "corbet@lwn.net",
+      "author_date": "2026-03-23T11:33:42-04:00",
+      "commit_date": "2026-03-25T13:17:13-06:00",
+      "subject": "docs: contain horizontal overflow in C API descriptions",
+      "tags": [
+        "Codex:GPT-5.4"
+      ],
+      "insertions": 7,
+      "deletions": 0
+    },
+    {
+      "sha": "f2679ac773899f5fdea0b68d5077eef5f88dfd42",
+      "author": "Rito Rhymes",
+      "author_email": "rito@ritovision.com",
+      "committer": "Jonathan Corbet",
+      "committer_email": "corbet@lwn.net",
+      "author_date": "2026-03-23T11:14:01-04:00",
+      "commit_date": "2026-03-25T13:16:58-06:00",
+      "subject": "docs: allow inline literals in paragraphs to wrap to prevent overflow",
+      "tags": [
+        "Codex:GPT-5.4"
+      ],
+      "insertions": 9,
+      "deletions": 0
+    },
+    {
+      "sha": "c0128c7157d639a931353ea344fb44aad6d6e17a",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Andi Shyti",
+      "committer_email": "andi.shyti@kernel.org",
+      "author_date": "2026-02-23T18:05:15+01:00",
+      "commit_date": "2026-03-25T18:13:39+01:00",
+      "subject": "i2c: s3c24xx: check the size of the SMBUS message before using it",
+      "tags": [
+        "gkh_clanker_2000"
+      ],
+      "insertions": 6,
+      "deletions": 1
+    },
+    {
+      "sha": "67cb50aee082842077a8404337dc21b7d03829d7",
+      "author": "Kexin Sun",
+      "author_email": "kexinsun@smail.nju.edu.cn",
+      "committer": "Jason Gunthorpe",
+      "committer_email": "jgg@nvidia.com",
+      "author_date": "2026-03-21T18:57:59+08:00",
+      "commit_date": "2026-03-25T09:35:14-03:00",
+      "subject": "iommufd: update outdated comment for renamed iommufd_hw_pagetable_alloc()",
+      "tags": [
+        "unnamed:deepseek-v3.2 coccinelle"
+      ],
+      "insertions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "c291cfac49a67debdad766eedc450ef613f41b2d",
+      "author": "Kit Dallege",
+      "author_email": "xaum.io@gmail.com",
+      "committer": "Thomas Gleixner",
+      "committer_email": "tglx@kernel.org",
+      "author_date": "2026-03-15T18:09:41+01:00",
+      "commit_date": "2026-03-24T23:06:33+01:00",
+      "subject": "entry: Add missing kernel-doc for arch_ptrace_report_syscall functions",
+      "tags": [
+        "Claude:claude-opus-4-6"
+      ],
+      "insertions": 3,
+      "deletions": 0
+    },
+    {
+      "sha": "70b5f3f7822a8737de350ce3731189e724bc45be",
+      "author": "Kexin Sun",
+      "author_email": "kexinsun@smail.nju.edu.cn",
+      "committer": "Alexei Starovoitov",
+      "committer_email": "ast@kernel.org",
+      "author_date": "2026-03-21T18:56:58+08:00",
+      "commit_date": "2026-03-24T13:37:29-07:00",
+      "subject": "bpf: update outdated comment for refactored btf_check_kfunc_arg_match()",
+      "tags": [
+        "unnamed:deepseek-v3.2 coccinelle"
+      ],
+      "insertions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "762a3847a05c5c229009d36fbd0e2feee9dff81a",
+      "author": "Kexin Sun",
+      "author_email": "kexinsun@smail.nju.edu.cn",
+      "committer": "Mark Brown",
+      "committer_email": "broonie@kernel.org",
+      "author_date": "2026-03-21T18:59:45+08:00",
+      "commit_date": "2026-03-24T19:55:23Z",
+      "subject": "spi: pxa2xx: update outdated reference to pump_transfers()",
+      "tags": [
+        "unnamed:deepseek-v3.2 coccinelle"
+      ],
+      "insertions": 3,
+      "deletions": 3
+    },
+    {
+      "sha": "3e839947b842b81e3d940044425853477c5a4d7e",
+      "author": "Kexin Sun",
+      "author_email": "kexinsun@smail.nju.edu.cn",
+      "committer": "Mark Brown",
+      "committer_email": "broonie@kernel.org",
+      "author_date": "2026-03-24T12:14:00+08:00",
+      "commit_date": "2026-03-24T19:52:27Z",
+      "subject": "ASoC: update outdated comments for removed snd_soc_new_pcms()",
+      "tags": [
+        "unnamed:deepseek-v3.2 coccinelle"
+      ],
+      "insertions": 2,
+      "deletions": 9
+    },
+    {
+      "sha": "ab2fcdd7021908d5b1537f97be5a1994339fd6da",
+      "author": "Kexin Sun",
+      "author_email": "kexinsun@smail.nju.edu.cn",
+      "committer": "Alex Deucher",
+      "committer_email": "alexander.deucher@amd.com",
+      "author_date": "2026-03-21T18:57:28+08:00",
+      "commit_date": "2026-03-24T13:34:09-04:00",
+      "subject": "drm/amdgpu: update outdated comment for renamed amdgpu_fence_driver_init()",
+      "tags": [
+        "unnamed:deepseek-v3.2 coccinelle"
+      ],
+      "insertions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "94c7e9669be1a29b8e44fa6ca3d2d8943b60a91e",
+      "author": "Kexin Sun",
+      "author_email": "kexinsun@smail.nju.edu.cn",
+      "committer": "Alex Deucher",
+      "committer_email": "alexander.deucher@amd.com",
+      "author_date": "2026-03-21T18:57:17+08:00",
+      "commit_date": "2026-03-24T13:33:15-04:00",
+      "subject": "drm/amd/display: update outdated comments for renamed vblank_control_worker()",
+      "tags": [
+        "unnamed:deepseek-v3.2 coccinelle"
+      ],
+      "insertions": 5,
+      "deletions": 3
+    },
+    {
+      "sha": "a4b908c89d88d4b7251c566457979c4167b9664c",
+      "author": "Kexin Sun",
+      "author_email": "kexinsun@smail.nju.edu.cn",
+      "committer": "Paolo Abeni",
+      "committer_email": "pabeni@redhat.com",
+      "author_date": "2026-03-21T18:58:25+08:00",
+      "commit_date": "2026-03-24T13:21:28+01:00",
+      "subject": "net: phy: update outdated comment for removed phy_package_read/write()",
+      "tags": [
+        "unnamed:deepseek-v3.2 coccinelle"
+      ],
+      "insertions": 2,
+      "deletions": 2
+    },
+    {
+      "sha": "88c07dff9f6dd0b89b3e5364b202978eab2541c2",
+      "author": "Kexin Sun",
+      "author_email": "kexinsun@smail.nju.edu.cn",
+      "committer": "Paolo Abeni",
+      "committer_email": "pabeni@redhat.com",
+      "author_date": "2026-03-21T18:57:53+08:00",
+      "commit_date": "2026-03-24T13:16:58+01:00",
+      "subject": "hv_sock: update outdated comment for renamed vsock_stream_recvmsg()",
+      "tags": [
+        "unnamed:deepseek-v3.2 coccinelle"
+      ],
+      "insertions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "2d300ebfc411205fa31ba7741c5821d381912381",
+      "author": "Ruijing Dong",
+      "author_email": "ruijing.dong@amd.com",
+      "committer": "Alex Deucher",
+      "committer_email": "alexander.deucher@amd.com",
+      "author_date": "2026-03-17T13:54:11-04:00",
+      "commit_date": "2026-03-23T14:47:47-04:00",
+      "subject": "drm/amdgpu: fix strsep() corrupting lockup_timeout on multi-GPU (v3)",
+      "tags": [
+        "Claude:claude-opus-4-6"
+      ],
+      "insertions": 11,
+      "deletions": 2
+    },
+    {
+      "sha": "a37fb5166be943fa78962f77db00ce5a25366e87",
+      "author": "Kexin Sun",
+      "author_email": "kexinsun@smail.nju.edu.cn",
+      "committer": "Mark Brown",
+      "committer_email": "broonie@kernel.org",
+      "author_date": "2026-03-21T18:59:40+08:00",
+      "commit_date": "2026-03-23T18:11:00Z",
+      "subject": "spi: pl022: update outdated references to pump_transfers()",
+      "tags": [
+        "unnamed:deepseek-v3.2 coccinelle"
+      ],
+      "insertions": 5,
+      "deletions": 5
+    },
+    {
+      "sha": "94d79f51efecb74be1d88dde66bdc8bfcca17935",
+      "author": "Ruijing Dong",
+      "author_email": "ruijing.dong@amd.com",
+      "committer": "Alex Deucher",
+      "committer_email": "alexander.deucher@amd.com",
+      "author_date": "2026-03-17T13:54:11-04:00",
+      "commit_date": "2026-03-23T14:09:28-04:00",
+      "subject": "drm/amdgpu: fix strsep() corrupting lockup_timeout on multi-GPU (v3)",
+      "tags": [
+        "Claude:claude-opus-4-6"
+      ],
+      "insertions": 11,
+      "deletions": 2
+    },
+    {
+      "sha": "d57fe7b02072ad04a41517e40c737ed7c11f4520",
+      "author": "Kexin Sun",
+      "author_email": "kexinsun@smail.nju.edu.cn",
+      "committer": "Mark Brown",
+      "committer_email": "broonie@kernel.org",
+      "author_date": "2026-03-21T19:50:18+08:00",
+      "commit_date": "2026-03-23T17:59:19Z",
+      "subject": "ASoC: generic: update outdated comment for removed soc_bind_dai_link()",
+      "tags": [
+        "unnamed:deepseek-v3.2 coccinelle"
+      ],
+      "insertions": 5,
+      "deletions": 3
+    },
+    {
+      "sha": "7b52b262f8a8cd96dac33721389a884420c18365",
+      "author": "Kit Dallege",
+      "author_email": "xaum.io@gmail.com",
+      "committer": "Yury Norov",
+      "committer_email": "ynorov@nvidia.com",
+      "author_date": "2026-03-15T16:34:14+01:00",
+      "commit_date": "2026-03-23T13:33:51-04:00",
+      "subject": "bitops: fix kernel-doc parameter name for parity8()",
+      "tags": [
+        "Claude <noreply@anthropic.com>"
+      ],
+      "insertions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "4c68d150246d7e1d826a807a82e6eb6b4669f42c",
+      "author": "Kexin Sun",
+      "author_email": "kexinsun@smail.nju.edu.cn",
+      "committer": "Christian Brauner",
+      "committer_email": "brauner@kernel.org",
+      "author_date": "2026-03-21T18:59:27+08:00",
+      "commit_date": "2026-03-23T16:38:31+01:00",
+      "subject": "signal: update outdated comment for removed freezable_schedule()",
+      "tags": [
+        "unnamed:deepseek-v3.2 coccinelle"
+      ],
+      "insertions": 3,
+      "deletions": 2
+    },
+    {
+      "sha": "a0529bbe70d74e495b682933955e5938245ad84b",
+      "author": "Daniel Castro",
+      "author_email": "arantescastro@gmail.com",
+      "committer": "Jonathan Corbet",
+      "committer_email": "corbet@lwn.net",
+      "author_date": "2026-03-17T11:01:34-03:00",
+      "commit_date": "2026-03-22T14:45:44-06:00",
+      "subject": "docs: pt_BR: translate process/1.Intro.rst",
+      "tags": [
+        "Claude:claude-opus-4-6"
+      ],
+      "insertions": 270,
+      "deletions": 0
+    },
+    {
+      "sha": "c7f27a8ab9f2f43570f0725256597a0d7abe2c5b",
+      "author": "Song Liu",
+      "author_email": "song@kernel.org",
+      "committer": "Tejun Heo",
+      "committer_email": "tj@kernel.org",
+      "author_date": "2026-03-21T20:30:45-07:00",
+      "commit_date": "2026-03-21T18:34:59-10:00",
+      "subject": "workqueue: Fix false positive stall reports",
+      "tags": [
+        "claude-code:claude-opus-4-6"
+      ],
+      "insertions": 21,
+      "deletions": 3
+    },
+    {
+      "sha": "a1e5c46eaed3151be93e1aec9af0d8f8db79b8f6",
+      "author": "Ihor Solodrai",
+      "author_email": "ihor.solodrai@linux.dev",
+      "committer": "Alexei Starovoitov",
+      "committer_email": "ast@kernel.org",
+      "author_date": "2026-03-19T17:08:09-07:00",
+      "commit_date": "2026-03-21T12:51:44-07:00",
+      "subject": "selftests/bpf: Add tests for bpf_throw lock leak from subprogs",
+      "tags": [
+        "Claude:claude-opus-4-6"
+      ],
+      "insertions": 47,
+      "deletions": 0
+    },
+    {
+      "sha": "6c2128505f61b504c79a20b89596feba61388112",
+      "author": "Ihor Solodrai",
+      "author_email": "ihor.solodrai@linux.dev",
+      "committer": "Alexei Starovoitov",
+      "committer_email": "ast@kernel.org",
+      "author_date": "2026-03-19T17:08:08-07:00",
+      "commit_date": "2026-03-21T12:51:44-07:00",
+      "subject": "bpf: Fix exception exit lock checking for subprogs",
+      "tags": [
+        "Claude:claude-opus-4-6"
+      ],
+      "insertions": 8,
+      "deletions": 4
+    },
+    {
+      "sha": "2ef3bac16fb5e9eee4fb1d722578a79b751ea58a",
+      "author": "Wesley Atwell",
+      "author_email": "atwellwea@gmail.com",
+      "committer": "Herbert Xu",
+      "committer_email": "herbert@gondor.apana.org.au",
+      "author_date": "2026-03-09T00:26:24-06:00",
+      "commit_date": "2026-03-21T17:34:30+09:00",
+      "subject": "crypto: krb5enc - fix sleepable flag handling in encrypt dispatch",
+      "tags": [
+        "Codex:GPT-5"
+      ],
+      "insertions": 3,
+      "deletions": 2
+    },
+    {
+      "sha": "e0ce97f781c78b717b00493630a9e34caf04f79b",
+      "author": "Wesley Atwell",
+      "author_email": "atwellwea@gmail.com",
+      "committer": "Herbert Xu",
+      "committer_email": "herbert@gondor.apana.org.au",
+      "author_date": "2026-03-08T22:31:43-06:00",
+      "commit_date": "2026-03-21T17:34:30+09:00",
+      "subject": "crypto: simd - reject compat registrations without __ prefixes",
+      "tags": [
+        "Codex:GPT-5"
+      ],
+      "insertions": 12,
+      "deletions": 4
+    },
+    {
+      "sha": "d9794c0600f95b226b6672c5b364e44c80d660c5",
+      "author": "Kit Dallege",
+      "author_email": "xaum.io@gmail.com",
+      "committer": "Marek Szyprowski",
+      "committer_email": "m.szyprowski@samsung.com",
+      "author_date": "2026-03-15T18:10:01+01:00",
+      "commit_date": "2026-03-20T12:12:52+01:00",
+      "subject": "dma-mapping: fix false kernel-doc comment marker",
+      "tags": [
+        "Claude:claude-opus-4-6"
+      ],
+      "insertions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "1333eee56cdf3f0cf67c6ab4114c2c9e0a952026",
+      "author": "Josef Bacik",
+      "author_email": "josef@toxicpanda.com",
+      "committer": "Martin K. Petersen",
+      "committer_email": "martin.petersen@oracle.com",
+      "author_date": "2026-03-16T20:23:29-04:00",
+      "commit_date": "2026-03-19T21:54:51-04:00",
+      "subject": "scsi: target: tcm_loop: Drain commands in target_reset handler",
+      "tags": [
+        "Claude:claude-opus-4-6"
+      ],
+      "insertions": 46,
+      "deletions": 6
+    },
+    {
+      "sha": "7a9f448d44127217fabc4065c5ba070d4e0b5d37",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Martin K. Petersen",
+      "committer_email": "martin.petersen@oracle.com",
+      "author_date": "2026-02-23T16:44:59+01:00",
+      "commit_date": "2026-03-19T21:33:28-04:00",
+      "subject": "scsi: ses: Handle positive SCSI error from ses_recv_diag()",
+      "tags": [
+        "gkh_clanker_2000"
+      ],
+      "insertions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "deb353d9bb009638b7762cae2d0b6e8fdbb41a69",
+      "author": "Guenter Roeck",
+      "author_email": "linux@roeck-us.net",
+      "committer": "Johannes Berg",
+      "committer_email": "johannes.berg@intel.com",
+      "author_date": "2026-03-17T23:46:36-07:00",
+      "commit_date": "2026-03-18T09:05:06+01:00",
+      "subject": "wifi: wlcore: Return -ENOMEM instead of -EAGAIN if there is not enough headroom",
+      "tags": [
+        "Gemini:gemini-3.1-pro"
+      ],
+      "insertions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "2727d44f5d5bc3f8e55a6a0ccf24d8105a5a400e",
+      "author": "Kit Dallege",
+      "author_email": "xaum.io@gmail.com",
+      "committer": "Christian Brauner",
+      "committer_email": "brauner@kernel.org",
+      "author_date": "2026-03-15T18:09:31+01:00",
+      "commit_date": "2026-03-17T15:18:54+01:00",
+      "subject": "writeback: fix kernel-doc function name mismatch for wb_put_many()",
+      "tags": [
+        "Claude:claude-opus-4-6"
+      ],
+      "insertions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "5c52607c43c397b79a9852ce33fc61de58c3645c",
+      "author": "Guenter Roeck",
+      "author_email": "linux@roeck-us.net",
+      "committer": "Herbert Xu",
+      "committer_email": "herbert@gondor.apana.org.au",
+      "author_date": "2026-03-04T12:39:34-08:00",
+      "commit_date": "2026-03-14T14:01:37+09:00",
+      "subject": "crypto: ccp - Fix leaking the same page twice",
+      "tags": [
+        "Gemini:gemini-3.1-pro"
+      ],
+      "insertions": 1,
+      "deletions": 3
+    },
+    {
+      "sha": "8f921f61005450589c0bc1a941a5ddde21d9aed9",
+      "author": "Kexin Sun",
+      "author_email": "kexinsun@smail.nju.edu.cn",
+      "committer": "Jakub Kicinski",
+      "committer_email": "kuba@kernel.org",
+      "author_date": "2026-03-11T21:35:19+08:00",
+      "commit_date": "2026-03-12T19:29:01-07:00",
+      "subject": "netlink: update outdated comment",
+      "tags": [
+        "unnamed:deepseek-v3.2 coccinelle"
+      ],
+      "insertions": 2,
+      "deletions": 2
+    },
+    {
+      "sha": "886d56099d947443936298a8f98533768c5ad44b",
+      "author": "Kexin Sun",
+      "author_email": "kexinsun@smail.nju.edu.cn",
+      "committer": "Jakub Kicinski",
+      "committer_email": "kuba@kernel.org",
+      "author_date": "2026-03-11T21:30:11+08:00",
+      "commit_date": "2026-03-12T19:27:43-07:00",
+      "subject": "qlcnic: update outdated comment",
+      "tags": [
+        "unnamed:deepseek-v3.2 coccinelle"
+      ],
+      "insertions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "45dba8011efac11a2f360383221b541f5ea53ce5",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Greg Kroah-Hartman",
+      "committer_email": "gregkh@linuxfoundation.org",
+      "author_date": "2026-02-23T13:19:43+01:00",
+      "commit_date": "2026-03-11T16:17:12+01:00",
+      "subject": "usb: misc: uss720: properly clean up reference in uss720_probe()",
+      "tags": [
+        "gkh_clanker_2000"
+      ],
+      "insertions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "f3d349484856e874ad00eeda9754a2ca8b7be5c7",
+      "author": "Harry Wentland",
+      "author_email": "harry.wentland@amd.com",
+      "committer": "Alex Deucher",
+      "committer_email": "alexander.deucher@amd.com",
+      "author_date": "2026-01-15T14:12:46-05:00",
+      "commit_date": "2026-03-11T10:55:41-04:00",
+      "subject": "drm/amd/display: Add COLOR_ENCODING/COLOR_RANGE to overlay planes",
+      "tags": [
+        "Claude: claude-sonnet-4.5"
+      ],
+      "insertions": 2,
+      "deletions": 1
+    },
+    {
+      "sha": "63fff551318f5e0814b94f709a6dfaec789dcd7a",
+      "author": "Harry Wentland",
+      "author_email": "harry.wentland@amd.com",
+      "committer": "Alex Deucher",
+      "committer_email": "alexander.deucher@amd.com",
+      "author_date": "2026-01-15T14:12:05-05:00",
+      "commit_date": "2026-03-11T10:55:14-04:00",
+      "subject": "drm/amd/display: Add NV12/P010 formats to primary plane",
+      "tags": [
+        "Claude: claude-sonnet-4.5"
+      ],
+      "insertions": 3,
+      "deletions": 0
+    },
+    {
+      "sha": "eb51c5a103f63b6e9c3f9cebf7b1e2e1056d3119",
+      "author": "Harry Wentland",
+      "author_email": "harry.wentland@amd.com",
+      "committer": "Alex Deucher",
+      "committer_email": "alexander.deucher@amd.com",
+      "author_date": "2026-01-16T09:39:05-05:00",
+      "commit_date": "2026-03-11T10:53:32-04:00",
+      "subject": "drm/amd/display: Set chroma taps to 1 if luma taps are 1",
+      "tags": [
+        "Claude: claude-sonnet-4.5"
+      ],
+      "insertions": 12,
+      "deletions": 4
+    },
+    {
+      "sha": "f7093ebf612f45544600f06681d6fb7be7d0649a",
+      "author": "Thomas Hellstr\u00f6m",
+      "author_email": "thomas.hellstrom@linux.intel.com",
+      "committer": "Thomas Hellstr\u00f6m",
+      "committer_email": "thomas.hellstrom@linux.intel.com",
+      "author_date": "2026-03-05T10:39:09+01:00",
+      "commit_date": "2026-03-11T09:33:01+01:00",
+      "subject": "drm/xe/userptr: Defer Waiting for TLB invalidation to the second pass if possible",
+      "tags": [
+        "GitHub Copilot:claude-sonnet-4.6"
+      ],
+      "insertions": 104,
+      "deletions": 16
+    },
+    {
+      "sha": "400ee0f4f1f06b2c447ba87868b6da613445c31a",
+      "author": "Thomas Hellstr\u00f6m",
+      "author_email": "thomas.hellstrom@linux.intel.com",
+      "committer": "Thomas Hellstr\u00f6m",
+      "committer_email": "thomas.hellstrom@linux.intel.com",
+      "author_date": "2026-03-05T10:39:08+01:00",
+      "commit_date": "2026-03-11T09:32:59+01:00",
+      "subject": "drm/xe: Split TLB invalidation into submit and wait steps",
+      "tags": [
+        "GitHub Copilot:claude-sonnet-4.6"
+      ],
+      "insertions": 127,
+      "deletions": 68
+    },
+    {
+      "sha": "18c4e536959e983b74c6a21968f2513a6ca2acf0",
+      "author": "Thomas Hellstr\u00f6m",
+      "author_email": "thomas.hellstrom@linux.intel.com",
+      "committer": "Thomas Hellstr\u00f6m",
+      "committer_email": "thomas.hellstrom@linux.intel.com",
+      "author_date": "2026-03-05T10:39:07+01:00",
+      "commit_date": "2026-03-11T09:32:58+01:00",
+      "subject": "drm/xe/userptr: Convert invalidation to two-pass MMU notifier",
+      "tags": [
+        "GitHub Copilot:claude-sonnet-4.6"
+      ],
+      "insertions": 99,
+      "deletions": 23
+    },
+    {
+      "sha": "7aba71dbc41641e43a79fb9f6fac91719094b4fb",
+      "author": "Thomas Hellstr\u00f6m",
+      "author_email": "thomas.hellstrom@linux.intel.com",
+      "committer": "Thomas Hellstr\u00f6m",
+      "committer_email": "thomas.hellstrom@linux.intel.com",
+      "author_date": "2026-03-05T10:39:06+01:00",
+      "commit_date": "2026-03-11T09:32:58+01:00",
+      "subject": "mm/mmu_notifier: Allow two-pass struct mmu_interval_notifiers",
+      "tags": [
+        "GitHub Copilot:claude-sonnet-4.6 # Documentation only."
+      ],
+      "insertions": 98,
+      "deletions": 9
+    },
+    {
+      "sha": "e94eaef11142b01f77bf8ba4d0b59720b7858109",
+      "author": "Matt Vollrath",
+      "author_email": "tactii@gmail.com",
+      "committer": "Tony Nguyen",
+      "committer_email": "anthony.l.nguyen@intel.com",
+      "author_date": "2026-02-24T18:28:33-05:00",
+      "commit_date": "2026-03-10T13:02:54-07:00",
+      "subject": "e1000/e1000e: Fix leak in DMA error cleanup",
+      "tags": [
+        "Claude:claude-4.6-opus"
+      ],
+      "insertions": 0,
+      "deletions": 4
+    },
+    {
+      "sha": "457965c13f0837a289c9164b842d0860133f6274",
+      "author": "Guenter Roeck",
+      "author_email": "linux@roeck-us.net",
+      "committer": "Steven Rostedt (Google)",
+      "committer_email": "rostedt@goodmis.org",
+      "author_date": "2026-03-05T11:33:39-08:00",
+      "commit_date": "2026-03-06T13:04:30-05:00",
+      "subject": "tracing: Add NULL pointer check to trigger_data_free()",
+      "tags": [
+        "Gemini:gemini-3.1-pro"
+      ],
+      "insertions": 3,
+      "deletions": 0
+    },
+    {
+      "sha": "ee0e6e69a772d601e152e5368a1da25d656122a8",
+      "author": "Guenter Roeck",
+      "author_email": "linux@roeck-us.net",
+      "committer": "Niklas Cassel",
+      "committer_email": "cassel@kernel.org",
+      "author_date": "2026-03-05T18:48:05-08:00",
+      "commit_date": "2026-03-06T09:58:47+01:00",
+      "subject": "ata: libata-eh: Fix detection of deferred qc timeouts",
+      "tags": [
+        "Gemini:gemini-3.1-pro"
+      ],
+      "insertions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "e597a809a2b97e927060ba182f58eb3e6101bc70",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Ma\u00edra Canal",
+      "committer_email": "mcanal@igalia.com",
+      "author_date": "2026-02-23T16:53:39+01:00",
+      "commit_date": "2026-03-05T20:55:16-03:00",
+      "subject": "drm/vc4: platform_get_irq_byname() returns an int",
+      "tags": [
+        "gkh_clanker_2000"
+      ],
+      "insertions": 10,
+      "deletions": 4
+    },
+    {
+      "sha": "fefeeec6123587c6b08884865042988d40405bd2",
+      "author": "Josef Bacik",
+      "author_email": "josef@toxicpanda.com",
+      "committer": "Andrii Nakryiko",
+      "committer_email": "andrii@kernel.org",
+      "author_date": "2026-03-04T15:56:52-05:00",
+      "commit_date": "2026-03-05T15:03:04-08:00",
+      "subject": "selftests/bpf: Add test for btf__add_btf() with split BTF sources",
+      "tags": [
+        "Claude:claude-opus-4-6"
+      ],
+      "insertions": 111,
+      "deletions": 0
+    },
+    {
+      "sha": "d8d5c0151148b0194e8bbba66eb56d4d9cab94cd",
+      "author": "Josef Bacik",
+      "author_email": "josef@toxicpanda.com",
+      "committer": "Andrii Nakryiko",
+      "committer_email": "andrii@kernel.org",
+      "author_date": "2026-03-04T15:56:51-05:00",
+      "commit_date": "2026-03-05T15:03:02-08:00",
+      "subject": "bpftool: Support merging multiple module BTFs in btf dump",
+      "tags": [
+        "Claude:claude-opus-4-6"
+      ],
+      "insertions": 121,
+      "deletions": 17
+    },
+    {
+      "sha": "be872ccf370915b858ab693aa0707a2eff4bb1fd",
+      "author": "Josef Bacik",
+      "author_email": "josef@toxicpanda.com",
+      "committer": "Andrii Nakryiko",
+      "committer_email": "andrii@kernel.org",
+      "author_date": "2026-03-04T15:56:50-05:00",
+      "commit_date": "2026-03-05T14:57:58-08:00",
+      "subject": "libbpf: Support appending split BTF in btf__add_btf()",
+      "tags": [
+        "Claude:claude-opus-4-6"
+      ],
+      "insertions": 18,
+      "deletions": 9
+    },
+    {
+      "sha": "724b4a12116fdb60130b89778611482bf8de0a6a",
+      "author": "Niranjana Vishwanathapura",
+      "author_email": "niranjana.vishwanathapura@intel.com",
+      "committer": "Niranjana Vishwanathapura",
+      "committer_email": "niranjana.vishwanathapura@intel.com",
+      "author_date": "2026-03-03T14:30:41-08:00",
+      "commit_date": "2026-03-04T10:42:43-08:00",
+      "subject": "drm/xe: Add missing kernel docs in xe_exec_queue.c",
+      "tags": [
+        "Claude 4.5 Sonnet"
+      ],
+      "insertions": 112,
+      "deletions": 0
+    },
+    {
+      "sha": "952caa5da10bed22be09612433964f6877ba0dde",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Marc Kleine-Budde",
+      "committer_email": "mkl@pengutronix.de",
+      "author_date": "2026-02-23T13:10:32+01:00",
+      "commit_date": "2026-03-02T11:04:15+01:00",
+      "subject": "can: usb: f81604: correctly anchor the urb in the read bulk callback",
+      "tags": [
+        "gkh_clanker_2000"
+      ],
+      "insertions": 13,
+      "deletions": 2
+    },
+    {
+      "sha": "51f94780720fa90c424f67e3e9784cb8ef8190e5",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Marc Kleine-Budde",
+      "committer_email": "mkl@pengutronix.de",
+      "author_date": "2026-02-23T13:10:31+01:00",
+      "commit_date": "2026-03-02T11:04:15+01:00",
+      "subject": "can: usb: f81604: handle bulk write errors properly",
+      "tags": [
+        "gkh_clanker_2000"
+      ],
+      "insertions": 21,
+      "deletions": 3
+    },
+    {
+      "sha": "7299b1b39a255f6092ce4ec0b65f66e9d6a357af",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Marc Kleine-Budde",
+      "committer_email": "mkl@pengutronix.de",
+      "author_date": "2026-02-23T13:10:30+01:00",
+      "commit_date": "2026-03-02T11:04:14+01:00",
+      "subject": "can: usb: f81604: handle short interrupt urb messages properly",
+      "tags": [
+        "gkh_clanker_2000"
+      ],
+      "insertions": 6,
+      "deletions": 0
+    },
+    {
+      "sha": "5eaad4f768266f1f17e01232ffe2ef009f8129b7",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Marc Kleine-Budde",
+      "committer_email": "mkl@pengutronix.de",
+      "author_date": "2026-02-23T17:39:20+01:00",
+      "commit_date": "2026-03-02T11:03:42+01:00",
+      "subject": "can: usb: etas_es58x: correctly anchor the urb in the read bulk callback",
+      "tags": [
+        "gkh_clanker_2000"
+      ],
+      "insertions": 7,
+      "deletions": 1
+    },
+    {
+      "sha": "1e446fd0582ad8be9f6dafb115fc2e7245f9bea7",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Marc Kleine-Budde",
+      "committer_email": "mkl@pengutronix.de",
+      "author_date": "2026-02-23T17:30:20+01:00",
+      "commit_date": "2026-03-02T11:03:42+01:00",
+      "subject": "can: ucan: Fix infinite loop from zero-length messages",
+      "tags": [
+        "gkh_clanker_2000"
+      ],
+      "insertions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "38a01c9700b0dcafe97dfa9dc7531bf4a245deff",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Marc Kleine-Budde",
+      "committer_email": "mkl@pengutronix.de",
+      "author_date": "2026-02-23T17:51:17+01:00",
+      "commit_date": "2026-03-02T11:03:42+01:00",
+      "subject": "can: ems_usb: ems_usb_read_bulk_callback(): check the proper length of a message",
+      "tags": [
+        "gkh_clanker_2000"
+      ],
+      "insertions": 6,
+      "deletions": 1
+    },
+    {
+      "sha": "b8a57b979a7c2069081ed0bf88a727b17d85ac96",
+      "author": "Kexin Sun",
+      "author_email": "kexinsun@smail.nju.edu.cn",
+      "committer": "Johannes Berg",
+      "committer_email": "johannes.berg@intel.com",
+      "author_date": "2026-02-28T14:19:44+08:00",
+      "commit_date": "2026-03-02T10:27:25+01:00",
+      "subject": "wifi: mac80211: update outdated comment",
+      "tags": [
+        "unnamed:deepseek-v3.2 coccinelle"
+      ],
+      "insertions": 1,
+      "deletions": 4
+    },
+    {
+      "sha": "f0109b9d3e1e455429279d602f6276e34689750a",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Greg Kroah-Hartman",
+      "committer_email": "gregkh@linuxfoundation.org",
+      "author_date": "2026-02-23T14:31:35+01:00",
+      "commit_date": "2026-02-23T16:34:44+01:00",
+      "subject": "staging: rtl8723bs: properly validate the data in rtw_get_ie_ex()",
+      "tags": [
+        "gkh_clanker_2000"
+      ],
+      "insertions": 10,
+      "deletions": 5
+    },
+    {
+      "sha": "ecfa6f34492c493a9a1dc2900f3edeb01c79946b",
+      "author": "Greg Kroah-Hartman",
+      "author_email": "gregkh@linuxfoundation.org",
+      "committer": "Benjamin Tissoires",
+      "committer_email": "bentiss@kernel.org",
+      "author_date": "2026-02-19T15:33:54+01:00",
+      "commit_date": "2026-02-19T18:58:39+01:00",
+      "subject": "HID: Add HID_CLAIMED_INPUT guards in raw_event callbacks missing them",
+      "tags": [
+        "gkh_clanker_2000"
+      ],
+      "insertions": 3,
+      "deletions": 3
+    },
+    {
+      "sha": "2bad24c17742fc88973d6aea526ce1353f5334a3",
+      "author": "G\u00fcnther Noack",
+      "author_email": "gnoack@google.com",
+      "committer": "Benjamin Tissoires",
+      "committer_email": "bentiss@kernel.org",
+      "author_date": "2026-02-19T16:43:38+01:00",
+      "commit_date": "2026-02-19T18:57:38+01:00",
+      "subject": "HID: asus: avoid memory leak in asus_report_fixup()",
+      "tags": [
+        "Gemini-CLI:Google Gemini 3"
+      ],
+      "insertions": 11,
+      "deletions": 4
+    },
+    {
+      "sha": "91e8c6e601bdc1ccdf886479b6513c01c7e51c2c",
+      "author": "G\u00fcnther Noack",
+      "author_email": "gnoack@google.com",
+      "committer": "Benjamin Tissoires",
+      "committer_email": "bentiss@kernel.org",
+      "author_date": "2026-02-19T16:43:37+01:00",
+      "commit_date": "2026-02-19T18:57:38+01:00",
+      "subject": "HID: magicmouse: avoid memory leak in magicmouse_report_fixup()",
+      "tags": [
+        "Gemini-CLI:Google Gemini 3"
+      ],
+      "insertions": 1,
+      "deletions": 3
+    },
+    {
+      "sha": "239c15116d80f67d32f00acc34575f1a6b699613",
+      "author": "G\u00fcnther Noack",
+      "author_email": "gnoack@google.com",
+      "committer": "Benjamin Tissoires",
+      "committer_email": "bentiss@kernel.org",
+      "author_date": "2026-02-19T16:43:36+01:00",
+      "commit_date": "2026-02-19T18:57:38+01:00",
+      "subject": "HID: apple: avoid memory leak in apple_report_fixup()",
+      "tags": [
+        "Gemini-CLI:Google Gemini 3"
+      ],
+      "insertions": 1,
+      "deletions": 3
+    },
+    {
+      "sha": "0b82cc331d2e23537670878c62c19ee3f4147a93",
+      "author": "Ihor Solodrai",
+      "author_email": "ihor.solodrai@linux.dev",
+      "committer": "Tejun Heo",
+      "committer_email": "tj@kernel.org",
+      "author_date": "2026-02-13T10:21:36-08:00",
+      "commit_date": "2026-02-13T09:09:39-10:00",
+      "subject": "selftests/sched_ext: Fix rt_stall flaky failure",
+      "tags": [
+        "claude-opus-4-6-v1"
+      ],
+      "insertions": 49,
+      "deletions": 0
+    },
+    {
+      "sha": "5341c98450df7cf8dacc907a80e3362f3155c847",
+      "author": "Boris Burkov",
+      "author_email": "boris@bur.io",
+      "committer": "David Sterba",
+      "committer_email": "dsterba@suse.com",
+      "author_date": "2026-01-29T16:11:22-08:00",
+      "commit_date": "2026-02-03T07:56:25+01:00",
+      "subject": "btrfs: tests: add unit tests for pending extent walking functions",
+      "tags": [
+        "Claude:claude-opus-4-5"
+      ],
+      "insertions": 495,
+      "deletions": 8
+    },
+    {
+      "sha": "436326bc525d467e38db1da576139ec5f28268c5",
+      "author": "Sasha Levin",
+      "author_email": "sashal@kernel.org",
+      "committer": "Peter Zijlstra",
+      "committer_email": "peterz@infradead.org",
+      "author_date": "2025-12-23T07:03:57-05:00",
+      "commit_date": "2026-01-13T11:37:51+01:00",
+      "subject": "objtool: fix build failure due to missing libopcodes check",
+      "tags": [
+        "claude-opus-4-5-20251101"
+      ],
+      "insertions": 14,
+      "deletions": 10
+    }
+  ]
+}

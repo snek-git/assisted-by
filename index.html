@@ -1,0 +1,978 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assisted-by: AI in the Linux kernel</title>
+<meta name="description" content="Three months after the Linux kernel started requiring an Assisted-by: tag, 166 of 26,044 mainline commits carry one. 0.64% of activity. One model dominates. Data from torvalds/linux and lore.kernel.org.">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://assistedby.dev/">
+<meta property="og:title" content="Assisted-by: AI in the Linux kernel">
+<meta property="og:description" content="Three months in, 166 of ~26,000 Linux mainline commits carry an Assisted-by: tag. 0.64% of activity. One model dominates, one workflow does most of the volume, one maintainer accounts for a fifth.">
+<meta property="og:image" content="https://assistedby.dev/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="166 of 26,044 mainline kernel commits carry an Assisted-by: tag. 0.64 percent.">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Assisted-by: AI in the Linux kernel">
+<meta name="twitter:description" content="Three months in, 166 of ~26,000 Linux mainline commits carry an Assisted-by: tag. 0.64% of activity.">
+<meta name="twitter:image" content="https://assistedby.dev/og.png">
+<link rel="canonical" href="https://assistedby.dev/">
+
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="alternate icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0a0a0a">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --panel: #131313;
+    --panel-2: #1a1a1a;
+    --line: #232323;
+    --text: #e8e8e8;
+    --dim: #888;
+    --dim-2: #555;
+    --accent: #c8ff00;
+    --warn: #ff8c42;
+    --red: #ff5e5e;
+    --bar: #2a2a2a;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg); color: var(--text);
+    font-family: "Inter", -apple-system, system-ui, sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+  .mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .15s; }
+  a:hover { border-color: var(--accent); }
+
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 56px 28px 80px; }
+
+  /* hero */
+  header.hero {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 40px;
+    margin-bottom: 48px;
+  }
+  .eyebrow {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 18px;
+  }
+  h1 {
+    font-size: clamp(36px, 5.5vw, 64px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin: 0 0 18px;
+    line-height: 1.05;
+  }
+  h1 em { font-style: normal; color: var(--dim); font-weight: 300; }
+  .lede {
+    font-size: 17px;
+    color: var(--dim);
+    max-width: 640px;
+    margin: 0;
+  }
+  .lede b { color: var(--text); font-weight: 500; }
+
+  /* stat cards */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin-bottom: 64px;
+  }
+  .stat { background: var(--panel); padding: 28px 24px; }
+  .stat .num {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 44px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--text);
+  }
+  .stat .label {
+    font-size: 12px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-top: 14px;
+  }
+  .stat .label .sub {
+    display: inline-block;
+    margin-top: 4px;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--dim-2);
+    font-size: 11px;
+    font-family: "JetBrains Mono", monospace;
+  }
+
+  /* sections */
+  section { margin-bottom: 72px; }
+  .section-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin-bottom: 28px; padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .section-head h2 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .section-head .meta {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    color: var(--dim);
+  }
+
+  /* bar chart */
+  .bars { display: grid; gap: 14px; }
+  .bar-row {
+    display: grid;
+    grid-template-columns: 1fr 80px;
+    gap: 16px;
+    align-items: center;
+  }
+  .bar-row .name .vsub {
+    color: var(--dim);
+    font-weight: 400;
+    margin-left: 8px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+  }
+  .bar-row .label {
+    font-size: 14px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: 12px; margin-bottom: 6px;
+  }
+  .bar-row .label .name { font-weight: 500; }
+  .bar-row .label .pct { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--dim); }
+  .bar-track {
+    height: 8px; background: var(--bar); border-radius: 2px; overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+    transform-origin: left;
+    animation: grow .9s cubic-bezier(.22,.9,.27,1) both;
+  }
+  .bar-fill.protest { background: var(--warn); }
+  .bar-fill.dim { background: var(--dim-2); }
+  .bar-row .count {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 16px;
+    text-align: right;
+    color: var(--text);
+    line-height: 1.2;
+  }
+  .bar-row .count .add { display: block; color: var(--accent); }
+  .bar-row .count .rem { display: block; color: var(--red); font-size: 13px; }
+  @keyframes grow {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+
+  /* two-col grid */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  /* timeline */
+  .timeline-wrap {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    padding: 24px;
+  }
+  .timeline-wrap svg { display: block; width: 100%; height: 180px; }
+  .timeline-wrap .axis {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px; color: var(--dim); margin-top: 8px;
+  }
+  .timeline-wrap .axis #activity-meta { color: var(--dim); }
+
+  /* model breakdown */
+  .vendor-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 1px; background: var(--line); border: 1px solid var(--line);
+  }
+  .vendor-card { background: var(--panel); padding: 22px 22px 20px; }
+  .vendor-card h3 {
+    margin: 0 0 4px;
+    font-size: 15px; font-weight: 600;
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .vendor-card h3 .total {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px; color: var(--accent); font-weight: 500;
+  }
+  .vendor-card .sub { font-size: 12px; color: var(--dim); margin-bottom: 14px; }
+  .vendor-card.protest h3 .total { color: var(--warn); }
+  .model-list { display: grid; gap: 6px; }
+  .model-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 13px;
+    padding: 6px 0;
+    border-bottom: 1px dashed var(--line);
+    gap: 12px;
+  }
+  .model-row:last-child { border-bottom: none; }
+  .model-row .m { font-family: "JetBrains Mono", monospace; color: var(--text); }
+  .model-row .n { font-family: "JetBrains Mono", monospace; color: var(--dim); min-width: 28px; text-align: right; }
+  .model-row .row-meta {
+    display: inline-flex; gap: 14px; align-items: baseline;
+    font-family: "JetBrains Mono", monospace; font-size: 12px;
+  }
+
+  /* commit table */
+  .commits {
+    border: 1px solid var(--line);
+    background: var(--panel);
+  }
+  .commit-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 180px 110px;
+    gap: 18px;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+    font-size: 13px;
+  }
+  .commit-row:last-child { border-bottom: none; }
+  .commit-row:hover { background: var(--panel-2); }
+  .commit-row .date {
+    font-family: "JetBrains Mono", monospace;
+    color: var(--dim); font-size: 12px;
+  }
+  .commit-row .subject {
+    color: var(--text);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .commit-row .subject a { color: inherit; border-bottom-color: transparent; }
+  .commit-row .subject a:hover { color: var(--accent); }
+  .commit-row .author { color: var(--dim); font-size: 12px; }
+  .commit-row .tag {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: var(--accent);
+    text-align: right;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .commit-row .tag.protest { color: var(--warn); }
+  .show-more {
+    text-align: center; padding: 16px;
+    background: var(--panel-2);
+    color: var(--dim); font-size: 13px; cursor: pointer;
+    border-top: 1px solid var(--line);
+    font-family: "JetBrains Mono", monospace;
+    transition: color .15s;
+  }
+  .show-more:hover { color: var(--accent); }
+
+  /* highlights */
+  .highlights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .highlight {
+    background: var(--panel);
+    padding: 26px 24px;
+  }
+  .highlight .kicker {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 10px;
+  }
+  .highlight.protest .kicker { color: var(--warn); }
+  .highlight h3 { margin: 0 0 10px; font-size: 17px; font-weight: 600; }
+  .highlight p { margin: 0; color: var(--dim); font-size: 14px; line-height: 1.55; }
+  .highlight .sha-list {
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .highlight .sha-list a {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    color: var(--dim);
+    border-bottom: 1px dashed var(--dim-2);
+  }
+  .highlight .sha-list a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  .highlight.protest .sha-list a:hover { color: var(--warn); border-bottom-color: var(--warn); }
+
+  /* footer */
+  footer {
+    margin-top: 80px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+    color: var(--dim);
+    font-size: 13px;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+  }
+  footer .mono { color: var(--dim-2); }
+
+  /* methodology */
+  .howmade {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .how-block { background: var(--panel); padding: 22px 24px; }
+  .how-block h3 {
+    margin: 0 0 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+  }
+  .how-block p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--dim);
+    line-height: 1.6;
+  }
+  .how-block.disclose { background: var(--panel-2); border-left: 2px solid var(--accent); }
+  .how-block.disclose h3 { color: var(--accent); }
+
+  /* funnel: submitted vs merged */
+  .funnel {
+    display: grid; gap: 18px;
+  }
+  .funnel-row {
+    display: grid;
+    grid-template-columns: 200px 1fr 130px;
+    gap: 18px;
+    align-items: center;
+  }
+  .row-lines {
+    text-align: right;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+  }
+  .toggle {
+    display: inline-flex;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .toggle button {
+    background: transparent;
+    color: var(--dim);
+    border: none;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: .04em;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: background .12s, color .12s;
+  }
+  .toggle button + button { border-left: 1px solid var(--line); }
+  .toggle button:hover { color: var(--text); }
+  .toggle button.active { background: var(--accent); color: #0a0a0a; font-weight: 600; }
+  .row-lines .dim-num { color: var(--dim); }
+  .lines { display: inline-flex; gap: 8px; align-items: baseline; }
+  .lines .add { color: var(--accent); }
+  .lines .rem { color: var(--red); }
+  .lines.none { color: var(--dim-2); font-style: italic; }
+  .bar-row .lines { font-size: 11px; }
+  .funnel-row .vname {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .funnel-row .vname small {
+    display: block;
+    color: var(--dim);
+    font-weight: 400;
+    font-size: 11px;
+    margin-top: 2px;
+    font-family: "JetBrains Mono", monospace;
+  }
+  .funnel-bar {
+    position: relative;
+    height: 28px;
+    background: var(--bar);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .funnel-bar .submitted {
+    position: absolute; left: 0; top: 0; bottom: 0;
+    background: linear-gradient(90deg, #2f2f2f, #353535);
+    animation: grow 1s cubic-bezier(.22,.9,.27,1) both;
+  }
+  .funnel-bar .merged {
+    position: absolute; left: 0; top: 0; bottom: 0;
+    background: var(--accent);
+    animation: grow .9s .15s cubic-bezier(.22,.9,.27,1) both;
+  }
+  .funnel-bar.protest .merged { background: var(--warn); }
+  .funnel-bar .nums {
+    position: absolute; right: 10px; top: 0; bottom: 0;
+    display: flex; align-items: center; gap: 8px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    color: var(--text);
+    z-index: 2;
+    text-shadow: 0 0 6px rgba(0,0,0,.85);
+  }
+  .funnel-bar .nums .merged-n { color: var(--accent); }
+  .funnel-bar.protest .nums .merged-n { color: var(--warn); }
+  .funnel-bar .nums .sep { color: var(--dim-2); }
+  .funnel-row .rate {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: right;
+    color: var(--text);
+  }
+  .funnel-row .rate.zero { color: var(--dim-2); }
+  .funnel-row .rate.high { color: var(--accent); }
+  .funnel-row .rate small {
+    display: block;
+    font-size: 10px;
+    color: var(--dim);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-top: 2px;
+    font-weight: 400;
+  }
+  .caveat {
+    color: var(--dim);
+    font-size: 13px;
+    margin-top: 18px;
+    line-height: 1.6;
+    max-width: 720px;
+  }
+
+  @media (max-width: 900px) {
+    .highlights { grid-template-columns: 1fr; }
+    .howmade { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 760px) {
+    .wrap { padding: 36px 18px 56px; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .two-col, .vendor-grid { grid-template-columns: 1fr; }
+    .commit-row { grid-template-columns: 70px 1fr; gap: 8px; }
+    .commit-row .author, .commit-row .tag { display: none; }
+    .funnel-row { grid-template-columns: 1fr; gap: 6px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow">Assisted-by:&nbsp;&nbsp;|&nbsp;&nbsp;Linux mainline · since 2026-01-01</div>
+    <h1>AI in the Linux kernel, as disclosed.</h1>
+    <p class="lede" id="lede">
+      Loading data&hellip;
+    </p>
+  </header>
+
+  <div class="stats" id="stats"></div>
+
+  <section>
+    <div class="section-head">
+      <h2>Models in the kernel</h2>
+      <div class="toggle" id="models-toggle">
+        <button data-mode="lines" class="active">by lines added</button>
+        <button data-mode="commits">by commits</button>
+      </div>
+    </div>
+    <div class="bars" id="models"></div>
+    <p class="caveat" id="models-caveat"></p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>By vendor</h2>
+      <div class="meta">who trained the model</div>
+    </div>
+    <div class="bars" id="vendor-bars"></div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>By tool</h2>
+      <div class="meta">how the model was invoked</div>
+    </div>
+    <div class="bars" id="tool-bars"></div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Per-vendor model breakdown</h2>
+      <div class="meta">merged tags only</div>
+    </div>
+    <div class="vendor-grid" id="vendor-grid"></div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Notable</h2>
+      <div class="meta">two patches worth pointing at</div>
+    </div>
+    <div class="highlights" id="highlights"></div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Activity</h2>
+      <div class="toggle" id="activity-toggle">
+        <button data-mode="lines" class="active">lines added/removed</button>
+        <button data-mode="commits">commits</button>
+      </div>
+    </div>
+    <div class="timeline-wrap">
+      <svg id="timeline" viewBox="0 0 1000 180" preserveAspectRatio="none"></svg>
+      <div class="axis">
+        <span id="axis-l"></span>
+        <span id="activity-meta"></span>
+        <span id="axis-r"></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="two-col">
+    <div>
+      <div class="section-head">
+        <h2>Top authors</h2>
+        <div class="meta">who wrote the patch</div>
+      </div>
+      <div class="bars" id="authors"></div>
+    </div>
+    <div>
+      <div class="section-head">
+        <h2>Top committers</h2>
+        <div class="meta">who landed the patch</div>
+      </div>
+      <div class="bars" id="committers"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Recent commits</h2>
+      <div class="meta" id="commits-meta"></div>
+    </div>
+    <div class="commits" id="commits"></div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>How this was made</h2>
+      <div class="meta">methodology, sources, disclosure</div>
+    </div>
+    <div class="howmade">
+      <div class="how-block">
+        <h3>Merged side</h3>
+        <p>Shallow clone of <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git">torvalds/linux</a> with
+          <span class="mono">--shallow-since="2026-01-01"</span>, then
+          <span class="mono">git log --all --grep="Assisted-by:" -i</span>.
+          Each merged commit and each <span class="mono">Assisted-by:</span> line counted directly.
+          Denominator is <span class="mono">git log --since=2026-01-01 --oneline | wc -l</span> on the same clone.
+        </p>
+      </div>
+      <div class="how-block">
+        <h3>Submitted side</h3>
+        <p>Submissions to lkml and subsystem lists pulled with
+          <a href="https://public-inbox.org/INSTALL.html">lei</a> from
+          <a href="https://lore.kernel.org/all/">lore.kernel.org/all</a>:
+          <span class="mono">lei q -d mid -f mboxrd 'b:"Assisted-by:" AND d:20260101..'</span>.
+          Replies, cover letters (0/N), and bot accounts (Patchwork, kernel test robot, syzbot,
+          0day) are dropped. Patch series respins (v1, v2, v3) collapse to one entry per
+          (canonical subject, sender). The <span class="mono">Assisted-by:</span> line must appear
+          in non-quoted body text.
+        </p>
+      </div>
+      <div class="how-block">
+        <h3>Vendor / model / tool buckets</h3>
+        <p>Each tag string is parsed into <span class="mono">{vendor, model, tool}</span>.
+          Claude variants (Opus 4.5, 4.6, 4.7; Sonnet 4.5, 4.6) collapse cleanly. Wrappers
+          (Claude Code, Cursor, GitHub Copilot, OpenCode, Kiro, Cody) attribute the model to its
+          actual lab; the wrapper appears under "By tool" instead. Tags that do not parse
+          (free-text, joke names, <span class="mono">FOO:BAR.baz</span>) bucket as
+          <span class="mono">Unknown</span>.
+        </p>
+      </div>
+      <div class="how-block">
+        <h3>What the page does not show</h3>
+        <p>Merge rate (different humans use different tools for different patch types; the
+          ratio is not a model quality signal). Submitted-versus-merged percentages (same reason).
+          Authorial intent or motivation behind any tag string. Patches that landed without
+          disclosure (this page measures policy compliance, not actual AI usage). Share of
+          kernel-wide lines: GitHub's stats API refuses repos over 10k commits and computing
+          diffstats from the partial clone would take hours; the AI-side line counts stand
+          on their own.
+        </p>
+      </div>
+      <div class="how-block">
+        <h3>Reproducibility</h3>
+        <p>Source on GitHub:
+          <a href="https://github.com/snek-git/assisted-by">snek-git/assisted-by</a>.
+          Three small Python scripts:
+          <span class="mono">parse_commits.py</span> (merged side),
+          <span class="mono">parse_lei.py</span> (submitted side),
+          <span class="mono">build_data.py</span> (assembles the JSON payload).
+          <span class="mono">refresh.sh</span> runs the full pipeline end to end.
+        </p>
+      </div>
+      <div class="how-block disclose">
+        <h3>About this page</h3>
+        <p>Built with assistance from Anthropic's Claude (Opus 4.7, via Claude Code) by a
+          human collaborator. Tag string normalisation choices are judgement calls; the
+          parser source on GitHub is the authoritative answer for any "why was X bucketed as
+          Y?" question. The page deliberately avoids inferring motivation from tag content.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      Source: <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git">torvalds/linux</a>
+      mainline as of <span id="datestamp" class="mono"></span>.
+      Code: <a href="https://github.com/snek-git/assisted-by">github.com/snek-git/assisted-by</a>.
+    </div>
+    <div class="mono">git log --grep="Assisted-by:" --since="2026-01-01"</div>
+  </footer>
+</div>
+
+<script id="data" type="application/json">{"window":{"since":"2026-01-01"},"kernel_total_commits":26027,"total_commits":166,"total_tags":173,"total_insertions":3304,"total_deletions":602,"top_authors":[["Greg Kroah-Hartman",37],["Kexin Sun",28],["Arnaldo Carvalho de Melo",12],["Michael Bommarito",11],["Alex Williamson",6],["Harry Wentland",6],["Vineeth Pillai (Google)",6],["Kit Dallege",5],["G\u00fcnther Noack",4],["Rito Rhymes",4],["Josef Bacik",4],["Guenter Roeck",4],["Thomas Hellstr\u00f6m",4],["Ihor Solodrai",3],["Samuel Page",2]],"top_committers":[["Steve French",13],["Namhyung Kim",13],["Jakub Kicinski",10],["Alex Deucher",9],["Greg Kroah-Hartman",8],["Marc Kleine-Budde",7],["Steven Rostedt (Google)",7],["Alex Williamson",6],["Jonathan Corbet",6],["Helge Deller",5],["Johannes Berg",4],["Andrew Morton",4],["Martin K. Petersen",4],["Mark Brown",4],["Thomas Hellstr\u00f6m",4]],"by_date":{"2026-01-13":1,"2026-02-03":1,"2026-02-13":1,"2026-02-19":4,"2026-02-23":1,"2026-03-02":7,"2026-03-04":1,"2026-03-05":4,"2026-03-06":2,"2026-03-10":1,"2026-03-11":8,"2026-03-12":2,"2026-03-14":1,"2026-03-17":1,"2026-03-18":1,"2026-03-19":2,"2026-03-20":1,"2026-03-21":5,"2026-03-22":1,"2026-03-23":6,"2026-03-24":8,"2026-03-25":6,"2026-03-26":5,"2026-03-27":4,"2026-03-28":2,"2026-03-30":9,"2026-04-02":4,"2026-04-05":4,"2026-04-06":1,"2026-04-07":10,"2026-04-08":1,"2026-04-09":2,"2026-04-10":9,"2026-04-12":5,"2026-04-13":15,"2026-04-14":1,"2026-04-16":3,"2026-04-17":1,"2026-04-18":6,"2026-04-20":2,"2026-04-21":8,"2026-04-22":8,"2026-04-24":1},"by_date_lines":{"2026-01-13":{"ins":14,"del":10},"2026-02-03":{"ins":495,"del":8},"2026-02-13":{"ins":49,"del":0},"2026-02-19":{"ins":16,"del":13},"2026-02-23":{"ins":10,"del":5},"2026-03-02":{"ins":55,"del":12},"2026-03-04":{"ins":112,"del":0},"2026-03-05":{"ins":260,"del":30},"2026-03-06":{"ins":4,"del":1},"2026-03-10":{"ins":0,"del":4},"2026-03-11":{"ins":446,"del":122},"2026-03-12":{"ins":3,"del":3},"2026-03-14":{"ins":1,"del":3},"2026-03-17":{"ins":1,"del":1},"2026-03-18":{"ins":1,"del":1},"2026-03-19":{"ins":47,"del":7},"2026-03-20":{"ins":1,"del":1},"2026-03-21":{"ins":91,"del":13},"2026-03-22":{"ins":270,"del":0},"2026-03-23":{"ins":36,"del":15},"2026-03-24":{"ins":18,"del":20},"2026-03-25":{"ins":33,"del":2},"2026-03-26":{"ins":21,"del":10},"2026-03-27":{"ins":9,"del":8},"2026-03-28":{"ins":11,"del":8},"2026-03-30":{"ins":149,"del":53},"2026-04-02":{"ins":4,"del":3},"2026-04-05":{"ins":14,"del":14},"2026-04-06":{"ins":7,"del":0},"2026-04-07":{"ins":42,"del":18},"2026-04-08":{"ins":7,"del":1},"2026-04-09":{"ins":13,"del":1},"2026-04-10":{"ins":398,"del":13},"2026-04-12":{"ins":26,"del":2},"2026-04-13":{"ins":217,"del":8},"2026-04-14":{"ins":6,"del":1},"2026-04-16":{"ins":49,"del":7},"2026-04-17":{"ins":4,"del":4},"2026-04-18":{"ins":56,"del":21},"2026-04-20":{"ins":37,"del":3},"2026-04-21":{"ins":150,"del":106},"2026-04-22":{"ins":117,"del":50},"2026-04-24":{"ins":4,"del":0}},"commits":[{"sha":"51a8de6c50bf","subject":"fuse: reject oversized dirents in page cache","author":"Samuel Page","committer":"Christian Brauner","date":"2026-04-24","tags":["Bynario AI"]},{"sha":"c88eb7e8d839","subject":"net/rds: zero per-item info buffer before handing it to visitors","author":"Michael Bommarito","committer":"Jakub Kicinski","date":"2026-04-22","tags":["Claude:claude-opus-4-7"]},{"sha":"a55a60886e61","subject":"smb: client: scope end_of_dacl to CIFS_DEBUG2 use in parse_dacl","author":"Michael Bommarito","committer":"Steve French","date":"2026-04-22","tags":["Claude:claude-opus-4-7"]},{"sha":"2757ad3e4b6f","subject":"smb: client: require a full NFS mode SID before reading mode bits","author":"Michael Bommarito","committer":"Steve French","date":"2026-04-22","tags":["Claude:claude-opus-4-6"]},{"sha":"0a8cf165566b","subject":"smb: client: validate the whole DACL before rewriting it in cifsacl","author":"Michael Bommarito","committer":"Steve French","date":"2026-04-22","tags":["Claude:claude-opus-4-6","Codex:gpt-5-4"]},{"sha":"a58c5af19ff0","subject":"smb: client: fix OOB read in smb2_ioctl_query_info QUERY_INFO path","author":"Michael Bommarito","committer":"Steve French","date":"2026-04-22","tags":["Claude:claude-opus-4-6","Codex:gpt-5-4"]},{"sha":"a40c0e815962","subject":"fbdev: clps711x-fb: Request memory region for MMIO","author":"Amit Barzilai","committer":"Helge Deller","date":"2026-04-22","tags":["Claude:claude-sonnet-4-6"]},{"sha":"d2386d9e3eb4","subject":"fbdev: cobalt_lcdfb: Request memory region","author":"Amit Barzilai","committer":"Helge Deller","date":"2026-04-22","tags":["Claude:claude-sonnet-4-6"]},{"sha":"0c965d2784fb","subject":"LoongArch: Add spectre boundry for syscall dispatch table","author":"Greg Kroah-Hartman","committer":"Huacai Chen","date":"2026-04-22","tags":["gkh_clanker_2000"]},{"sha":"d0be8884f56b","subject":"io_uring: take page references for NOMMU pbuf_ring mmaps","author":"Greg Kroah-Hartman","committer":"Jens Axboe","date":"2026-04-21","tags":["gkh_clanker_t1000"]},{"sha":"30471982cd66","subject":"vfio/cdx: Consolidate MSI configured state onto cdx_irqs","author":"Alex Williamson","committer":"Alex Williamson","date":"2026-04-21","tags":["Claude:claude-opus-4-7"]},{"sha":"670e8864b1a2","subject":"vfio/cdx: Serialize VFIO_DEVICE_SET_IRQS with a per-device mutex","author":"Alex Williamson","committer":"Alex Williamson","date":"2026-04-21","tags":["Claude:claude-opus-4-7"]},{"sha":"b0eab97305ae","subject":"vfio/virtio: Use guard() for bar_mutex in legacy I/O","author":"Alex Williamson","committer":"Alex Williamson","date":"2026-04-21","tags":["Claude:claude-opus-4-6"]},{"sha":"b5b268cb7868","subject":"vfio/virtio: Use guard() for migf->lock where applicable","author":"Alex Williamson","committer":"Alex Williamson","date":"2026-04-21","tags":["Claude:claude-opus-4-6"]},{"sha":"61fcb51fc9d5","subject":"vfio/virtio: Use guard() for list_lock where applicable","author":"Alex Williamson","committer":"Alex Williamson","date":"2026-04-21","tags":["Claude:claude-opus-4-6"]},{"sha":"903570835f12","subject":"vfio/virtio: Convert list_lock from spinlock to mutex","author":"Alex Williamson","committer":"Alex Williamson","date":"2026-04-21","tags":["Claude:claude-opus-4-6"]},{"sha":"256e5254efff","subject":"kgdb: update outdated references to kgdb_wait()","author":"Kexin Sun","committer":"Daniel Thompson","date":"2026-04-21","tags":["unnamed:deepseek-v3.2 coccinelle"]},{"sha":"2fc87d37be1b","subject":"drm/nouveau: fix u32 overflow in pushbuf reloc bounds check","author":"Greg Kroah-Hartman","committer":"Danilo Krummrich","date":"2026-04-20","tags":["gkh_clanker_t1000"]},{"sha":"2091c6aa0df6","subject":"openvswitch: cap upcall PID array size and pre-size vport replies","author":"Weiming Shi","committer":"Jakub Kicinski","date":"2026-04-20","tags":["Claude:claude-opus-4-6"]},{"sha":"0cf004ffb61c","subject":"sctp: fix OOB write to userspace in sctp_getsockopt_peer_auth_chunks","author":"Michael Bommarito","committer":"Jakub Kicinski","date":"2026-04-18","tags":["Claude:claude-opus-4-6"]},{"sha":"1a303baa715e","subject":"ice: fix double-free of tx_buf skb","author":"Michal Schmidt","committer":"Jakub Kicinski","date":"2026-04-18","tags":["Claude:claude-4.6-opus-high Cursor"]},{"sha":"3e4e2ea2a781","subject":"ksmbd: validate num_aces and harden ACE walk in smb_inherit_dacl()","author":"Michael Bommarito","committer":"Steve French","date":"2026-04-18","tags":["Claude:claude-opus-4-6"]},{"sha":"d07b26f39246","subject":"ksmbd: require minimum ACE size in smb_check_perm_dacl()","author":"Michael Bommarito","committer":"Steve French","date":"2026-04-18","tags":["Claude:claude-opus-4-6","Codex:gpt-5-4"]},{"sha":"d6a6aa81eac2","subject":"ksmbd: validate response sizes in ipc_validate_msg()","author":"Michael Bommarito","committer":"Steve French","date":"2026-04-18","tags":["Claude:claude-opus-4-6","Codex:gpt-5-4"]},{"sha":"6551300dc452","subject":"smb: server: fix active_num_conn leak on transport allocation failure","author":"Michael Bommarito","committer":"Steve French","date":"2026-04-18","tags":["Claude:claude-opus-4-6","Codex:gpt-5-4"]},{"sha":"0b6c8e21157f","subject":"parisc: update outdated comments for renamed ccio_alloc_consistent()","author":"Kexin Sun","committer":"Helge Deller","date":"2026-04-17","tags":["unnamed:deepseek-v3.2 coccinelle"]},{"sha":"0ca0485e4b2e","subject":"fs/ntfs3: validate rec->used in journal-replay file record check","author":"Greg Kroah-Hartman","committer":"Konstantin Komarov","date":"2026-04-16","tags":["gregkh_clanker_t1000"]},{"sha":"890d56964c62","subject":"9p: document missing enum values in kernel-doc comments","author":"Kit Dallege","committer":"Dominique Martinet","date":"2026-04-16","tags":["Claude:claude-opus-4-6"]},{"sha":"0fd76f1be20d","subject":"9p: fix memory leak in v9fs_init_fs_context error path","author":"Sasha Levin","committer":"Dominique Martinet","date":"2026-04-16","tags":["Claude:claude-opus-4-6"]},{"sha":"600dc40554dc","subject":"net: usb: cdc-phonet: fix skb frags[] overflow in rx_complete()","author":"Greg Kroah-Hartman","committer":"Paolo Abeni","date":"2026-04-14","tags":["gregkh_clanker_t1000"]},{"sha":"c7fe4e5665b7","subject":"perf test: Fix inet_pton probe failure and unroll call graph","author":"Ian Rogers","committer":"Namhyung Kim","date":"2026-04-13","tags":["Gemini:gemini-3.1-pro-preview"]},{"sha":"dff56bdafae8","subject":"perf header: Add sanity checks to HEADER_BPF_BTF processing","author":"Arnaldo Carvalho de Melo","committer":"Namhyung Kim","date":"2026-04-13","tags":["Claude Code:claude-opus-4-6"]},{"sha":"66af7e9b05c4","subject":"perf header: Sanity check HEADER_BPF_PROG_INFO","author":"Arnaldo Carvalho de Melo","committer":"Namhyung Kim","date":"2026-04-13","tags":["Claude Code:claude-opus-4-6"]},{"sha":"f5722a6b6a44","subject":"perf header: Sanity check HEADER_PMU_CAPS","author":"Arnaldo Carvalho de Melo","committer":"Namhyung Kim","date":"2026-04-13","tags":["Claude Code:claude-opus-4-6"]},{"sha":"47c68eb15ae9","subject":"perf header: Sanity check HEADER_HYBRID_TOPOLOGY","author":"Arnaldo Carvalho de Melo","committer":"Namhyung Kim","date":"2026-04-13","tags":["Claude Code:claude-opus-4-6"]},{"sha":"110a661708a6","subject":"perf header: Sanity check HEADER_CACHE","author":"Arnaldo Carvalho de Melo","committer":"Namhyung Kim","date":"2026-04-13","tags":["Claude Code:claude-opus-4-6"]},{"sha":"6830e20c92e7","subject":"perf header: Sanity check HEADER_GROUP_DESC","author":"Arnaldo Carvalho de Melo","committer":"Namhyung Kim","date":"2026-04-13","tags":["Claude Code:claude-opus-4-6"]},{"sha":"f613a6d694aa","subject":"perf header: Sanity check HEADER_PMU_MAPPINGS","author":"Arnaldo Carvalho de Melo","committer":"Namhyung Kim","date":"2026-04-13","tags":["Claude Code:claude-opus-4-6"]},{"sha":"a881fc56038a","subject":"perf header: Sanity check HEADER_MEM_TOPOLOGY","author":"Arnaldo Carvalho de Melo","committer":"Namhyung Kim","date":"2026-04-13","tags":["Claude Code:claude-opus-4-6"]},{"sha":"4ba223016b0b","subject":"perf header: Sanity check HEADER_NUMA_TOPOLOGY","author":"Arnaldo Carvalho de Melo","committer":"Namhyung Kim","date":"2026-04-13","tags":["Claude Code:claude-opus-4-6"]},{"sha":"22a2e2b29217","subject":"perf header: Sanity check HEADER_CPU_TOPOLOGY","author":"Arnaldo Carvalho de Melo","committer":"Namhyung Kim","date":"2026-04-13","tags":["Claude Code:claude-opus-4-6"]},{"sha":"376ce5a9f706","subject":"perf header: Sanity check HEADER_NRCPUS and HEADER_CPU_DOMAIN_INFO","author":"Arnaldo Carvalho de Melo","committer":"Namhyung Kim","date":"2026-04-13","tags":["Claude Code:claude-opus-4-6"]},{"sha":"f823d7efb81c","subject":"perf header: Validate nr_domains when reading HEADER_CPU_DOMAIN_INFO","author":"Arnaldo Carvalho de Melo","committer":"Namhyung Kim","date":"2026-04-13","tags":["Claude Code:claude-opus-4-6"]},{"sha":"8b0c25528cb6","subject":"bnge: return after auxiliary_device_uninit() in error path","author":"Greg Kroah-Hartman","committer":"Jakub Kicinski","date":"2026-04-13","tags":["gregkh_clanker_t1000"]},{"sha":"69c02ffde6ed","subject":"HID: core: clamp report_size in s32ton() to avoid undefined shift","author":"Greg Kroah-Hartman","committer":"Jiri Kosina","date":"2026-04-13","tags":["gregkh_clanker_t1000"]},{"sha":"ad0057fb9121","subject":"ksmbd: fix mechToken leak when SPNEGO decode fails after token alloc","author":"Greg Kroah-Hartman","committer":"Steve French","date":"2026-04-12","tags":["gregkh_clanker_t1000"]},{"sha":"53370cf90907","subject":"ksmbd: require 3 sub-authorities before reading sub_auth[2]","author":"Greg Kroah-Hartman","committer":"Steve French","date":"2026-04-12","tags":["gregkh_clanker_t1000"]},{"sha":"66751841212c","subject":"ksmbd: validate EaNameLength in smb2_get_ea()","author":"Greg Kroah-Hartman","committer":"Steve French","date":"2026-04-12","tags":["gregkh_clanker_t1000"]},{"sha":"46ce8be2ced3","subject":"NFC: digital: Bounds check NFC-A cascade depth in SDD response handler","author":"Greg Kroah-Hartman","committer":"Jakub Kicinski","date":"2026-04-12","tags":["gregkh_clanker_t1000"]},{"sha":"bd39fc81340a","subject":"alpha: Define pgprot_modify to silence tautological comparison warnings","author":"Matt Turner","committer":"Magnus Lindholm","date":"2026-04-12","tags":["Claude:claude-opus-4-6"]},{"sha":"20ae6d76e381","subject":"selftests: net: add bridge STP mode selection test","author":"Andy Roulin","committer":"Jakub Kicinski","date":"2026-04-10","tags":["Claude:claude-opus-4-6"]},{"sha":"54fc83a17285","subject":"net: bridge: add stp_mode attribute for STP mode selection","author":"Andy Roulin","committer":"Jakub Kicinski","date":"2026-04-10","tags":["Claude:claude-opus-4-6"]},{"sha":"48a428215782","subject":"efi/capsule-loader: fix incorrect sizeof in phys array reallocation","author":"Thomas Huth","committer":"Ard Biesheuvel","date":"2026-04-10","tags":["Claude:claude-sonnet-4-5"]},{"sha":"a31e4518bec7","subject":"fbdev: udlfb: avoid divide-by-zero on FBIOPUT_VSCREENINFO","author":"Greg Kroah-Hartman","committer":"Helge Deller","date":"2026-04-10","tags":["gregkh_clanker_t1000"]},{"sha":"8f98b81fe011","subject":"fbdev: tdfxfb: avoid divide-by-zero on FBIOPUT_VSCREENINFO","author":"Greg Kroah-Hartman","committer":"Helge Deller","date":"2026-04-10","tags":["gregkh_clanker_t1000"]},{"sha":"07704bbf36f5","subject":"ALSA: fireworks: bound device-supplied status before string array lookup","author":"Greg Kroah-Hartman","committer":"Takashi Iwai","date":"2026-04-10","tags":["gregkh_clanker_t1000"]},{"sha":"48bd344e1040","subject":"ALSA: usx2y: us144mkii: fix NULL deref on missing interface 0","author":"Greg Kroah-Hartman","committer":"Takashi Iwai","date":"2026-04-10","tags":["gregkh_clanker_t1000"]},{"sha":"fdfdd01e801f","subject":"xen/swiotlb: fix stale reference to swiotlb_unmap_page()","author":"Kexin Sun","committer":"Juergen Gross","date":"2026-04-10","tags":["unnamed:deepseek-v3.2 coccinelle"]},{"sha":"6522fe5c1b00","subject":"um: Disable GCOV_PROFILE_ALL on 32-bit UML with Clang 20/21","author":"Kees Cook","committer":"Johannes Berg","date":"2026-04-10","tags":["Claude:claude-opus-4-6[1m]"]},{"sha":"a535a9217ca3","subject":"can: raw: fix ro->uniq use-after-free in raw_rcv()","author":"Samuel Page","committer":"Marc Kleine-Budde","date":"2026-04-09","tags":["Bynario AI"]},{"sha":"1badfc431922","subject":"HID: alps: fix NULL pointer dereference in alps_raw_event()","author":"Greg Kroah-Hartman","committer":"Jiri Kosina","date":"2026-04-09","tags":["gregkh_clanker_t1000"]},{"sha":"91e901c65b4d","subject":"um: drivers: call kernel_strrchr() explicitly in cow_user.c","author":"Michael Bommarito","committer":"Johannes Berg","date":"2026-04-08","tags":["Claude:claude-opus-4-6","Codex:gpt-5-4"]},{"sha":"3df690bba28e","subject":"smb: client: fix OOB reads parsing symlink error response","author":"Greg Kroah-Hartman","committer":"Steve French","date":"2026-04-07","tags":["gregkh_clanker_t1000"]},{"sha":"3d8b9d06bd3a","subject":"smb: client: fix off-by-8 bounds check in check_wsl_eas()","author":"Greg Kroah-Hartman","committer":"Steve French","date":"2026-04-07","tags":["gregkh_clanker_t1000"]},{"sha":"3457a5ccacd3","subject":"landlock: Document fallocate(2) as another truncation corner case","author":"G\u00fcnther Noack","committer":"Micka\u00ebl Sala\u00fcn","date":"2026-04-07","tags":["Gemini-CLI:gemini-3.1"]},{"sha":"82b915051d32","subject":"tick/nohz: Fix inverted return value in check_tick_dependency() fast path","author":"Josh Snyder","committer":"Thomas Gleixner","date":"2026-04-07","tags":["Claude:claude-opus-4-6"]},{"sha":"8f993d30b95d","subject":"usb: gadget: f_ncm: validate minimum block_len in ncm_unwrap_ntb()","author":"Greg Kroah-Hartman","committer":"Greg Kroah-Hartman","date":"2026-04-07","tags":["gregkh_clanker_t1000"]},{"sha":"c088d5dd2fff","subject":"usb: gadget: f_phonet: fix skb frags[] overflow in pn_rx_complete()","author":"Greg Kroah-Hartman","committer":"Greg Kroah-Hartman","date":"2026-04-07","tags":["gregkh_clanker_t1000"]},{"sha":"f880aac8a57e","subject":"usb: gadget: renesas_usb3: validate endpoint index in standard request handlers","author":"Greg Kroah-Hartman","committer":"Greg Kroah-Hartman","date":"2026-04-07","tags":["gregkh_clanker_t1000"]},{"sha":"d10119968d0e","subject":"xfrm_user: fix info leak in build_report()","author":"Greg Kroah-Hartman","committer":"Steffen Klassert","date":"2026-04-07","tags":["gregkh_clanker_t1000"]},{"sha":"1beb76b2053b","subject":"xfrm_user: fix info leak in build_mapping()","author":"Greg Kroah-Hartman","committer":"Steffen Klassert","date":"2026-04-07","tags":["gregkh_clanker_t1000"]},{"sha":"c6e80201e057","subject":"sched: Use u64 for bandwidth ratio calculations","author":"Joseph Salisbury","committer":"Peter Zijlstra","date":"2026-04-07","tags":["Codex:GPT-5"]},{"sha":"4821d563cd7f","subject":"ixgbevf: add missing negotiate_features op to Hyper-V ops table","author":"Michal Schmidt","committer":"Tony Nguyen","date":"2026-04-06","tags":["Claude:claude-4.6-opus-high Cursor"]},{"sha":"3f74e30d857b","subject":"drivers/base/memory: fix stale reference to memory_block_add_nid()","author":"Kexin Sun","committer":"Andrew Morton","date":"2026-04-05","tags":["unnamed:deepseek-v3.2 coccinelle"]},{"sha":"f2a48f8fb564","subject":"mm: update outdated comments for removed scan_swap_map_slots()","author":"Kexin Sun","committer":"Andrew Morton","date":"2026-04-05","tags":["unnamed:deepseek-v3.2 coccinelle"]},{"sha":"3cb0dc0d0eab","subject":"mm: vmalloc: update outdated comment for renamed vread()","author":"Kexin Sun","committer":"Andrew Morton","date":"2026-04-05","tags":["unnamed:deepseek-v3.2 coccinelle"]},{"sha":"d4e981b28045","subject":"kasan: update outdated comment","author":"Kexin Sun","committer":"Andrew Morton","date":"2026-04-05","tags":["unnamed:deepseek-v3.2 coccinelle"]},{"sha":"fcc25a291fbd","subject":"amd-pstate: Update cppc_req_cached in fast_switch case","author":"Gautham R. Shenoy","committer":"Mario Limonciello (AMD)","date":"2026-04-02","tags":["Claude:claude-opus-4.6 review-prompts/linux"]},{"sha":"beda3b363546","subject":"amd-pstate: Fix memory leak in amd_pstate_epp_cpu_init()","author":"Gautham R. Shenoy","committer":"Mario Limonciello (AMD)","date":"2026-04-02","tags":["Claude:claude-opus-4.6 review-prompts/linux"]},{"sha":"e4cabc973133","subject":"drivers/base/memory: fix stale reference to memory_block_add_nid()","author":"Kexin Sun","committer":"Greg Kroah-Hartman","date":"2026-04-02","tags":["unnamed:deepseek-v3.2 coccinelle"]},{"sha":"f8995c2df519","subject":"drm/ioc32: stop speculation on the drm_compat_ioctl path","author":"Greg Kroah-Hartman","committer":"Thomas Zimmermann","date":"2026-04-02","tags":["gkh_clanker_2000"]},{"sha":"4c3aeb11d504","subject":"drm/amd/display: Don't set 4to1MPC config dynamically","author":"Harry Wentland","committer":"Alex Deucher","date":"2026-03-30","tags":["Claude:claude-sonnet-4.5"]},{"sha":"606f6b171326","subject":"drm/amd/display: Merge pipes for validate","author":"Harry Wentland","committer":"Alex Deucher","date":"2026-03-30","tags":["Claude:claude-sonnet-4.5"]},{"sha":"adc09d7fbbb9","subject":"RDMA: Remove outdated comments referencing hfi1_destroy_qp()","author":"Kexin Sun","committer":"Leon Romanovsky","date":"2026-03-30","tags":["unnamed:deepseek-v3.2 coccinelle"]},{"sha":"b247ed6f60bd","subject":"RDMA/uverbs: Update outdated reference to remove_commit_idr_uobject()","author":"Kexin Sun","committer":"Leon Romanovsky","date":"2026-03-30","tags":["unnamed:deepseek-v3.2 coccinelle"]},{"sha":"8545d9bc4bd0","subject":"scripts/checkpatch: add Assisted-by: tag validation","author":"Harry Wentland","committer":"Jonathan Corbet","date":"2026-03-30","tags":["AGENT_NAME:MODEL_VERSION [TOOL1] [TOOL2]","Claude:claude-opus-4.6"]},{"sha":"fdb19f4ede3b","subject":"tty: atmel_serial: update outdated reference to atmel_tasklet_func()","author":"Kexin Sun","committer":"Greg Kroah-Hartman","date":"2026-03-30","tags":["unnamed:deepseek-v3.2 coccinelle"]},{"sha":"091ef6f503f4","subject":"usb: gadget: udc: update outdated comment for renamed usb_gadget_udc_start()","author":"Kexin Sun","committer":"Greg Kroah-Hartman","date":"2026-03-30","tags":["unnamed:deepseek-v3.2 coccinelle"]},{"sha":"7a4790b1a2c9","subject":"arm64: dts: qcom: sdm845-oneplus: Describe Wi-Fi/BT properly","author":"David Heidelberg","committer":"Bjorn Andersson","date":"2026-03-30","tags":["Claude:claude-opus-4.6"]},{"sha":"0a9c87156639","subject":"arm64: dts: qcom: sdm845-google: Describe Wi-Fi/BT properly","author":"David Heidelberg","committer":"Bjorn Andersson","date":"2026-03-30","tags":["Claude:claude-opus-4.6"]},{"sha":"ad8363ebf851","subject":"cpufreq: Use trace_call__##name() at guarded tracepoint call sites","author":"Vineeth Pillai (Google)","committer":"Steven Rostedt (Google)","date":"2026-03-28","tags":["Claude:claude-sonnet-4-6"]},{"sha":"48b8814e25d0","subject":"s390/syscalls: Add spectre boundary for syscall dispatch table","author":"Greg Kroah-Hartman","committer":"Vasily Gorbik","date":"2026-03-28","tags":["gkh_clanker_2000"]},{"sha":"5b44c3757ca3","subject":"scsi: iscsi_tcp: update outdated comment for renamed iscsi_conn_set_callbacks()","author":"Kexin Sun","committer":"Martin K. Petersen","date":"2026-03-27","tags":["unnamed:deepseek-v3.2 coccinelle"]},{"sha":"3d1a36afa49d","subject":"scsi: lpfc: Update outdated comment for renamed lpfc_freenode()","author":"Kexin Sun","committer":"Martin K. Petersen","date":"2026-03-27","tags":["unnamed:deepseek-v3.2 coccinelle"]},{"sha":"a8eebf9699d6","subject":"nvme-pci: add NVME_QUIRK_DISABLE_WRITE_ZEROES for Kingston OM3SGP4","author":"Robert Beckett","committer":"Keith Busch","date":"2026-03-27","tags":["claude-opus-4-6-v1"]},{"sha":"40f0496b617b","subject":"nvme: respect NVME_QUIRK_DISABLE_WRITE_ZEROES when wzsl is set","author":"Robert Beckett","committer":"Keith Busch","date":"2026-03-27","tags":["claude-opus-4-6-v1"]},{"sha":"d7447f2dce46","subject":"btrfs: Use trace_call__##name() at guarded tracepoint call sites","author":"Vineeth Pillai (Google)","committer":"Steven Rostedt (Google)","date":"2026-03-26","tags":["Claude:claude-sonnet-4-6"]},{"sha":"47f570fcfd5a","subject":"spi: Use trace_call__##name() at guarded tracepoint call sites","author":"Vineeth Pillai (Google)","committer":"Steven Rostedt (Google)","date":"2026-03-26","tags":["Claude:claude-sonnet-4-6"]},{"sha":"fa9ac2fdb605","subject":"i2c: Use trace_call__##name() at guarded tracepoint call sites","author":"Vineeth Pillai (Google)","committer":"Steven Rostedt (Google)","date":"2026-03-26","tags":["Claude:claude-sonnet-4-6"]},{"sha":"7b1c2d754794","subject":"kernel: Use trace_call__##name() at guarded tracepoint call sites","author":"Vineeth Pillai (Google)","committer":"Steven Rostedt (Google)","date":"2026-03-26","tags":["Claude:claude-sonnet-4-6"]},{"sha":"677a3d82b640","subject":"tracepoint: Add trace_call__##name() API","author":"Vineeth Pillai (Google)","committer":"Steven Rostedt (Google)","date":"2026-03-26","tags":["Claude:claude-sonnet-4-6"]},{"sha":"c464407ada06","subject":"docs: allow long links to wrap per character to prevent page overflow","author":"Rito Rhymes","committer":"Jonathan Corbet","date":"2026-03-25","tags":["Codex:GPT-5.4"]},{"sha":"127bdd9f12ae","subject":"docs: allow long table reference links to wrap and prevent overflow","author":"Rito Rhymes","committer":"Jonathan Corbet","date":"2026-03-25","tags":["Codex:GPT-5.4"]},{"sha":"3aff388bc4e8","subject":"docs: contain horizontal overflow in C API descriptions","author":"Rito Rhymes","committer":"Jonathan Corbet","date":"2026-03-25","tags":["Codex:GPT-5.4"]},{"sha":"f2679ac77389","subject":"docs: allow inline literals in paragraphs to wrap to prevent overflow","author":"Rito Rhymes","committer":"Jonathan Corbet","date":"2026-03-25","tags":["Codex:GPT-5.4"]},{"sha":"c0128c7157d6","subject":"i2c: s3c24xx: check the size of the SMBUS message before using it","author":"Greg Kroah-Hartman","committer":"Andi Shyti","date":"2026-03-25","tags":["gkh_clanker_2000"]},{"sha":"67cb50aee082","subject":"iommufd: update outdated comment for renamed iommufd_hw_pagetable_alloc()","author":"Kexin Sun","committer":"Jason Gunthorpe","date":"2026-03-25","tags":["unnamed:deepseek-v3.2 coccinelle"]},{"sha":"c291cfac49a6","subject":"entry: Add missing kernel-doc for arch_ptrace_report_syscall functions","author":"Kit Dallege","committer":"Thomas Gleixner","date":"2026-03-24","tags":["Claude:claude-opus-4-6"]},{"sha":"70b5f3f7822a","subject":"bpf: update outdated comment for refactored btf_check_kfunc_arg_match()","author":"Kexin Sun","committer":"Alexei Starovoitov","date":"2026-03-24","tags":["unnamed:deepseek-v3.2 coccinelle"]},{"sha":"762a3847a05c","subject":"spi: pxa2xx: update outdated reference to pump_transfers()","author":"Kexin Sun","committer":"Mark Brown","date":"2026-03-24","tags":["unnamed:deepseek-v3.2 coccinelle"]},{"sha":"3e839947b842","subject":"ASoC: update outdated comments for removed snd_soc_new_pcms()","author":"Kexin Sun","committer":"Mark Brown","date":"2026-03-24","tags":["unnamed:deepseek-v3.2 coccinelle"]},{"sha":"ab2fcdd70219","subject":"drm/amdgpu: update outdated comment for renamed amdgpu_fence_driver_init()","author":"Kexin Sun","committer":"Alex Deucher","date":"2026-03-24","tags":["unnamed:deepseek-v3.2 coccinelle"]},{"sha":"94c7e9669be1","subject":"drm/amd/display: update outdated comments for renamed vblank_control_worker()","author":"Kexin Sun","committer":"Alex Deucher","date":"2026-03-24","tags":["unnamed:deepseek-v3.2 coccinelle"]},{"sha":"a4b908c89d88","subject":"net: phy: update outdated comment for removed phy_package_read/write()","author":"Kexin Sun","committer":"Paolo Abeni","date":"2026-03-24","tags":["unnamed:deepseek-v3.2 coccinelle"]},{"sha":"88c07dff9f6d","subject":"hv_sock: update outdated comment for renamed vsock_stream_recvmsg()","author":"Kexin Sun","committer":"Paolo Abeni","date":"2026-03-24","tags":["unnamed:deepseek-v3.2 coccinelle"]},{"sha":"2d300ebfc411","subject":"drm/amdgpu: fix strsep() corrupting lockup_timeout on multi-GPU (v3)","author":"Ruijing Dong","committer":"Alex Deucher","date":"2026-03-23","tags":["Claude:claude-opus-4-6"]},{"sha":"a37fb5166be9","subject":"spi: pl022: update outdated references to pump_transfers()","author":"Kexin Sun","committer":"Mark Brown","date":"2026-03-23","tags":["unnamed:deepseek-v3.2 coccinelle"]},{"sha":"94d79f51efec","subject":"drm/amdgpu: fix strsep() corrupting lockup_timeout on multi-GPU (v3)","author":"Ruijing Dong","committer":"Alex Deucher","date":"2026-03-23","tags":["Claude:claude-opus-4-6"]},{"sha":"d57fe7b02072","subject":"ASoC: generic: update outdated comment for removed soc_bind_dai_link()","author":"Kexin Sun","committer":"Mark Brown","date":"2026-03-23","tags":["unnamed:deepseek-v3.2 coccinelle"]},{"sha":"7b52b262f8a8","subject":"bitops: fix kernel-doc parameter name for parity8()","author":"Kit Dallege","committer":"Yury Norov","date":"2026-03-23","tags":["Claude <noreply@anthropic.com>"]},{"sha":"4c68d150246d","subject":"signal: update outdated comment for removed freezable_schedule()","author":"Kexin Sun","committer":"Christian Brauner","date":"2026-03-23","tags":["unnamed:deepseek-v3.2 coccinelle"]},{"sha":"a0529bbe70d7","subject":"docs: pt_BR: translate process/1.Intro.rst","author":"Daniel Castro","committer":"Jonathan Corbet","date":"2026-03-22","tags":["Claude:claude-opus-4-6"]},{"sha":"c7f27a8ab9f2","subject":"workqueue: Fix false positive stall reports","author":"Song Liu","committer":"Tejun Heo","date":"2026-03-21","tags":["claude-code:claude-opus-4-6"]},{"sha":"a1e5c46eaed3","subject":"selftests/bpf: Add tests for bpf_throw lock leak from subprogs","author":"Ihor Solodrai","committer":"Alexei Starovoitov","date":"2026-03-21","tags":["Claude:claude-opus-4-6"]},{"sha":"6c2128505f61","subject":"bpf: Fix exception exit lock checking for subprogs","author":"Ihor Solodrai","committer":"Alexei Starovoitov","date":"2026-03-21","tags":["Claude:claude-opus-4-6"]},{"sha":"2ef3bac16fb5","subject":"crypto: krb5enc - fix sleepable flag handling in encrypt dispatch","author":"Wesley Atwell","committer":"Herbert Xu","date":"2026-03-21","tags":["Codex:GPT-5"]},{"sha":"e0ce97f781c7","subject":"crypto: simd - reject compat registrations without __ prefixes","author":"Wesley Atwell","committer":"Herbert Xu","date":"2026-03-21","tags":["Codex:GPT-5"]},{"sha":"d9794c0600f9","subject":"dma-mapping: fix false kernel-doc comment marker","author":"Kit Dallege","committer":"Marek Szyprowski","date":"2026-03-20","tags":["Claude:claude-opus-4-6"]},{"sha":"1333eee56cdf","subject":"scsi: target: tcm_loop: Drain commands in target_reset handler","author":"Josef Bacik","committer":"Martin K. Petersen","date":"2026-03-19","tags":["Claude:claude-opus-4-6"]},{"sha":"7a9f448d4412","subject":"scsi: ses: Handle positive SCSI error from ses_recv_diag()","author":"Greg Kroah-Hartman","committer":"Martin K. Petersen","date":"2026-03-19","tags":["gkh_clanker_2000"]},{"sha":"deb353d9bb00","subject":"wifi: wlcore: Return -ENOMEM instead of -EAGAIN if there is not enough headroom","author":"Guenter Roeck","committer":"Johannes Berg","date":"2026-03-18","tags":["Gemini:gemini-3.1-pro"]},{"sha":"2727d44f5d5b","subject":"writeback: fix kernel-doc function name mismatch for wb_put_many()","author":"Kit Dallege","committer":"Christian Brauner","date":"2026-03-17","tags":["Claude:claude-opus-4-6"]},{"sha":"5c52607c43c3","subject":"crypto: ccp - Fix leaking the same page twice","author":"Guenter Roeck","committer":"Herbert Xu","date":"2026-03-14","tags":["Gemini:gemini-3.1-pro"]},{"sha":"8f921f610054","subject":"netlink: update outdated comment","author":"Kexin Sun","committer":"Jakub Kicinski","date":"2026-03-12","tags":["unnamed:deepseek-v3.2 coccinelle"]},{"sha":"886d56099d94","subject":"qlcnic: update outdated comment","author":"Kexin Sun","committer":"Jakub Kicinski","date":"2026-03-12","tags":["unnamed:deepseek-v3.2 coccinelle"]},{"sha":"45dba8011efa","subject":"usb: misc: uss720: properly clean up reference in uss720_probe()","author":"Greg Kroah-Hartman","committer":"Greg Kroah-Hartman","date":"2026-03-11","tags":["gkh_clanker_2000"]},{"sha":"f3d349484856","subject":"drm/amd/display: Add COLOR_ENCODING/COLOR_RANGE to overlay planes","author":"Harry Wentland","committer":"Alex Deucher","date":"2026-03-11","tags":["Claude: claude-sonnet-4.5"]},{"sha":"63fff551318f","subject":"drm/amd/display: Add NV12/P010 formats to primary plane","author":"Harry Wentland","committer":"Alex Deucher","date":"2026-03-11","tags":["Claude: claude-sonnet-4.5"]},{"sha":"eb51c5a103f6","subject":"drm/amd/display: Set chroma taps to 1 if luma taps are 1","author":"Harry Wentland","committer":"Alex Deucher","date":"2026-03-11","tags":["Claude: claude-sonnet-4.5"]},{"sha":"f7093ebf612f","subject":"drm/xe/userptr: Defer Waiting for TLB invalidation to the second pass if possible","author":"Thomas Hellstr\u00f6m","committer":"Thomas Hellstr\u00f6m","date":"2026-03-11","tags":["GitHub Copilot:claude-sonnet-4.6"]},{"sha":"400ee0f4f1f0","subject":"drm/xe: Split TLB invalidation into submit and wait steps","author":"Thomas Hellstr\u00f6m","committer":"Thomas Hellstr\u00f6m","date":"2026-03-11","tags":["GitHub Copilot:claude-sonnet-4.6"]},{"sha":"18c4e536959e","subject":"drm/xe/userptr: Convert invalidation to two-pass MMU notifier","author":"Thomas Hellstr\u00f6m","committer":"Thomas Hellstr\u00f6m","date":"2026-03-11","tags":["GitHub Copilot:claude-sonnet-4.6"]},{"sha":"7aba71dbc416","subject":"mm/mmu_notifier: Allow two-pass struct mmu_interval_notifiers","author":"Thomas Hellstr\u00f6m","committer":"Thomas Hellstr\u00f6m","date":"2026-03-11","tags":["GitHub Copilot:claude-sonnet-4.6 # Documentation only."]},{"sha":"e94eaef11142","subject":"e1000/e1000e: Fix leak in DMA error cleanup","author":"Matt Vollrath","committer":"Tony Nguyen","date":"2026-03-10","tags":["Claude:claude-4.6-opus"]},{"sha":"457965c13f08","subject":"tracing: Add NULL pointer check to trigger_data_free()","author":"Guenter Roeck","committer":"Steven Rostedt (Google)","date":"2026-03-06","tags":["Gemini:gemini-3.1-pro"]},{"sha":"ee0e6e69a772","subject":"ata: libata-eh: Fix detection of deferred qc timeouts","author":"Guenter Roeck","committer":"Niklas Cassel","date":"2026-03-06","tags":["Gemini:gemini-3.1-pro"]},{"sha":"e597a809a2b9","subject":"drm/vc4: platform_get_irq_byname() returns an int","author":"Greg Kroah-Hartman","committer":"Ma\u00edra Canal","date":"2026-03-05","tags":["gkh_clanker_2000"]},{"sha":"fefeeec61235","subject":"selftests/bpf: Add test for btf__add_btf() with split BTF sources","author":"Josef Bacik","committer":"Andrii Nakryiko","date":"2026-03-05","tags":["Claude:claude-opus-4-6"]},{"sha":"d8d5c0151148","subject":"bpftool: Support merging multiple module BTFs in btf dump","author":"Josef Bacik","committer":"Andrii Nakryiko","date":"2026-03-05","tags":["Claude:claude-opus-4-6"]},{"sha":"be872ccf3709","subject":"libbpf: Support appending split BTF in btf__add_btf()","author":"Josef Bacik","committer":"Andrii Nakryiko","date":"2026-03-05","tags":["Claude:claude-opus-4-6"]},{"sha":"724b4a12116f","subject":"drm/xe: Add missing kernel docs in xe_exec_queue.c","author":"Niranjana Vishwanathapura","committer":"Niranjana Vishwanathapura","date":"2026-03-04","tags":["Claude 4.5 Sonnet"]},{"sha":"952caa5da10b","subject":"can: usb: f81604: correctly anchor the urb in the read bulk callback","author":"Greg Kroah-Hartman","committer":"Marc Kleine-Budde","date":"2026-03-02","tags":["gkh_clanker_2000"]},{"sha":"51f94780720f","subject":"can: usb: f81604: handle bulk write errors properly","author":"Greg Kroah-Hartman","committer":"Marc Kleine-Budde","date":"2026-03-02","tags":["gkh_clanker_2000"]},{"sha":"7299b1b39a25","subject":"can: usb: f81604: handle short interrupt urb messages properly","author":"Greg Kroah-Hartman","committer":"Marc Kleine-Budde","date":"2026-03-02","tags":["gkh_clanker_2000"]},{"sha":"5eaad4f76826","subject":"can: usb: etas_es58x: correctly anchor the urb in the read bulk callback","author":"Greg Kroah-Hartman","committer":"Marc Kleine-Budde","date":"2026-03-02","tags":["gkh_clanker_2000"]},{"sha":"1e446fd0582a","subject":"can: ucan: Fix infinite loop from zero-length messages","author":"Greg Kroah-Hartman","committer":"Marc Kleine-Budde","date":"2026-03-02","tags":["gkh_clanker_2000"]},{"sha":"38a01c9700b0","subject":"can: ems_usb: ems_usb_read_bulk_callback(): check the proper length of a message","author":"Greg Kroah-Hartman","committer":"Marc Kleine-Budde","date":"2026-03-02","tags":["gkh_clanker_2000"]},{"sha":"b8a57b979a7c","subject":"wifi: mac80211: update outdated comment","author":"Kexin Sun","committer":"Johannes Berg","date":"2026-03-02","tags":["unnamed:deepseek-v3.2 coccinelle"]},{"sha":"f0109b9d3e1e","subject":"staging: rtl8723bs: properly validate the data in rtw_get_ie_ex()","author":"Greg Kroah-Hartman","committer":"Greg Kroah-Hartman","date":"2026-02-23","tags":["gkh_clanker_2000"]},{"sha":"ecfa6f34492c","subject":"HID: Add HID_CLAIMED_INPUT guards in raw_event callbacks missing them","author":"Greg Kroah-Hartman","committer":"Benjamin Tissoires","date":"2026-02-19","tags":["gkh_clanker_2000"]},{"sha":"2bad24c17742","subject":"HID: asus: avoid memory leak in asus_report_fixup()","author":"G\u00fcnther Noack","committer":"Benjamin Tissoires","date":"2026-02-19","tags":["Gemini-CLI:Google Gemini 3"]},{"sha":"91e8c6e601bd","subject":"HID: magicmouse: avoid memory leak in magicmouse_report_fixup()","author":"G\u00fcnther Noack","committer":"Benjamin Tissoires","date":"2026-02-19","tags":["Gemini-CLI:Google Gemini 3"]},{"sha":"239c15116d80","subject":"HID: apple: avoid memory leak in apple_report_fixup()","author":"G\u00fcnther Noack","committer":"Benjamin Tissoires","date":"2026-02-19","tags":["Gemini-CLI:Google Gemini 3"]},{"sha":"0b82cc331d2e","subject":"selftests/sched_ext: Fix rt_stall flaky failure","author":"Ihor Solodrai","committer":"Tejun Heo","date":"2026-02-13","tags":["claude-opus-4-6-v1"]},{"sha":"5341c98450df","subject":"btrfs: tests: add unit tests for pending extent walking functions","author":"Boris Burkov","committer":"David Sterba","date":"2026-02-03","tags":["Claude:claude-opus-4-5"]},{"sha":"436326bc525d","subject":"objtool: fix build failure due to missing libopcodes check","author":"Sasha Levin","committer":"Peter Zijlstra","date":"2026-01-13","tags":["claude-opus-4-5-20251101"]}],"submitted":{"patch_messages_with_tag":1800,"unique_patches_with_tag":1370,"earliest":"2026-01-16","latest":"2026-04-28"},"model_compare":[{"vendor":"Anthropic","model":"Opus 4.6","merged":57,"submitted":443,"ins":1718,"del":217},{"vendor":"DeepSeek","model":"DeepSeek V3.2","merged":28,"submitted":45,"ins":76,"del":81},{"vendor":"Greg KH (protest)","model":"gregkh_clanker_t1000","merged":20,"submitted":129,"ins":86,"del":18},{"vendor":"Greg KH (protest)","model":"gkh_clanker_2000","merged":15,"submitted":119,"ins":93,"del":25},{"vendor":"Anthropic","model":"Sonnet 4.6","merged":12,"submitted":114,"ins":462,"del":148},{"vendor":"OpenAI","model":"GPT-5.4","merged":10,"submitted":103,"ins":152,"del":45},{"vendor":"Anthropic","model":"Sonnet 4.5","merged":7,"submitted":53,"ins":171,"del":35},{"vendor":"Google","model":"Gemini 3.1 Pro","merged":5,"submitted":192,"ins":10,"del":9},{"vendor":"Anthropic","model":"Opus 4.7","merged":4,"submitted":40,"ins":55,"del":26},{"vendor":"Google","model":"Google Gemini 3","merged":3,"submitted":27,"ins":13,"del":10},{"vendor":"OpenAI","model":"GPT-5","merged":3,"submitted":22,"ins":18,"del":9},{"vendor":"Unknown","model":"Bynario AI","merged":2,"submitted":13,"ins":14,"del":1},{"vendor":"Greg KH (protest)","model":"gkh_clanker_t1000","merged":2,"submitted":13,"ins":46,"del":2},{"vendor":"Anthropic","model":"Opus 4.5","merged":2,"submitted":10,"ins":509,"del":18},{"vendor":"Anthropic","model":"unspecified","merged":1,"submitted":53,"ins":1,"del":1},{"vendor":"Google","model":"Gemini 3.1","merged":1,"submitted":3,"ins":6,"del":2},{"vendor":"Unknown","model":"AGENT_NAME:MODEL_VERSION [TOOL1] [TOOL2]","merged":1,"submitted":2,"ins":11,"del":1},{"vendor":"Z.ai","model":"GLM-4.7","merged":0,"submitted":16,"ins":0,"del":0},{"vendor":"OpenAI","model":"GPT-5.3","merged":0,"submitted":14,"ins":0,"del":0},{"vendor":"Anthropic","model":"Opus","merged":0,"submitted":4,"ins":0,"del":0},{"vendor":"Anthropic","model":"2.1.90","merged":0,"submitted":4,"ins":0,"del":0},{"vendor":"OpenAI","model":"","merged":0,"submitted":3,"ins":0,"del":0},{"vendor":"Google","model":"","merged":0,"submitted":3,"ins":0,"del":0},{"vendor":"Unknown","model":"Google:Gemini-3-Flash [DSDT/XML-Data-Aggregation & Formatting]","merged":0,"submitted":3,"ins":0,"del":0},{"vendor":"Unknown","model":"Chat-GPT # Documentation","merged":0,"submitted":3,"ins":0,"del":0},{"vendor":"Google","model":"gemini-3-flash","merged":0,"submitted":2,"ins":0,"del":0},{"vendor":"Unknown","model":"{codex,claude}","merged":0,"submitted":2,"ins":0,"del":0},{"vendor":"Amazon","model":"auto/unknown","merged":0,"submitted":2,"ins":0,"del":0},{"vendor":"Anthropic","model":"Claude (Anthropic Claude Code)","merged":0,"submitted":2,"ins":0,"del":0},{"vendor":"Anthropic","model":"Claude (Anthropic)","merged":0,"submitted":2,"ins":0,"del":0},{"vendor":"Unknown","model":"qoder:(unknown)","merged":0,"submitted":2,"ins":0,"del":0},{"vendor":"Unknown","model":"git-scm-master (claude-sonnet-4 / 36f1d1f06f2e)","merged":0,"submitted":1,"ins":0,"del":0},{"vendor":"Unknown","model":"Google Gemini","merged":0,"submitted":1,"ins":0,"del":0},{"vendor":"OpenAI","model":"gtp-4.1-nano-key","merged":0,"submitted":1,"ins":0,"del":0},{"vendor":"Z.ai","model":"GLM-5.1","merged":0,"submitted":1,"ins":0,"del":0},{"vendor":"Cursor (in-house)","model":"composer-1","merged":0,"submitted":1,"ins":0,"del":0},{"vendor":"OpenAI","model":"GPT-4.1","merged":0,"submitted":1,"ins":0,"del":0},{"vendor":"Unknown","model":"GPT:GPT-5.3-Codex","merged":0,"submitted":1,"ins":0,"del":0},{"vendor":"Anthropic","model":"Sonnet","merged":0,"submitted":1,"ins":0,"del":0},{"vendor":"Google","model":"gemini","merged":0,"submitted":1,"ins":0,"del":0},{"vendor":"Unknown","model":"My-slow-DSL-connection","merged":0,"submitted":1,"ins":0,"del":0},{"vendor":"Cursor (in-house)","model":"composer-2-fast","merged":0,"submitted":1,"ins":0,"del":0},{"vendor":"Unknown","model":"developer-sonnet-4.6","merged":0,"submitted":1,"ins":0,"del":0},{"vendor":"Cursor (in-house)","model":"composer-1.5","merged":0,"submitted":1,"ins":0,"del":0},{"vendor":"Unknown","model":"Sashiko","merged":0,"submitted":1,"ins":0,"del":0},{"vendor":"Google","model":"Pro","merged":0,"submitted":1,"ins":0,"del":0},{"vendor":"Unknown","model":"My-reading-glasses","merged":0,"submitted":1,"ins":0,"del":0},{"vendor":"Unknown","model":"N/A:claude-sonnet-4.6 Tool1 Tool2","merged":0,"submitted":1,"ins":0,"del":0},{"vendor":"Unknown","model":"Not-my-dog","merged":0,"submitted":1,"ins":0,"del":0},{"vendor":"Unknown","model":"unspecified","merged":0,"submitted":1,"ins":0,"del":0},{"vendor":"Z.ai","model":"GLM:5.1","merged":0,"submitted":1,"ins":0,"del":0},{"vendor":"Unknown","model":"google gemini","merged":0,"submitted":1,"ins":0,"del":0},{"vendor":"Unknown","model":"GitHub_Copilot:claude-sonnet-4.6","merged":0,"submitted":1,"ins":0,"del":0},{"vendor":"Greg KH (protest)","model":"gregkh_clanker_2000","merged":0,"submitted":1,"ins":0,"del":0},{"vendor":"Anthropic","model":"Sonnet 3.5","merged":0,"submitted":1,"ins":0,"del":0}],"vendor_compare":[{"vendor":"Anthropic","merged":83,"submitted":727,"ins":2916,"del":445},{"vendor":"Greg KH (protest)","merged":37,"submitted":262,"ins":225,"del":45},{"vendor":"DeepSeek","merged":28,"submitted":45,"ins":76,"del":81},{"vendor":"OpenAI","merged":13,"submitted":144,"ins":170,"del":54},{"vendor":"Google","merged":9,"submitted":229,"ins":29,"del":21},{"vendor":"Unknown","merged":3,"submitted":37,"ins":25,"del":2},{"vendor":"Z.ai","merged":0,"submitted":18,"ins":0,"del":0},{"vendor":"Cursor (in-house)","merged":0,"submitted":3,"ins":0,"del":0},{"vendor":"Amazon","merged":0,"submitted":2,"ins":0,"del":0}],"tool_compare":[{"tool":"Direct / API","merged":104,"submitted":837,"ins":2384,"del":427},{"tool":"Greg KH protest","merged":37,"submitted":262,"ins":225,"del":45},{"tool":"Codex","merged":13,"submitted":108,"ins":170,"del":54},{"tool":"Claude Code","merged":12,"submitted":66,"ins":209,"del":4},{"tool":"GitHub Copilot","merged":4,"submitted":73,"ins":428,"del":116},{"tool":"Bynario AI","merged":2,"submitted":13,"ins":14,"del":1},{"tool":"Unknown","merged":1,"submitted":22,"ins":11,"del":1},{"tool":"Cursor","merged":0,"submitted":60,"ins":0,"del":0},{"tool":"OpenCode","merged":0,"submitted":18,"ins":0,"del":0},{"tool":"Amazon Q","merged":0,"submitted":2,"ins":0,"del":0},{"tool":"Kiro","merged":0,"submitted":2,"ins":0,"del":0},{"tool":"Azure","merged":0,"submitted":2,"ins":0,"del":0},{"tool":"Cody","merged":0,"submitted":1,"ins":0,"del":0},{"tool":"Antigravity","merged":0,"submitted":1,"ins":0,"del":0}],"vendor_models_merged":{"Unknown":{"Bynario AI":2,"AGENT_NAME:MODEL_VERSION [TOOL1] [TOOL2]":1},"Anthropic":{"Opus 4.6":57,"Sonnet 4.6":12,"Sonnet 4.5":7,"Opus 4.7":4,"Opus 4.5":2,"unspecified":1},"OpenAI":{"GPT-5.4":10,"GPT-5":3},"Greg KH (protest)":{"gregkh_clanker_t1000":20,"gkh_clanker_2000":15,"gkh_clanker_t1000":2},"DeepSeek":{"DeepSeek V3.2":28},"Google":{"Gemini 3.1 Pro":5,"Google Gemini 3":3,"Gemini 3.1":1}},"model_lines":{"Unknown \u2014 Bynario AI":{"ins":14,"del":1},"Anthropic \u2014 Opus 4.7":{"ins":55,"del":26},"Anthropic \u2014 Opus 4.6":{"ins":1718,"del":217},"OpenAI \u2014 GPT-5.4":{"ins":152,"del":45},"Anthropic \u2014 Sonnet 4.6":{"ins":462,"del":148},"Greg KH (protest) \u2014 gkh_clanker_2000":{"ins":93,"del":25},"Greg KH (protest) \u2014 gkh_clanker_t1000":{"ins":46,"del":2},"DeepSeek \u2014 DeepSeek V3.2":{"ins":76,"del":81},"Greg KH (protest) \u2014 gregkh_clanker_t1000":{"ins":86,"del":18},"Google \u2014 Gemini 3.1 Pro":{"ins":10,"del":9},"Anthropic \u2014 Sonnet 4.5":{"ins":171,"del":35},"Google \u2014 Gemini 3.1":{"ins":6,"del":2},"OpenAI \u2014 GPT-5":{"ins":18,"del":9},"Unknown \u2014 AGENT_NAME:MODEL_VERSION [TOOL1] [TOOL2]":{"ins":11,"del":1},"Anthropic \u2014 unspecified":{"ins":1,"del":1},"Google \u2014 Google Gemini 3":{"ins":13,"del":10},"Anthropic \u2014 Opus 4.5":{"ins":509,"del":18}}}</script>
+<script>
+  const data = JSON.parse(document.getElementById("data").textContent);
+
+  // --- lede ---
+  const lede_share = (data.total_commits / data.kernel_total_commits * 100).toFixed(2);
+  document.getElementById("lede").innerHTML = `
+    Three months after the kernel started requiring an <span class="mono">Assisted-by:</span> tag,
+    <b>${data.total_commits} of ${data.kernel_total_commits.toLocaleString()}</b> mainline commits carry one.
+    That is <b>${lede_share} percent</b> of activity in the same window. Together those commits added
+    <b>${data.total_insertions.toLocaleString()} lines</b> and removed <b>${data.total_deletions.toLocaleString()}</b>.
+    Inside the ${lede_share} percent: one model dominates by a factor of two, one workflow accounts for nearly
+    all the volume from one author, and one maintainer contributes a fifth of all merged AI tags.
+  `;
+
+  // --- stats ---
+  const sharePct = lede_share + "%";
+  const ins = data.total_insertions || 0, del = data.total_deletions || 0;
+  const stats = [
+    { num: data.total_commits, label: "Disclosed-AI commits merged",
+      sub: "of " + data.kernel_total_commits.toLocaleString() + " total" },
+    { num: sharePct, label: "Share of mainline activity" },
+    { num: `+${ins.toLocaleString()}`,
+      label: "Lines added by disclosed commits",
+      sub: `&minus;${del.toLocaleString()} removed · mean +${(ins / data.total_commits).toFixed(0)} / commit`,
+      isHTML: true },
+    { num: data.submitted.unique_patches_with_tag.toLocaleString(), label: "Unique patches submitted",
+      sub: "v1/v2/v3 collapsed; bots filtered" },
+  ];
+  document.getElementById("stats").innerHTML = stats.map(s => {
+    const num = s.isHTML ? s.num : escape(String(s.num));
+    return `<div class="stat"><div class="num">${num}</div><div class="label">${s.label}${s.sub ? `<br><span class="sub">${s.sub}</span>`: ''}</div></div>`;
+  }).join("");
+
+  // --- models in the kernel: merged + submitted comparison ---
+  const VLABEL = {
+    "Anthropic": "Anthropic",
+    "OpenAI": "OpenAI",
+    "Google": "Google",
+    "DeepSeek": "DeepSeek",
+    "Z.ai": "Z.ai",
+    "Greg KH (protest)": "Greg KH protest",
+    "Amazon": "Amazon",
+    "Cursor (in-house)": "Cursor (in-house)",
+    "Unknown": "Unknown / unparsed",
+  };
+  const fmtLines = (ins, del) => {
+    if (!ins && !del) return '<span class="lines none">no lines</span>';
+    return `<span class="lines"><span class="add">+${(ins||0).toLocaleString()}</span><span class="rem">&minus;${(del||0).toLocaleString()}</span></span>`;
+  };
+
+  function renderModels(mode) {
+    const all = data.model_compare.filter(r => r.merged > 0 || r.submitted >= 5);
+    let ranked, max, getValue, getCount, getMeta, caveat;
+    if (mode === "lines") {
+      ranked = [...all].filter(r => r.merged > 0).sort((a, b) => (b.ins||0) - (a.ins||0)).slice(0, 16);
+      getValue = r => r.ins || 0;
+      getCount = r => `<span class="add">+${(r.ins||0).toLocaleString()}</span><span class="rem">&minus;${(r.del||0).toLocaleString()}</span>`;
+      getMeta = r => `${r.merged} commit${r.merged===1?'':'s'} · ${r.submitted.toLocaleString()} submitted`;
+      max = Math.max(...ranked.map(getValue), 1);
+      caveat = `Bar width: lines added in merged mainline commits whose tag references this model.
+        Wrappers (Claude Code, Cursor, GitHub Copilot, OpenCode) attribute to the
+        underlying model. Multi-tag commits attribute lines to each disclosed model, so bucket totals
+        can sum to more than 3,304.`;
+    } else {
+      ranked = [...all].sort((a, b) => (b.merged - a.merged) || (b.submitted - a.submitted)).slice(0, 16);
+      getValue = r => r.merged;
+      getCount = r => `${r.merged}`;
+      getMeta = r => `${r.submitted.toLocaleString()} submitted · ${fmtLines(r.ins, r.del)}`;
+      max = Math.max(...ranked.map(getValue), 1);
+      caveat = `Bar width: count of unique merged mainline commits whose tag references this model.
+        Submitted-to-lists count and lines added/removed appear in the meta line above each bar
+        (v1/v2/v3 collapsed; replies, cover letters, and bot accounts dropped).
+        Wrappers attribute to the underlying model; the wrapper itself appears under "By tool" below.`;
+    }
+    document.getElementById("models").innerHTML = ranked.map(r => {
+      const isProtest = r.vendor.includes("protest");
+      const cls = isProtest ? "protest" : "";
+      const w = (getValue(r) / max) * 100;
+      return `
+        <div class="bar-row">
+          <div>
+            <div class="label">
+              <span class="name">${escape(r.model)} <small class="vsub">${escape(VLABEL[r.vendor] || r.vendor)}</small></span>
+              <span class="pct">${getMeta(r)}</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill ${cls}" style="width:${w}%"></div></div>
+          </div>
+          <div class="count">${getCount(r)}</div>
+        </div>`;
+    }).join("");
+    document.getElementById("models-caveat").innerHTML = caveat;
+  }
+  document.querySelectorAll("#models-toggle button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll("#models-toggle button").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      renderModels(btn.dataset.mode);
+    });
+  });
+  renderModels("lines");
+
+  // --- by vendor ---
+  const vendorRows = data.vendor_compare.filter(r => r.merged > 0 || r.submitted >= 5);
+  const vmax = Math.max(...vendorRows.map(r => r.merged || 1));
+  document.getElementById("vendor-bars").innerHTML = vendorRows.map(r => {
+    const pct = (r.merged / vmax) * 100;
+    const cls = r.vendor.includes("protest") ? "protest" : (r.vendor === "Unknown" ? "dim" : "");
+    const sharePct = data.total_tags ? (r.merged/data.total_tags*100).toFixed(0) + "%" : "";
+    return `
+      <div class="bar-row">
+        <div>
+          <div class="label"><span class="name">${VLABEL[r.vendor] || r.vendor}</span><span class="pct">${sharePct} merged · ${r.submitted.toLocaleString()} submitted · ${fmtLines(r.ins, r.del)}</span></div>
+          <div class="bar-track"><div class="bar-fill ${cls}" style="width:${pct}%"></div></div>
+        </div>
+        <div class="count">${r.merged}</div>
+      </div>`;
+  }).join("");
+
+  // --- by tool ---
+  const toolRows = data.tool_compare.filter(r => r.merged > 0 || r.submitted >= 5);
+  const tmax = Math.max(...toolRows.map(r => r.merged || 1));
+  document.getElementById("tool-bars").innerHTML = toolRows.map(r => {
+    const pct = (r.merged / tmax) * 100;
+    const cls = /protest/i.test(r.tool) ? "protest" : (r.tool === "Unknown" ? "dim" : "");
+    const sharePct = data.total_tags ? (r.merged/data.total_tags*100).toFixed(0) + "%" : "";
+    return `
+      <div class="bar-row">
+        <div>
+          <div class="label"><span class="name">${escape(r.tool)}</span><span class="pct">${sharePct} merged · ${r.submitted.toLocaleString()} submitted · ${fmtLines(r.ins, r.del)}</span></div>
+          <div class="bar-track"><div class="bar-fill ${cls}" style="width:${pct}%"></div></div>
+        </div>
+        <div class="count">${r.merged}</div>
+      </div>`;
+  }).join("");
+
+  // --- vendor x model breakdown (merged only) ---
+  const VENDOR_ORDER = ["Anthropic", "DeepSeek", "OpenAI", "Google",
+                        "Z.ai", "Greg KH (protest)", "Unknown"];
+  document.getElementById("vendor-grid").innerHTML = VENDOR_ORDER
+    .filter(v => data.vendor_models_merged[v])
+    .map(v => {
+      const models = data.vendor_models_merged[v];
+      const total = Object.values(models).reduce((a,b)=>a+b, 0);
+      const isProtest = v.includes("protest");
+      const rows = Object.entries(models)
+        .sort((a,b) => b[1]-a[1])
+        .map(([m, n]) => {
+          const L = data.model_lines[`${v} — ${m}`] || {ins: 0, del: 0};
+          const ln = (L.ins || L.del)
+            ? `<span class="add">+${(L.ins||0).toLocaleString()}</span><span class="rem">&minus;${(L.del||0).toLocaleString()}</span>`
+            : '';
+          return `<div class="model-row"><span class="m">${escape(m)}</span><span class="row-meta"><span class="lines">${ln}</span><span class="n">${n}</span></span></div>`;
+        }).join("");
+      return `
+        <div class="vendor-card ${isProtest ? 'protest' : ''}">
+          <h3><span>${VLABEL[v] || v}</span><span class="total">${total}</span></h3>
+          <div class="sub">${Object.keys(models).length} model variant${Object.keys(models).length===1?'':'s'} disclosed</div>
+          <div class="model-list">${rows}</div>
+        </div>`;
+    }).join("");
+
+  // --- highlights ---
+  const cgit = (sha) => `https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=${sha}`;
+  const shaLinks = (shas) => shas.map(s =>
+    `<a href="${cgit(s)}" target="_blank" rel="noopener" class="mono">${s}</a>`
+  ).join(", ");
+  document.getElementById("highlights").innerHTML = `
+    <div class="highlight">
+      <div class="kicker">Security fix, marked for stable</div>
+      <h3>smb: client: fix OOB read in smb2_ioctl_query_info</h3>
+      <p>A malicious SMB server could exfiltrate adjacent kernel heap to userspace via an unbounded
+        copy in the QUERY_INFO ioctl path. Patch by Michael Bommarito, tagged
+        <span class="mono">Assisted-by: Claude:claude-opus-4-6</span> and
+        <span class="mono">Assisted-by: Codex:gpt-5-4</span>. Merged via Steve French.</p>
+      <div class="sha-list">${shaLinks(["a58c5af19ff0"])}</div>
+    </div>
+    <div class="highlight">
+      <div class="kicker">One author, one workflow, 28 commits</div>
+      <h3>Coccinelle plus DeepSeek for stale-comment fixes</h3>
+      <p>Every merged commit tagged <span class="mono">unnamed:deepseek-v3.2 coccinelle</span>
+        is from one contributor (Kexin Sun). The workflow uses Coccinelle to find references to
+        renamed or removed kernel functions and uses DeepSeek to rewrite the surrounding
+        comments. The patches are mechanical and small; reviewers land them quickly.</p>
+      <div class="sha-list">${shaLinks(["256e5254efff", "0b6c8e21157f", "fdfdd01e801f"])}</div>
+    </div>
+    <div class="highlight protest">
+      <div class="kicker">35 commits, one tag pattern</div>
+      <h3>gregkh_clanker_t1000 and gkh_clanker_2000</h3>
+      <p>Greg Kroah-Hartman tags every AI-assisted patch he sends with
+        <span class="mono">Assisted-by: gregkh_clanker_*</span>, varying the model name.
+        The tags appear on fbdev divide-by-zero fixes, USB driver hardening,
+        ksmbd input validation, and a LoongArch spectre boundary. No public statement explains
+        the naming choice; this page does not infer one.</p>
+      <div class="sha-list">${shaLinks(["8f98b81fe011", "0c965d2784fb", "a31e4518bec7"])}</div>
+    </div>
+  `;
+
+  // --- timeline ---
+  const dates = Object.keys(data.by_date).sort();
+  const start = new Date(dates[0]);
+  const end = new Date(dates[dates.length-1]);
+  const days = Math.round((end - start) / 86400000) + 1;
+  const series = [];
+  for (let i = 0; i < days; i++) {
+    const d = new Date(start.getTime() + i*86400000);
+    const key = d.toISOString().slice(0,10);
+    const lines = data.by_date_lines[key] || {ins: 0, del: 0};
+    series.push({ d: key, n: data.by_date[key] || 0, ins: lines.ins||0, del: lines.del||0 });
+  }
+  function renderTimeline(mode) {
+    const w = 1000, h = 180, pad = 6;
+    const bw = (w - pad*2) / series.length;
+    let svg = "", meta = "";
+    if (mode === "lines") {
+      const ymax = Math.max(...series.map(s => Math.max(s.ins, s.del)), 1);
+      const mid = h / 2;
+      svg = series.map((s, i) => {
+        const x = pad + i*bw;
+        const insH = s.ins === 0 ? 0 : Math.max(2, (s.ins / ymax) * (mid - 6));
+        const delH = s.del === 0 ? 0 : Math.max(2, (s.del / ymax) * (mid - 6));
+        const wb = (bw - 1).toFixed(2);
+        return `
+          <rect x="${x.toFixed(2)}" y="${(mid - insH).toFixed(2)}" width="${wb}" height="${insH.toFixed(2)}" fill="var(--accent)" opacity="${s.ins?0.85:0}"/>
+          <rect x="${x.toFixed(2)}" y="${mid.toFixed(2)}" width="${wb}" height="${delH.toFixed(2)}" fill="var(--red)" opacity="${s.del?0.85:0}"/>`;
+      }).join("");
+      svg += `<line x1="${pad}" y1="${mid}" x2="${w - pad}" y2="${mid}" stroke="var(--line)" stroke-width="1"/>`;
+      const peakIns = Math.max(...series.map(s => s.ins));
+      const peakDel = Math.max(...series.map(s => s.del));
+      meta = `${days} days · peak +${peakIns}/&minus;${peakDel} lines on a single day`;
+    } else {
+      const ymax = Math.max(...series.map(s => s.n), 1);
+      svg = series.map((s, i) => {
+        const bh = s.n === 0 ? 0 : Math.max(2, (s.n / ymax) * (h - 24));
+        const x = pad + i*bw;
+        const y = h - bh - 4;
+        return `<rect x="${x.toFixed(2)}" y="${y.toFixed(2)}" width="${(bw - 1).toFixed(2)}" height="${bh.toFixed(2)}" fill="var(--accent)" opacity="${s.n === 0 ? 0 : 0.85}"/>`;
+      }).join("");
+      meta = `${days} days · peak ${Math.max(...series.map(s => s.n))} commits/day`;
+    }
+    document.getElementById("timeline").innerHTML = svg;
+    document.getElementById("activity-meta").innerHTML = meta;
+  }
+  document.getElementById("axis-l").textContent = dates[0];
+  document.getElementById("axis-r").textContent = dates[dates.length-1];
+  document.querySelectorAll("#activity-toggle button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll("#activity-toggle button").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      renderTimeline(btn.dataset.mode);
+    });
+  });
+  renderTimeline("lines");
+
+  // --- authors / committers ---
+  function leaderboard(rows, target, n=10) {
+    const max = Math.max(...rows.slice(0, n).map(r => r[1]));
+    target.innerHTML = rows.slice(0, n).map(([name, count]) => `
+      <div class="bar-row">
+        <div>
+          <div class="label"><span class="name">${escape(name)}</span><span class="pct"></span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:${(count/max)*100}%"></div></div>
+        </div>
+        <div class="count">${count}</div>
+      </div>
+    `).join("");
+  }
+  leaderboard(data.top_authors, document.getElementById("authors"));
+  leaderboard(data.top_committers, document.getElementById("committers"));
+
+  // --- recent commits ---
+  const commits = [...data.commits].sort((a,b) => b.date.localeCompare(a.date));
+  const initial = 25;
+  let shown = initial;
+  function renderCommits() {
+    const rows = commits.slice(0, shown).map(c => {
+      const tag = c.tags[0] || "";
+      const isProtest = /clanker/i.test(tag);
+      return `
+        <div class="commit-row">
+          <div class="date">${c.date}</div>
+          <div class="subject"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=${c.sha}" target="_blank" rel="noopener">${escape(c.subject)}</a></div>
+          <div class="author">${escape(c.author)}</div>
+          <div class="tag ${isProtest ? 'protest' : ''}">${escape(tag)}</div>
+        </div>`;
+    }).join("");
+    const more = shown < commits.length
+      ? `<div class="show-more" id="more">show all ${commits.length} →</div>`
+      : "";
+    document.getElementById("commits").innerHTML = rows + more;
+    document.getElementById("commits-meta").textContent =
+      `showing ${Math.min(shown, commits.length)} of ${commits.length}`;
+    const m = document.getElementById("more");
+    if (m) m.onclick = () => { shown = commits.length; renderCommits(); };
+  }
+  renderCommits();
+
+  // --- datestamp ---
+  document.getElementById("datestamp").textContent = commits[0].date;
+
+  function escape(s) {
+    return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+</script>
+</body>
+</html>

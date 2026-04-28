@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0a0a0a"/>
+
+  <text x="80" y="100" font-family="JetBrains Mono, monospace" font-size="20" font-weight="500" fill="#c8ff00" letter-spacing="3">ASSISTED-BY:</text>
+  <text x="80" y="130" font-family="JetBrains Mono, monospace" font-size="16" fill="#666">linux mainline · since 2026-01-01</text>
+
+  <text x="80" y="290" font-family="JetBrains Mono, monospace" font-size="120" font-weight="600" fill="#e8e8e8" letter-spacing="-3">166</text>
+  <text x="305" y="290" font-family="JetBrains Mono, monospace" font-size="80" fill="#555" letter-spacing="-2">of 26,044</text>
+
+  <text x="80" y="360" font-family="JetBrains Mono, monospace" font-size="28" font-weight="400" fill="#888">mainline commits since 2026-01-01</text>
+  <text x="80" y="395" font-family="JetBrains Mono, monospace" font-size="28" font-weight="400" fill="#888">carry an Assisted-by: AI disclosure tag.</text>
+
+  <rect x="80" y="450" width="1040" height="6" fill="#2a2a2a" rx="2"/>
+  <rect x="80" y="450" width="6.7" height="6" fill="#c8ff00" rx="2"/>
+
+  <text x="80" y="495" font-family="JetBrains Mono, monospace" font-size="22" font-weight="500" fill="#c8ff00">0.64%</text>
+  <text x="170" y="495" font-family="JetBrains Mono, monospace" font-size="22" fill="#888">of all merged kernel activity is disclosed AI.</text>
+
+  <text x="80" y="570" font-family="JetBrains Mono, monospace" font-size="16" fill="#555">Three months in: one model dominates,</text>
+  <text x="80" y="595" font-family="JetBrains Mono, monospace" font-size="16" fill="#555">one workflow does most of the volume, one maintainer accounts for a fifth.</text>
+</svg>

@@ -1,0 +1,536 @@
+{
+  "input_messages": 2890,
+  "non_patch_or_reply": 1045,
+  "bot_dropped": 0,
+  "quote_only_skipped": 0,
+  "patch_messages_with_tag": 1800,
+  "unique_patches_with_tag": 1370,
+  "earliest": "2026-01-16",
+  "latest": "2026-04-28",
+  "by_date": {
+    "2026-01-16": 1,
+    "2026-01-26": 1,
+    "2026-01-30": 1,
+    "2026-02-13": 1,
+    "2026-02-17": 3,
+    "2026-02-19": 11,
+    "2026-02-23": 20,
+    "2026-02-24": 6,
+    "2026-02-25": 3,
+    "2026-02-26": 2,
+    "2026-02-27": 1,
+    "2026-02-28": 2,
+    "2026-03-02": 10,
+    "2026-03-03": 4,
+    "2026-03-04": 7,
+    "2026-03-05": 10,
+    "2026-03-06": 10,
+    "2026-03-07": 6,
+    "2026-03-08": 2,
+    "2026-03-09": 7,
+    "2026-03-10": 24,
+    "2026-03-11": 15,
+    "2026-03-12": 25,
+    "2026-03-13": 3,
+    "2026-03-14": 4,
+    "2026-03-15": 28,
+    "2026-03-16": 14,
+    "2026-03-17": 16,
+    "2026-03-18": 2,
+    "2026-03-19": 1,
+    "2026-03-20": 7,
+    "2026-03-21": 32,
+    "2026-03-22": 12,
+    "2026-03-23": 57,
+    "2026-03-24": 14,
+    "2026-03-25": 5,
+    "2026-03-26": 16,
+    "2026-03-27": 12,
+    "2026-03-29": 4,
+    "2026-03-30": 16,
+    "2026-03-31": 39,
+    "2026-04-01": 11,
+    "2026-04-02": 10,
+    "2026-04-03": 13,
+    "2026-04-04": 2,
+    "2026-04-05": 3,
+    "2026-04-06": 13,
+    "2026-04-07": 15,
+    "2026-04-08": 33,
+    "2026-04-09": 38,
+    "2026-04-10": 34,
+    "2026-04-11": 8,
+    "2026-04-12": 9,
+    "2026-04-13": 45,
+    "2026-04-14": 37,
+    "2026-04-15": 21,
+    "2026-04-16": 14,
+    "2026-04-17": 26,
+    "2026-04-18": 9,
+    "2026-04-19": 14,
+    "2026-04-20": 126,
+    "2026-04-21": 44,
+    "2026-04-22": 33,
+    "2026-04-23": 52,
+    "2026-04-24": 90,
+    "2026-04-25": 52,
+    "2026-04-26": 43,
+    "2026-04-27": 53,
+    "2026-04-28": 68
+  },
+  "vendor_counts": [
+    [
+      "Anthropic",
+      727
+    ],
+    [
+      "Greg KH (protest)",
+      262
+    ],
+    [
+      "Google",
+      229
+    ],
+    [
+      "OpenAI",
+      144
+    ],
+    [
+      "DeepSeek",
+      45
+    ],
+    [
+      "Unknown",
+      37
+    ],
+    [
+      "Z.ai",
+      18
+    ],
+    [
+      "Cursor (in-house)",
+      3
+    ],
+    [
+      "Amazon",
+      2
+    ]
+  ],
+  "model_counts": [
+    [
+      "Anthropic \u2014 Opus 4.6",
+      443
+    ],
+    [
+      "Google \u2014 Gemini 3.1 Pro",
+      192
+    ],
+    [
+      "Greg KH (protest) \u2014 gregkh_clanker_t1000",
+      129
+    ],
+    [
+      "Greg KH (protest) \u2014 gkh_clanker_2000",
+      119
+    ],
+    [
+      "Anthropic \u2014 Sonnet 4.6",
+      114
+    ],
+    [
+      "OpenAI \u2014 GPT-5.4",
+      103
+    ],
+    [
+      "Anthropic \u2014 Sonnet 4.5",
+      53
+    ],
+    [
+      "Anthropic \u2014 unspecified",
+      53
+    ],
+    [
+      "DeepSeek \u2014 DeepSeek V3.2",
+      45
+    ],
+    [
+      "Anthropic \u2014 Opus 4.7",
+      40
+    ],
+    [
+      "Google \u2014 Google Gemini 3",
+      27
+    ],
+    [
+      "OpenAI \u2014 GPT-5",
+      22
+    ],
+    [
+      "Z.ai \u2014 GLM-4.7",
+      16
+    ],
+    [
+      "OpenAI \u2014 GPT-5.3",
+      14
+    ],
+    [
+      "Greg KH (protest) \u2014 gkh_clanker_t1000",
+      13
+    ],
+    [
+      "Unknown \u2014 Bynario AI",
+      13
+    ],
+    [
+      "Anthropic \u2014 Opus 4.5",
+      10
+    ],
+    [
+      "Anthropic \u2014 Opus",
+      4
+    ],
+    [
+      "Anthropic \u2014 2.1.90",
+      4
+    ],
+    [
+      "Google \u2014 ",
+      3
+    ],
+    [
+      "Unknown \u2014 Google:Gemini-3-Flash [DSDT/XML-Data-Aggregation & Formatting]",
+      3
+    ],
+    [
+      "Unknown \u2014 Chat-GPT # Documentation",
+      3
+    ],
+    [
+      "Google \u2014 Gemini 3.1",
+      3
+    ],
+    [
+      "OpenAI \u2014 ",
+      3
+    ],
+    [
+      "Anthropic \u2014 Claude (Anthropic Claude Code)",
+      2
+    ],
+    [
+      "Amazon \u2014 auto/unknown",
+      2
+    ],
+    [
+      "Unknown \u2014 qoder:(unknown)",
+      2
+    ],
+    [
+      "Unknown \u2014 AGENT_NAME:MODEL_VERSION [TOOL1] [TOOL2]",
+      2
+    ],
+    [
+      "Unknown \u2014 {codex,claude}",
+      2
+    ],
+    [
+      "Google \u2014 gemini-3-flash",
+      2
+    ],
+    [
+      "Anthropic \u2014 Claude (Anthropic)",
+      2
+    ],
+    [
+      "Unknown \u2014 GitHub_Copilot:claude-sonnet-4.6",
+      1
+    ],
+    [
+      "Unknown \u2014 Not-my-dog",
+      1
+    ],
+    [
+      "Unknown \u2014 My-reading-glasses",
+      1
+    ],
+    [
+      "Unknown \u2014 My-slow-DSL-connection",
+      1
+    ],
+    [
+      "Unknown \u2014 GPT:GPT-5.3-Codex",
+      1
+    ],
+    [
+      "Z.ai \u2014 GLM:5.1",
+      1
+    ],
+    [
+      "Anthropic \u2014 Sonnet",
+      1
+    ],
+    [
+      "Cursor (in-house) \u2014 composer-2-fast",
+      1
+    ],
+    [
+      "Unknown \u2014 google gemini",
+      1
+    ],
+    [
+      "Unknown \u2014 Sashiko",
+      1
+    ],
+    [
+      "Z.ai \u2014 GLM-5.1",
+      1
+    ],
+    [
+      "Unknown \u2014 Google Gemini",
+      1
+    ],
+    [
+      "Google \u2014 Pro",
+      1
+    ],
+    [
+      "Google \u2014 gemini",
+      1
+    ],
+    [
+      "Anthropic \u2014 Sonnet 3.5",
+      1
+    ],
+    [
+      "Unknown \u2014 unspecified",
+      1
+    ],
+    [
+      "Unknown \u2014 N/A:claude-sonnet-4.6 Tool1 Tool2",
+      1
+    ],
+    [
+      "Cursor (in-house) \u2014 composer-1.5",
+      1
+    ],
+    [
+      "Cursor (in-house) \u2014 composer-1",
+      1
+    ],
+    [
+      "Greg KH (protest) \u2014 gregkh_clanker_2000",
+      1
+    ],
+    [
+      "OpenAI \u2014 GPT-4.1",
+      1
+    ],
+    [
+      "OpenAI \u2014 gtp-4.1-nano-key",
+      1
+    ],
+    [
+      "Unknown \u2014 git-scm-master (claude-sonnet-4 / 36f1d1f06f2e)",
+      1
+    ],
+    [
+      "Unknown \u2014 developer-sonnet-4.6",
+      1
+    ]
+  ],
+  "tool_counts": [
+    [
+      "Direct / API",
+      837
+    ],
+    [
+      "Greg KH protest",
+      262
+    ],
+    [
+      "Codex",
+      108
+    ],
+    [
+      "GitHub Copilot",
+      73
+    ],
+    [
+      "Claude Code",
+      66
+    ],
+    [
+      "Cursor",
+      60
+    ],
+    [
+      "Unknown",
+      22
+    ],
+    [
+      "OpenCode",
+      18
+    ],
+    [
+      "Bynario AI",
+      13
+    ],
+    [
+      "Kiro",
+      2
+    ],
+    [
+      "Amazon Q",
+      2
+    ],
+    [
+      "Azure",
+      2
+    ],
+    [
+      "Antigravity",
+      1
+    ],
+    [
+      "Cody",
+      1
+    ]
+  ],
+  "vendor_models": {
+    "Unknown": {
+      "Bynario AI": 13,
+      "Google:Gemini-3-Flash [DSDT/XML-Data-Aggregation & Formatting]": 3,
+      "Chat-GPT # Documentation": 3,
+      "qoder:(unknown)": 2,
+      "AGENT_NAME:MODEL_VERSION [TOOL1] [TOOL2]": 2,
+      "{codex,claude}": 2,
+      "GitHub_Copilot:claude-sonnet-4.6": 1,
+      "Not-my-dog": 1,
+      "My-reading-glasses": 1,
+      "My-slow-DSL-connection": 1,
+      "GPT:GPT-5.3-Codex": 1,
+      "google gemini": 1,
+      "Sashiko": 1,
+      "Google Gemini": 1,
+      "unspecified": 1,
+      "N/A:claude-sonnet-4.6 Tool1 Tool2": 1,
+      "git-scm-master (claude-sonnet-4 / 36f1d1f06f2e)": 1,
+      "developer-sonnet-4.6": 1
+    },
+    "Greg KH (protest)": {
+      "gregkh_clanker_t1000": 129,
+      "gkh_clanker_2000": 119,
+      "gkh_clanker_t1000": 13,
+      "gregkh_clanker_2000": 1
+    },
+    "Anthropic": {
+      "Opus 4.6": 443,
+      "Sonnet 4.6": 114,
+      "Sonnet 4.5": 53,
+      "unspecified": 53,
+      "Opus 4.7": 40,
+      "Opus 4.5": 10,
+      "Opus": 4,
+      "2.1.90": 4,
+      "Claude (Anthropic Claude Code)": 2,
+      "Claude (Anthropic)": 2,
+      "Sonnet": 1,
+      "Sonnet 3.5": 1
+    },
+    "Google": {
+      "Gemini 3.1 Pro": 192,
+      "Google Gemini 3": 27,
+      "": 3,
+      "Gemini 3.1": 3,
+      "gemini-3-flash": 2,
+      "Pro": 1,
+      "gemini": 1
+    },
+    "OpenAI": {
+      "GPT-5.4": 103,
+      "GPT-5": 22,
+      "GPT-5.3": 14,
+      "": 3,
+      "GPT-4.1": 1,
+      "gtp-4.1-nano-key": 1
+    },
+    "Z.ai": {
+      "GLM-4.7": 16,
+      "GLM:5.1": 1,
+      "GLM-5.1": 1
+    },
+    "Cursor (in-house)": {
+      "composer-2-fast": 1,
+      "composer-1.5": 1,
+      "composer-1": 1
+    },
+    "Amazon": {
+      "auto/unknown": 2
+    },
+    "DeepSeek": {
+      "DeepSeek V3.2": 45
+    }
+  },
+  "top_authors": [
+    [
+      "Greg Kroah-Hartman",
+      321
+    ],
+    [
+      "Ian Rogers",
+      152
+    ],
+    [
+      "Sasha Levin",
+      72
+    ],
+    [
+      "Michael S. Tsirkin",
+      65
+    ],
+    [
+      "Michael Bommarito",
+      61
+    ],
+    [
+      "Kexin Sun",
+      44
+    ],
+    [
+      "Thomas Hellstr\u00f6m",
+      32
+    ],
+    [
+      "Shuicheng Lin",
+      32
+    ],
+    [
+      "Vineeth Pillai (Google)",
+      30
+    ],
+    [
+      "Kit Dallege",
+      28
+    ],
+    [
+      "Rito Rhymes",
+      28
+    ],
+    [
+      "Kiryl Shutsemau (Meta)",
+      26
+    ],
+    [
+      "Wander Lairson Costa",
+      24
+    ],
+    [
+      "Arnaldo Carvalho de Melo",
+      21
+    ],
+    [
+      "Luis",
+      17
+    ]
+  ]
+}
