@@ -164,23 +164,70 @@
   .scale-callout .pct { color: var(--accent); }
   .scale-zoom-mark { color: var(--dim) !important; font-size: 12px !important; }
 
-  /* per-vendor stacked composition */
-  .scale-stack {
-    display: flex;
-    height: 44px;
-    border-radius: 3px;
-    overflow: hidden;
-    background: var(--bar);
+  /* zoomable unit grid */
+  .grid-stage {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    padding: 28px;
   }
-  .scale-stack > div {
-    height: 100%;
+  .grid-header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 18px;
+    gap: 16px;
+  }
+  .grid-title { font-size: 14px; font-weight: 500; color: var(--text); }
+  .grid-back {
+    background: transparent;
+    color: var(--dim);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    cursor: pointer;
+    transition: color .12s, border-color .12s;
+  }
+  .grid-back:hover { color: var(--accent); border-color: var(--accent); }
+  .unit-grid {
+    display: grid;
+    gap: 2px;
+    user-select: none;
+  }
+  .unit-grid .cell {
+    aspect-ratio: 1 / 1;
+    background: #1c1c1c;
+    border-radius: 1px;
     position: relative;
-    transition: opacity .15s;
+    transition: transform .12s, box-shadow .12s;
   }
-  .scale-stack > div:hover { opacity: 0.8; }
+  .unit-grid.clickable .cell.active { cursor: zoom-in; }
+  .unit-grid.clickable .cell.active:hover { transform: scale(1.4); box-shadow: 0 0 0 1px var(--accent); z-index: 2; }
+  .unit-grid .cell.window { background: #2a2a2a; }
+  .unit-grid .cell.ai { background: var(--accent); }
+  .unit-grid .cell.partial-ai::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--accent);
+    width: var(--ai-width, 0%);
+  }
+  .grid-caption {
+    margin-top: 18px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    color: var(--dim);
+    line-height: 1.6;
+  }
+  .grid-caption .pct { color: var(--accent); }
+  .grid-caption .key { display: inline-flex; gap: 14px; flex-wrap: wrap; margin-top: 8px; }
+  .grid-caption .key span { display: inline-flex; align-items: center; gap: 6px; }
+  .grid-caption .key i {
+    display: inline-block; width: 10px; height: 10px; border-radius: 1px; font-style: normal;
+  }
+
   .scale-legend {
     display: flex; flex-wrap: wrap; gap: 14px 22px;
-    margin-top: 12px;
+    margin-top: 14px;
     font-size: 12px;
     font-family: "JetBrains Mono", monospace;
   }
@@ -568,41 +615,16 @@
   <section id="scale-section">
     <div class="section-head">
       <h2>In context</h2>
-      <div class="meta">how 3,304 disclosed-AI lines compares to everything else</div>
+      <div class="meta" id="grid-meta">click any square to zoom in</div>
     </div>
-    <div class="scale">
-
-      <div class="scale-row">
-        <div class="scale-label">
-          <span class="scale-name">Vs the entire current Linux kernel source tree</span>
-          <span class="scale-num" id="scale-kernel-loc">computing&hellip;</span>
-        </div>
-        <div class="scale-bar tall" id="scale-bar-vs-loc">
-          <div class="scale-bar-ai" id="scale-bar-vs-loc-ai"></div>
-        </div>
-        <div class="scale-callout" id="scale-callout-vs-loc">&nbsp;</div>
+    <div class="grid-stage">
+      <div class="grid-header">
+        <div class="grid-title" id="grid-title"></div>
+        <button class="grid-back" id="grid-back" hidden>&larr; zoom out</button>
       </div>
-
-      <div class="scale-row">
-        <div class="scale-label">
-          <span class="scale-name">Vs all mainline insertions in the same window</span>
-          <span class="scale-num" id="scale-kernel-total">computing&hellip;</span>
-        </div>
-        <div class="scale-bar tall">
-          <div class="scale-bar-ai" id="scale-bar-ai"></div>
-        </div>
-        <div class="scale-callout" id="scale-callout">&nbsp;</div>
-      </div>
-
-      <div class="scale-row zoom">
-        <div class="scale-label">
-          <span class="scale-name">Inside that 3,304: who wrote it</span>
-          <span class="scale-num scale-zoom-mark">100% &asymp; the green sliver above</span>
-        </div>
-        <div class="scale-stack" id="scale-stack"></div>
-        <div class="scale-legend" id="scale-legend"></div>
-      </div>
-
+      <div class="unit-grid" id="unit-grid"></div>
+      <div class="grid-caption" id="grid-caption"></div>
+      <div class="scale-legend" id="scale-legend"></div>
     </div>
   </section>
 
@@ -817,68 +839,130 @@
     volume from one author, and one maintainer contributes a fifth of all merged AI tags.
   `;
 
-  // --- in context: scale comparison ---
-  if (data.kernel_total_insertions) {
-    const aiIns = data.total_insertions;
+  // --- in context: zoomable unit grid ---
+  const VENDOR_COLORS = {
+    "Anthropic":          "#c8ff00",
+    "OpenAI":             "#5ec8ff",
+    "Google":             "#c85eff",
+    "DeepSeek":           "#ff8c42",
+    "Z.ai":               "#ffd166",
+    "Greg KH (protest)":  "#ff5e5e",
+    "Amazon":             "#a0e7e5",
+    "Cursor (in-house)":  "#888",
+    "Unknown":            "#555",
+  };
+  if (data.kernel_total_loc && data.kernel_total_insertions) {
+    const KERNEL_LOC = data.kernel_total_loc;
+    const SINCE_INS = data.kernel_total_insertions;
+    const AI_INS = data.total_insertions;
+    let zoom = 0;
 
-    // 1. vs entire kernel source tree at HEAD (if available)
-    if (data.kernel_total_loc) {
-      const loc = data.kernel_total_loc;
-      const pct = aiIns / loc * 100;
-      const pctStr = pct < 0.001 ? pct.toExponential(1) : (pct < 0.01 ? pct.toFixed(4) : pct.toFixed(3));
-      const ppm = (aiIns / loc * 1e6).toFixed(0);
-      document.getElementById("scale-kernel-loc").textContent = loc.toLocaleString() + " lines";
-      const w = Math.max(0.05, pct);
-      document.getElementById("scale-bar-vs-loc-ai").style.width = w + "%";
-      document.getElementById("scale-callout-vs-loc").innerHTML =
-        `&uarr; <span class="pct">${aiIns.toLocaleString()}</span> of those (<span class="pct">${pctStr}%</span>, about ${ppm} parts per million).`;
-    } else {
-      document.getElementById("scale-bar-vs-loc").parentElement.style.display = "none";
+    const grid = document.getElementById("unit-grid");
+    const title = document.getElementById("grid-title");
+    const cap = document.getElementById("grid-caption");
+    const back = document.getElementById("grid-back");
+    const legend = document.getElementById("scale-legend");
+
+    function fmt(n) { return n.toLocaleString(); }
+
+    function render() {
+      legend.innerHTML = "";
+      grid.classList.remove("clickable");
+
+      if (zoom === 0) {
+        const cellSize = KERNEL_LOC / 1000;
+        const windowCells = Math.max(1, Math.round(SINCE_INS / cellSize));
+        const aiFrac = AI_INS / cellSize;
+        title.innerHTML = `<b>1,000 squares = the entire ${fmt(KERNEL_LOC)}-line Linux kernel.</b> Each square &asymp; ${fmt(Math.round(cellSize))} lines.`;
+        grid.style.gridTemplateColumns = "repeat(50, 1fr)";
+        grid.classList.add("clickable");
+        let html = "";
+        for (let i = 0; i < 1000; i++) {
+          if (i === 0 && aiFrac < 1) {
+            html += `<div class="cell partial-ai active window" style="--ai-width:${(aiFrac*100).toFixed(2)}%" data-zoom="1" title="${fmt(AI_INS)} AI lines = ${(aiFrac*100).toFixed(1)}% of one square"></div>`;
+          } else if (i < windowCells) {
+            html += `<div class="cell window active" data-zoom="1" title="part of the ${fmt(SINCE_INS)} lines added since 2026-01-01"></div>`;
+          } else {
+            html += `<div class="cell"></div>`;
+          }
+        }
+        grid.innerHTML = html;
+        cap.innerHTML = `
+          <div class="key">
+            <span><i style="background:#1c1c1c"></i> kernel before 2026-01-01</span>
+            <span><i style="background:#2a2a2a"></i> added since 2026-01-01 &mdash; ${fmt(SINCE_INS)} lines (${(SINCE_INS/KERNEL_LOC*100).toFixed(2)}%)</span>
+            <span><i style="background:var(--accent)"></i> disclosed AI &mdash; ${fmt(AI_INS)} lines (<span class="pct">${(AI_INS/KERNEL_LOC*100).toFixed(4)}%</span>, ${Math.round(AI_INS/KERNEL_LOC*1e6)} ppm)</span>
+          </div>
+          <div style="margin-top:8px">The AI portion is a fraction of <em>one</em> of these squares. Click any active square to zoom in.</div>
+        `;
+        back.hidden = true;
+      } else if (zoom === 1) {
+        const cellSize = SINCE_INS / 1000;
+        const aiCells = AI_INS / cellSize;
+        const fullAi = Math.floor(aiCells);
+        const partialFrac = aiCells - fullAi;
+        title.innerHTML = `<b>Zoomed in: 1,000 squares = ${fmt(SINCE_INS)} lines added to mainline since 2026-01-01.</b> Each square &asymp; ${fmt(Math.round(cellSize))} lines.`;
+        grid.style.gridTemplateColumns = "repeat(50, 1fr)";
+        grid.classList.add("clickable");
+        let html = "";
+        for (let i = 0; i < 1000; i++) {
+          if (i < fullAi) {
+            html += `<div class="cell ai active" data-zoom="2" title="part of the ${fmt(AI_INS)} disclosed-AI lines"></div>`;
+          } else if (i === fullAi && partialFrac > 0) {
+            html += `<div class="cell partial-ai active window" style="--ai-width:${(partialFrac*100).toFixed(2)}%" data-zoom="2" title="last AI square: ${(partialFrac*100).toFixed(1)}% filled"></div>`;
+          } else {
+            html += `<div class="cell window"></div>`;
+          }
+        }
+        grid.innerHTML = html;
+        cap.innerHTML = `
+          <div class="key">
+            <span><i style="background:#2a2a2a"></i> non-AI lines added since 2026 (${fmt(SINCE_INS - AI_INS)})</span>
+            <span><i style="background:var(--accent)"></i> disclosed AI (${fmt(AI_INS)}, <span class="pct">${(AI_INS/SINCE_INS*100).toFixed(2)}%</span>)</span>
+          </div>
+          <div style="margin-top:8px">Click an AI square to zoom into the per-vendor breakdown.</div>
+        `;
+        back.hidden = false;
+      } else {
+        const segs = data.vendor_compare
+          .filter(v => (v.ins||0) > 0)
+          .sort((a, b) => b.ins - a.ins);
+        const total = segs.reduce((s, v) => s + v.ins, 0);
+        title.innerHTML = `<b>Zoomed in: 100 squares = ${fmt(AI_INS)} disclosed-AI lines, by vendor.</b> Each square &asymp; ${Math.round(AI_INS/100)} lines.`;
+        grid.style.gridTemplateColumns = "repeat(20, 1fr)";
+        let cells = [];
+        let consumed = 0;
+        segs.forEach((v, idx) => {
+          const exact = (v.ins / total) * 100;
+          const n = idx === segs.length - 1 ? Math.max(0, 100 - consumed) : Math.max(1, Math.round(exact));
+          consumed += n;
+          for (let i = 0; i < n; i++) cells.push(v);
+        });
+        cells = cells.slice(0, 100);
+        grid.innerHTML = cells.map(v =>
+          `<div class="cell" style="background:${VENDOR_COLORS[v.vendor]||"#666"}" title="${escape(VLABEL[v.vendor]||v.vendor)}: +${fmt(v.ins)} lines"></div>`
+        ).join("");
+        cap.innerHTML = "";
+        legend.innerHTML = segs.map(v => {
+          const c = VENDOR_COLORS[v.vendor] || "#666";
+          const w = (v.ins / total * 100).toFixed(1);
+          return `<div class="item"><span class="swatch" style="background:${c}"></span><span class="v">${escape(VLABEL[v.vendor]||v.vendor)}</span><span class="n">+${fmt(v.ins)} (${w}%)</span></div>`;
+        }).join("");
+        back.hidden = false;
+      }
     }
 
-    // 2. vs all mainline insertions in same window
-    const totalIns = data.kernel_total_insertions;
-    const pct = aiIns / totalIns * 100;
-    const pctStr = pct < 0.01 ? pct.toFixed(3) : pct.toFixed(2);
-    document.getElementById("scale-kernel-total").textContent = totalIns.toLocaleString() + " lines";
-    const aiW = Math.max(0.1, pct);
-    document.getElementById("scale-bar-ai").style.width = aiW + "%";
-    document.getElementById("scale-callout").innerHTML =
-      `&uarr; <span class="pct">${aiIns.toLocaleString()}</span> of those (<span class="pct">${pctStr}%</span>) carry an Assisted-by tag.`;
-
-    // 3. per-vendor breakdown of the AI portion
-    const VENDOR_COLORS = {
-      "Anthropic":          "#c8ff00",
-      "OpenAI":             "#5ec8ff",
-      "Google":             "#c85eff",
-      "DeepSeek":           "#ff8c42",
-      "Z.ai":               "#ffd166",
-      "Greg KH (protest)":  "#ff5e5e",
-      "Amazon":             "#a0e7e5",
-      "Cursor (in-house)":  "#888",
-      "Unknown":            "#555",
-    };
-    const totalAi = data.vendor_compare.reduce((a, r) => a + (r.ins||0), 0) || aiIns;
-    const segs = data.vendor_compare
-      .filter(r => (r.ins||0) > 0)
-      .sort((a, b) => (b.ins||0) - (a.ins||0));
-    document.getElementById("scale-stack").innerHTML = segs.map(s => {
-      const w = (s.ins / totalAi) * 100;
-      const c = VENDOR_COLORS[s.vendor] || "#666";
-      const label = w >= 6 ? `${VLABEL[s.vendor] || s.vendor} ${(s.ins).toLocaleString()}` : "";
-      return `<div title="${escape(VLABEL[s.vendor] || s.vendor)} +${s.ins.toLocaleString()} lines (${w.toFixed(1)}%)" style="width:${w}%;background:${c};">
-        ${label ? `<span style="position:absolute;top:50%;left:10px;transform:translateY(-50%);color:#0a0a0a;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;white-space:nowrap;">${escape(label)}</span>` : ''}
-      </div>`;
-    }).join("");
-    document.getElementById("scale-legend").innerHTML = segs.map(s => {
-      const c = VENDOR_COLORS[s.vendor] || "#666";
-      const w = ((s.ins / totalAi) * 100).toFixed(1);
-      return `<div class="item">
-        <span class="swatch" style="background:${c}"></span>
-        <span class="v">${escape(VLABEL[s.vendor] || s.vendor)}</span>
-        <span class="n">+${s.ins.toLocaleString()} (${w}%)</span>
-      </div>`;
-    }).join("");
+    grid.addEventListener("click", (e) => {
+      const cell = e.target.closest(".cell.active");
+      if (!cell) return;
+      zoom = parseInt(cell.dataset.zoom, 10);
+      render();
+    });
+    back.addEventListener("click", () => {
+      if (zoom > 0) zoom--;
+      render();
+    });
+    render();
   } else {
     document.getElementById("scale-section").style.display = "none";
   }
